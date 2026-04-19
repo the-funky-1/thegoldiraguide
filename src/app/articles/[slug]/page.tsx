@@ -20,8 +20,14 @@ type Article = {
 }
 
 export async function generateStaticParams() {
-  const slugs = await listArticleSlugs()
-  return slugs.map((slug) => ({ slug }))
+  // If Sanity is unreachable (e.g. build env without a provisioned project),
+  // fall back to on-demand rendering rather than failing the build.
+  try {
+    const slugs = await listArticleSlugs()
+    return slugs.map((slug) => ({ slug }))
+  } catch {
+    return []
+  }
 }
 
 export default async function ArticlePage({
