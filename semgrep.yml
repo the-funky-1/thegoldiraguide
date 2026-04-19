@@ -1,0 +1,25 @@
+rules:
+  - id: no-hardcoded-secret-like-strings
+    message: >-
+      Possible hardcoded secret. Use environment variables or a vault.
+    severity: ERROR
+    languages: [typescript, javascript]
+    pattern-either:
+      - pattern-regex: '(?i)(api[_-]?key|secret|token|password)\s*[:=]\s*["''][A-Za-z0-9_\-]{20,}["'']'
+    paths:
+      exclude:
+        - '**/*.test.ts'
+        - '**/*.test.tsx'
+        - '**/*.spec.ts'
+
+  - id: no-dangerously-set-inner-html
+    message: dangerouslySetInnerHTML is forbidden on a YMYL platform.
+    severity: ERROR
+    languages: [typescript]
+    pattern: dangerouslySetInnerHTML={...}
+
+  - id: no-eval
+    message: eval() is forbidden.
+    severity: ERROR
+    languages: [typescript, javascript]
+    pattern: eval(...)
