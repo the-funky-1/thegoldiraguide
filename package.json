@@ -17,6 +17,7 @@
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "check:disclosure": "tsx scripts/check-disclosure.ts",
+    "check:jsonld": "tsx scripts/validate-json-ld.ts",
     "check:all": "pnpm lint && pnpm typecheck && pnpm test && pnpm check:disclosure && pnpm build"
   },
   "dependencies": {
@@ -39,6 +40,7 @@
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "sanity": "^3.99.0",
+    "schema-dts": "^2.0.0",
     "styled-components": "^6.4.0",
     "tailwind-merge": "^3.5.0",
     "zod": "^4.3.6"
@@ -66,9 +68,12 @@
     "jsdom": "^29.0.2",
     "postcss": "^8.5.10",
     "prettier": "^3.8.3",
+    "remark-parse": "^11.0.0",
+    "remark-stringify": "^11.0.0",
     "tailwindcss": "^3.4.19",
     "tsx": "^4.21.0",
     "typescript": "^6.0.3",
+    "unified": "^11.0.5",
     "vitest": "^3.2.4"
   }
 }

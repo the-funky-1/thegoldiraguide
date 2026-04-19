@@ -26,7 +26,31 @@ function buildCsp(nonce: string): string {
     .join('; ')
 }
 
+// Rewrites `.md` suffixed URLs or `Accept: text/markdown` requests to the
+// dedicated markdown route handler. The route `[slug]/page.tsx` otherwise
+// consumes the `.md` as part of the slug, so this redirection must happen
+// before Next.js resolves the route.
+function resolveMarkdownRewrite(request: NextRequest): URL | null {
+  const { pathname } = request.nextUrl
+  if (!pathname.startsWith('/')) return null
+
+  const endsWithMd = pathname.endsWith('.md')
+  const wantsMd = (request.headers.get('accept') ?? '').includes(
+    'text/markdown',
+  )
+  if (!endsWithMd && !wantsMd) return null
+
+  const withoutMd = endsWithMd ? pathname.slice(0, -3) : pathname
+  const rewritten = new URL(`/api/md${withoutMd}`, request.url)
+  return rewritten
+}
+
 export function middleware(request: NextRequest): NextResponse {
+  const markdownRewrite = resolveMarkdownRewrite(request)
+  if (markdownRewrite) {
+    return NextResponse.rewrite(markdownRewrite)
+  }
+
   const nonce = btoa(crypto.randomUUID())
   const csp = buildCsp(nonce)
 

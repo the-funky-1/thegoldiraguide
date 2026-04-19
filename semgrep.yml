@@ -13,10 +13,13 @@ rules:
         - '**/*.spec.ts'
 
   - id: no-dangerously-set-inner-html
-    message: dangerouslySetInnerHTML is forbidden on a YMYL platform.
+    message: dangerouslySetInnerHTML is forbidden outside the JSON-LD primitive.
     severity: ERROR
     languages: [typescript]
     pattern: dangerouslySetInnerHTML={...}
+    paths:
+      exclude:
+        - 'src/seo/json-ld.tsx'
 
   - id: no-eval
     message: eval() is forbidden.
