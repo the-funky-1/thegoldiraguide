@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   alternates: { canonical: '/tools/fee-drag-analyzer' },
 }
 
+// Dynamic render so the middleware-issued CSP nonce is applied to hydrating
+// client chunks on every request. Static prerender would freeze a stale nonce
+// into the HTML and break the calculator's client-side interactivity.
+export const dynamic = 'force-dynamic'
+
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.thegoldiraguide.com'
 const url = `${siteUrl}/tools/fee-drag-analyzer`

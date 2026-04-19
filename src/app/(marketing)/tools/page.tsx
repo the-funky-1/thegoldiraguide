@@ -73,7 +73,7 @@ export default function ToolsLanding() {
             </h2>
             <p className="mt-2 text-sm text-slate-charcoal">{t.description}</p>
             {t.disabled && (
-              <p className="mt-2 text-xs uppercase tracking-wide text-slate-charcoal/70">
+              <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-slate-charcoal">
                 Unavailable
               </p>
             )}

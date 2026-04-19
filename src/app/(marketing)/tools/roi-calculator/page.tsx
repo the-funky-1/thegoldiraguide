@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   alternates: { canonical: '/tools/roi-calculator' },
 }
 
+// Dynamic render so the middleware-issued CSP nonce reaches hydrating chunks.
+export const dynamic = 'force-dynamic'
+
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.thegoldiraguide.com'
 const url = `${siteUrl}/tools/roi-calculator`

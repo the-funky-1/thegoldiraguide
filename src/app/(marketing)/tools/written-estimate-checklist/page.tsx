@@ -15,7 +15,9 @@ export const metadata: Metadata = {
   alternates: { canonical: '/tools/written-estimate-checklist' },
 }
 
-export const revalidate = 3600
+// Dynamic render so the middleware-issued CSP nonce reaches hydrating chunks
+// that power the client-side filter + sort controls.
+export const dynamic = 'force-dynamic'
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.thegoldiraguide.com'
