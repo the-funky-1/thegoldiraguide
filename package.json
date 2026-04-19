@@ -18,5 +18,17 @@
     "test:e2e:ui": "playwright test --ui",
     "check:disclosure": "tsx scripts/check-disclosure.ts",
     "check:all": "pnpm lint && pnpm typecheck && pnpm test && pnpm check:disclosure && pnpm build"
+  },
+  "dependencies": {
+    "next": "^15.5.15",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3"
   }
 }
