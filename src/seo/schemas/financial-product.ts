@@ -1,8 +1,4 @@
-import type {
-  FinancialProduct,
-  MonetaryAmount,
-  WithContext,
-} from 'schema-dts'
+import type { FinancialProduct, MonetaryAmount, WithContext } from 'schema-dts'
 
 type Input = {
   name: string
