@@ -1,1 +1,16 @@
-/* Tailwind layers are added in Task 3. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fiduciary base — placeholder until Plan 8. */
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-padding-top: 4rem; /* WCAG 2.4.11 Focus Not Obscured */
+}
+
+body {
+  @apply bg-platinum text-ledger-navy antialiased;
+}
