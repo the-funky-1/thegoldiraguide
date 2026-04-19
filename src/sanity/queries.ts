@@ -27,7 +27,18 @@ export const articleBySlugQuery = groq`
       reviewedAt,
       "reviewer": reviewer->{ ${authorProjection} }
     },
-    body,
+    body[]{
+      ...,
+      _type == "feeTable" => {
+        ...,
+        "rows": rows[]->{
+          _id, dealerName, setupFeeUsd, annualAdminFeeUsd, storageModel,
+          storageFlatFeeUsd, storageScalingPercent,
+          typicalPurchaseSpreadPercent, typicalLiquidationSpreadPercent,
+          mandatorySalesCall
+        }
+      }
+    },
     seo
   }
 `
@@ -63,7 +74,20 @@ export const feeScheduleBySlugQuery = groq`
 
 export const allFeeSchedulesQuery = groq`
   *[_type == "feeSchedule"] | order(dealerName asc){
-    _id, dealerName, "slug": slug.current, storageModel, typicalPurchaseSpreadPercent
+    _id,
+    dealerName,
+    "slug": slug.current,
+    setupFeeUsd,
+    annualAdminFeeUsd,
+    storageModel,
+    storageFlatFeeUsd,
+    storageScalingPercent,
+    typicalPurchaseSpreadPercent,
+    typicalLiquidationSpreadPercent,
+    minimumInvestmentUsd,
+    mandatorySalesCall,
+    sourceUrl,
+    dataVerifiedAt
   }
 `
 

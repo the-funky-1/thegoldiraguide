@@ -2,6 +2,9 @@ import { PortableText, type PortableTextComponents } from '@portabletext/react'
 import GithubSlugger from 'github-slugger'
 import { LlmsIgnore } from '@/components/seo/LlmsIgnore'
 import { LlmsOnly } from '@/components/seo/LlmsOnly'
+import { FeeTableBlock } from './FeeTableBlock'
+
+type FeeTableRow = React.ComponentProps<typeof FeeTableBlock>['rows'][number]
 
 function slugFromValue(value: unknown): string {
   const children =
@@ -50,6 +53,9 @@ const components: PortableTextComponents = {
           components={components}
         />
       </LlmsIgnore>
+    ),
+    feeTable: ({ value }: { value: { rows?: unknown[] } }) => (
+      <FeeTableBlock rows={(value.rows ?? []) as FeeTableRow[]} />
     ),
   },
   block: {

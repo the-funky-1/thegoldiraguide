@@ -9,6 +9,9 @@ const ROUTES = [
   '/tools',
   '/about',
   '/about/expert-authors',
+  '/tools/fee-drag-analyzer',
+  '/tools/roi-calculator',
+  '/tools/written-estimate-checklist',
   '/this-route-does-not-exist',
 ]
 
