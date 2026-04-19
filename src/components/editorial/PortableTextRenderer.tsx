@@ -1,5 +1,7 @@
 import { PortableText, type PortableTextComponents } from '@portabletext/react'
 import GithubSlugger from 'github-slugger'
+import { LlmsIgnore } from '@/components/seo/LlmsIgnore'
+import { LlmsOnly } from '@/components/seo/LlmsOnly'
 
 function slugFromValue(value: unknown): string {
   const children =
@@ -32,6 +34,22 @@ const components: PortableTextComponents = {
         <p className="font-semibold">{value.question}</p>
         <p>{value.answer}</p>
       </div>
+    ),
+    llmsOnly: ({ value }: { value: { children: unknown } }) => (
+      <LlmsOnly>
+        <PortableText
+          value={value.children as Parameters<typeof PortableText>[0]['value']}
+          components={components}
+        />
+      </LlmsOnly>
+    ),
+    llmsIgnore: ({ value }: { value: { children: unknown } }) => (
+      <LlmsIgnore>
+        <PortableText
+          value={value.children as Parameters<typeof PortableText>[0]['value']}
+          components={components}
+        />
+      </LlmsIgnore>
     ),
   },
   block: {

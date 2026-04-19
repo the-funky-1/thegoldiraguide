@@ -91,6 +91,30 @@ export const article = defineType({
             },
           ],
         }),
+        defineField({
+          name: 'llmsOnly',
+          type: 'object',
+          title: 'LLM-only block (hidden from humans)',
+          fields: [
+            {
+              name: 'children',
+              type: 'array',
+              of: [{ type: 'block' }],
+            },
+          ],
+        }),
+        defineField({
+          name: 'llmsIgnore',
+          type: 'object',
+          title: 'Human-only block (stripped from LLM mirrors)',
+          fields: [
+            {
+              name: 'children',
+              type: 'array',
+              of: [{ type: 'block' }],
+            },
+          ],
+        }),
       ],
       validation: (r) => r.required().min(1),
     }),
