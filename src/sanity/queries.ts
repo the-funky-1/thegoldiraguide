@@ -27,7 +27,18 @@ export const articleBySlugQuery = groq`
       reviewedAt,
       "reviewer": reviewer->{ ${authorProjection} }
     },
-    body,
+    body[]{
+      ...,
+      _type == "feeTable" => {
+        ...,
+        "rows": rows[]->{
+          _id, dealerName, setupFeeUsd, annualAdminFeeUsd, storageModel,
+          storageFlatFeeUsd, storageScalingPercent,
+          typicalPurchaseSpreadPercent, typicalLiquidationSpreadPercent,
+          mandatorySalesCall
+        }
+      }
+    },
     seo
   }
 `

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { Breadcrumbs } from '@/components/nav/Breadcrumbs'
 import { pillarBySlug } from '@/lib/site-map'
 
@@ -10,26 +11,35 @@ export const metadata: Metadata = {
   alternates: { canonical: '/tools' },
 }
 
-const tools = [
+type Tool = {
+  slug: string
+  title: string
+  description: string
+  disabled?: boolean
+}
+
+const tools: Tool[] = [
   {
     slug: 'fee-drag-analyzer',
     title: 'Fee Drag Analyzer',
-    status: 'Coming in Plan 5',
+    description: 'Project flat vs. scaling fee drag over decades.',
   },
   {
     slug: 'roi-calculator',
     title: 'ROI Calculator',
-    status: 'Coming in Plan 5',
-  },
-  {
-    slug: 'live-spot-prices',
-    title: 'Live Spot Prices',
-    status: 'Coming in Plan 6',
+    description: 'Model net returns after spreads and fees.',
   },
   {
     slug: 'written-estimate-checklist',
     title: 'Written Estimate Checklist',
-    status: 'Coming in Plan 5',
+    description:
+      'The itemized standard documented in every binding written estimate we issue.',
+  },
+  {
+    slug: 'live-spot-prices',
+    title: 'Live Spot Prices',
+    description: 'Coming in Plan 6 (WebSocket-backed live ticker).',
+    disabled: true,
   },
 ]
 
@@ -49,8 +59,24 @@ export default function ToolsLanding() {
             key={t.slug}
             className="rounded-lg border border-slate-charcoal/20 bg-white p-6"
           >
-            <h2 className="font-serif text-xl">{t.title}</h2>
-            <p className="mt-2 text-sm text-slate-charcoal">{t.status}</p>
+            <h2 className="font-serif text-xl">
+              {t.disabled ? (
+                <span className="text-slate-charcoal">{t.title}</span>
+              ) : (
+                <Link
+                  href={`/tools/${t.slug}`}
+                  className="underline underline-offset-2"
+                >
+                  {t.title}
+                </Link>
+              )}
+            </h2>
+            <p className="mt-2 text-sm text-slate-charcoal">{t.description}</p>
+            {t.disabled && (
+              <p className="mt-2 text-xs uppercase tracking-wide text-slate-charcoal/70">
+                Unavailable
+              </p>
+            )}
           </li>
         ))}
       </ul>
