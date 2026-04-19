@@ -7,14 +7,13 @@ import {
   pillarsQuery,
 } from './queries'
 
-type FetchOpts = { tags: string[] }
-
 async function tagged<T>(
   query: string,
   params: Record<string, unknown>,
   tags: string[],
 ): Promise<T> {
-  return sanityClient.fetch<T>(query, params, { next: { tags } } as FetchOpts)
+  // `next` is passed through to Next.js fetch cache for tag-based revalidation.
+  return sanityClient.fetch<T>(query, params, { next: { tags } })
 }
 
 export async function getArticleBySlug<T = unknown>(
