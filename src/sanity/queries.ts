@@ -66,3 +66,38 @@ export const allFeeSchedulesQuery = groq`
     _id, dealerName, "slug": slug.current, storageModel, typicalPurchaseSpreadPercent
   }
 `
+
+export const articlesByPillarQuery = groq`
+  *[_type == "article" && pillar->slug.current == $pillar] | order(publishedAt desc){
+    _id,
+    title,
+    "slug": slug.current,
+    summary,
+    publishedAt,
+    updatedAt,
+    "pillar": pillar->{ "slug": slug.current }
+  }
+`
+
+export const articleSlugsByPillarQuery = groq`
+  *[_type == "article" && pillar->slug.current == $pillar && defined(slug.current)]{ "slug": slug.current }
+`
+
+export const authorBySlugQuery = groq`
+  *[_type == "author" && slug.current == $slug][0]{
+    _id,
+    name,
+    "slug": slug.current,
+    jobTitle,
+    bio,
+    "portrait": portrait.asset->url,
+    "credentials": credentials[]->{ _id, name, credentialCategory, recognizedBy, dateEarned, verificationUrl },
+    "socialProfiles": socialProfiles[]{ platform, url }
+  }
+`
+
+export const allAuthorsQuery = groq`
+  *[_type == "author"] | order(name asc){
+    _id, name, "slug": slug.current, jobTitle, "portrait": portrait.asset->url
+  }
+`
