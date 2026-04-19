@@ -15,7 +15,7 @@ export function JsonLd({ data }: { data: JsonLdInput }) {
       // type-constrained, stringified with </script> escaped, and always
       // derived from server-side data.
       // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{ __html: stringifySafe(data) }} // nosemgrep: no-dangerously-set-inner-html
+      dangerouslySetInnerHTML={{ __html: stringifySafe(data) }} // nosemgrep
     />
   )
 }
