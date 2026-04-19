@@ -68,6 +68,17 @@ jobs:
       - name: E2E (home, disclosure, security headers, a11y)
         run: pnpm test:e2e
 
+      - name: JSON-LD validation
+        run: |
+          pnpm start -p 3000 &
+          SERVER_PID=$!
+          for i in $(seq 1 30); do
+            if curl -sSf http://localhost:3000/ > /dev/null; then break; fi
+            sleep 1
+          done
+          BASE_URL=http://localhost:3000 pnpm check:jsonld
+          kill $SERVER_PID
+
       - name: Upload Playwright report on failure
         if: failure()
         uses: actions/upload-artifact@v4

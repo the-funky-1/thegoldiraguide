@@ -17,6 +17,7 @@
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "check:disclosure": "tsx scripts/check-disclosure.ts",
+    "check:jsonld": "tsx scripts/validate-json-ld.ts",
     "check:all": "pnpm lint && pnpm typecheck && pnpm test && pnpm check:disclosure && pnpm build"
   },
   "dependencies": {
