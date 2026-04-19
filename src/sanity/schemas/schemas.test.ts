@@ -20,7 +20,8 @@ describe('schema registry', () => {
 
   it('article requires title, slug, pillar, author, publishedAt, updatedAt, body', () => {
     const article = byName.article
-    const fieldNames = (article.fields ?? []).map(
+    expect(article).toBeDefined()
+    const fieldNames = (article!.fields ?? []).map(
       (f) => (f as { name: string }).name,
     )
     for (const f of [
@@ -38,7 +39,8 @@ describe('schema registry', () => {
 
   it('feeSchedule carries structured numerical fee fields', () => {
     const fs = byName.feeSchedule
-    const fieldNames = (fs.fields ?? []).map(
+    expect(fs).toBeDefined()
+    const fieldNames = (fs!.fields ?? []).map(
       (f) => (f as { name: string }).name,
     )
     for (const f of [
