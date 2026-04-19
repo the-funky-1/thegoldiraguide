@@ -17,3 +17,5 @@ playwright-report
 !.vscode/settings.json
 .idea
 tsconfig.tsbuildinfo
+# Sanity typegen transient — regenerated on each run.
+schema.json

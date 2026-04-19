@@ -15,6 +15,13 @@ jobs:
     name: Verify
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    env:
+      NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+      NEXT_PUBLIC_SANITY_DATASET: production
+      NEXT_PUBLIC_SANITY_API_VERSION: '2026-04-01'
+      SANITY_API_READ_TOKEN: ${{ secrets.SANITY_API_READ_TOKEN }}
+      SANITY_REVALIDATE_SECRET: ${{ secrets.SANITY_REVALIDATE_SECRET }}
+      NEXT_PUBLIC_SITE_URL: http://localhost:3000
     steps:
       - uses: actions/checkout@v4
 
@@ -32,6 +39,16 @@ jobs:
 
       - name: Lint
         run: pnpm lint
+
+      - name: Sanity type generation
+        run: |
+          pnpm exec sanity schema extract --enforce-required-fields
+          pnpm exec sanity typegen generate
+          if [ -f src/sanity/types.generated.ts ] && ! git diff --quiet src/sanity/types.generated.ts; then
+            echo "Generated Sanity types are out of date. Run 'pnpm exec sanity typegen generate' and commit."
+            git diff src/sanity/types.generated.ts
+            exit 1
+          fi
 
       - name: Typecheck
         run: pnpm typecheck
