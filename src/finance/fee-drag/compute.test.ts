@@ -7,8 +7,8 @@ describe('computeFeeDrag', () => {
   it('produces a row per year plus a starting row (horizon + 1)', () => {
     const r = computeFeeDrag(FEE_DRAG_DEFAULTS)
     expect(r.years).toHaveLength(FEE_DRAG_DEFAULTS.horizonYears + 1)
-    expect(r.years[0].year).toBe(0)
-    expect(r.years[FEE_DRAG_DEFAULTS.horizonYears].year).toBe(
+    expect(r.years[0]!.year).toBe(0)
+    expect(r.years[FEE_DRAG_DEFAULTS.horizonYears]!.year).toBe(
       FEE_DRAG_DEFAULTS.horizonYears,
     )
   })
@@ -18,8 +18,8 @@ describe('computeFeeDrag', () => {
     const expected = D(FEE_DRAG_DEFAULTS.startingBalanceUsd).minus(
       FEE_DRAG_DEFAULTS.oneTimeSetupFeeUsd,
     )
-    expect(r.years[0].flatBalance.equals(expected)).toBe(true)
-    expect(r.years[0].scalingBalance.equals(expected)).toBe(true)
+    expect(r.years[0]!.flatBalance.equals(expected)).toBe(true)
+    expect(r.years[0]!.scalingBalance.equals(expected)).toBe(true)
   })
 
   it('scaling scenario drains more than flat when storage% > flat equivalent at scale', () => {
