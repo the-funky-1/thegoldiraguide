@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { DisclosureBanner } from '@/components/compliance/DisclosureBanner'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -14,7 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <DisclosureBanner />
+        {children}
+      </body>
     </html>
   )
 }
