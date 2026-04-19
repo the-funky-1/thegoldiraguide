@@ -1,4 +1,8 @@
-import { defineConfig, devices, type PlaywrightTestConfig } from '@playwright/test'
+import {
+  defineConfig,
+  devices,
+  type PlaywrightTestConfig,
+} from '@playwright/test'
 
 const PORT = Number(process.env.PORT ?? 3123)
 const baseURL = `http://localhost:${PORT}`

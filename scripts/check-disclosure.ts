@@ -39,7 +39,9 @@ function main(): void {
     process.exit(1)
   }
 
-  console.log('[check-disclosure] OK — DisclosureBanner is present and visible.')
+  console.log(
+    '[check-disclosure] OK — DisclosureBanner is present and visible.',
+  )
 }
 
 // Only run main() when invoked as a script, not when imported by tests.

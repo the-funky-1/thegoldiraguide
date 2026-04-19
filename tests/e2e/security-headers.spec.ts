@@ -32,7 +32,7 @@ test('nonce differs across two requests', async ({ request }) => {
   const b = await request.get('/')
   const extract = (h: Record<string, string>): string | null => {
     const match = h['content-security-policy']?.match(/'nonce-([^']+)'/)
-    return match ? match[1] ?? null : null
+    return match ? (match[1] ?? null) : null
   }
   const nonceA = extract(a.headers())
   const nonceB = extract(b.headers())

@@ -20,7 +20,9 @@ function buildCsp(nonce: string): string {
   }
 
   return Object.entries(directives)
-    .map(([key, values]) => (values.length ? `${key} ${values.join(' ')}` : key))
+    .map(([key, values]) =>
+      values.length ? `${key} ${values.join(' ')}` : key,
+    )
     .join('; ')
 }
 
