@@ -19,8 +19,7 @@ export const expertCredential = defineType({
     defineField({
       name: 'recognizedBy',
       type: 'string',
-      description:
-        'Issuing body — e.g., FINRA, CFP Board, Harvard Law School',
+      description: 'Issuing body — e.g., FINRA, CFP Board, Harvard Law School',
     }),
     defineField({ name: 'dateEarned', type: 'date' }),
     defineField({ name: 'verificationUrl', type: 'url' }),

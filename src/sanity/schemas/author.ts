@@ -18,7 +18,11 @@ export const author = defineType({
     }),
     defineField({ name: 'jobTitle', type: 'string' }),
     defineField({ name: 'bio', type: 'text', rows: 5 }),
-    defineField({ name: 'portrait', type: 'image', options: { hotspot: true } }),
+    defineField({
+      name: 'portrait',
+      type: 'image',
+      options: { hotspot: true },
+    }),
     defineField({
       name: 'credentials',
       type: 'array',

@@ -17,10 +17,7 @@ const reviewer = {
 describe('ReviewedByBadge', () => {
   it('renders reviewer name and review date', () => {
     render(
-      <ReviewedByBadge
-        reviewer={reviewer}
-        reviewedAt="2026-04-19T10:00:00Z"
-      />,
+      <ReviewedByBadge reviewer={reviewer} reviewedAt="2026-04-19T10:00:00Z" />,
     )
     expect(screen.getByText(/Reviewed by/i)).toBeInTheDocument()
     expect(screen.getByText('Jane Expert, CFA')).toBeInTheDocument()
@@ -29,10 +26,7 @@ describe('ReviewedByBadge', () => {
 
   it('lists each credential explicitly', () => {
     render(
-      <ReviewedByBadge
-        reviewer={reviewer}
-        reviewedAt="2026-04-19T10:00:00Z"
-      />,
+      <ReviewedByBadge reviewer={reviewer} reviewedAt="2026-04-19T10:00:00Z" />,
     )
     expect(screen.getByText(/CFA · CFA Institute/)).toBeInTheDocument()
   })

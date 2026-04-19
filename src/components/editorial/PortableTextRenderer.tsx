@@ -30,7 +30,9 @@ const components: PortableTextComponents = {
     h3: ({ children }) => (
       <h3 className="mt-6 text-xl font-semibold">{children}</h3>
     ),
-    normal: ({ children }) => <p className="my-4 leading-relaxed">{children}</p>,
+    normal: ({ children }) => (
+      <p className="my-4 leading-relaxed">{children}</p>
+    ),
   },
 }
 

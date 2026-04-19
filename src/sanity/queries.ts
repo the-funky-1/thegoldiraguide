@@ -1,6 +1,8 @@
 import { groq } from 'next-sanity'
 
-const authorProjection = groq`
+// Plain string (not groq-tagged) — this is a fragment, not a standalone query,
+// so we don't want sanity typegen to parse it. It's interpolated into the queries below.
+const authorProjection = `
   _id,
   name,
   "slug": slug.current,
