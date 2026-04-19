@@ -23,10 +23,7 @@ describe('Breadcrumbs', () => {
   it('marks the last item with aria-current="page"', () => {
     render(
       <Breadcrumbs
-        items={[
-          { href: '/', label: 'Home' },
-          { label: 'Accountability' },
-        ]}
+        items={[{ href: '/', label: 'Home' }, { label: 'Accountability' }]}
       />,
     )
     expect(screen.getByText('Accountability')).toHaveAttribute(

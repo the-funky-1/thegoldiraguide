@@ -2,10 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { ArticleTemplate } from '@/components/editorial/ArticleTemplate'
 import { articleHref } from '@/lib/site-map'
-import {
-  getArticleBySlug,
-  listArticleSlugsByPillar,
-} from '@/sanity/fetchers'
+import { getArticleBySlug, listArticleSlugsByPillar } from '@/sanity/fetchers'
 
 export const revalidate = 3600
 

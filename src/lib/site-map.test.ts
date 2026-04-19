@@ -36,9 +36,9 @@ describe('pillarHref', () => {
 
 describe('articleHref', () => {
   it('builds /<pillar>/<slug>', () => {
-    expect(
-      articleHref('accountability', 'the-written-estimate-standard'),
-    ).toBe('/accountability/the-written-estimate-standard')
+    expect(articleHref('accountability', 'the-written-estimate-standard')).toBe(
+      '/accountability/the-written-estimate-standard',
+    )
   })
 })
 
