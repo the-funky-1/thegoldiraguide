@@ -20,9 +20,11 @@
     "check:all": "pnpm lint && pnpm typecheck && pnpm test && pnpm check:disclosure && pnpm build"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
     "next": "^15.5.15",
     "react": "^19.2.5",
-    "react-dom": "^19.2.5"
+    "react-dom": "^19.2.5",
+    "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
     "@types/node": "^25.6.0",
