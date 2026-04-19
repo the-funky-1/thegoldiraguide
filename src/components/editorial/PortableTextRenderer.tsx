@@ -1,4 +1,15 @@
 import { PortableText, type PortableTextComponents } from '@portabletext/react'
+import GithubSlugger from 'github-slugger'
+
+function slugFromValue(value: unknown): string {
+  const children =
+    (value as { children?: { text?: string }[] } | undefined)?.children ?? []
+  const text = children
+    .map((c) => c.text ?? '')
+    .join('')
+    .trim()
+  return new GithubSlugger().slug(text)
+}
 
 const components: PortableTextComponents = {
   types: {
@@ -24,11 +35,21 @@ const components: PortableTextComponents = {
     ),
   },
   block: {
-    h2: ({ children }) => (
-      <h2 className="mt-10 text-2xl font-semibold">{children}</h2>
+    h2: ({ children, value }) => (
+      <h2
+        id={slugFromValue(value)}
+        className="mt-10 scroll-mt-24 text-2xl font-semibold"
+      >
+        {children}
+      </h2>
     ),
-    h3: ({ children }) => (
-      <h3 className="mt-6 text-xl font-semibold">{children}</h3>
+    h3: ({ children, value }) => (
+      <h3
+        id={slugFromValue(value)}
+        className="mt-6 scroll-mt-24 text-xl font-semibold"
+      >
+        {children}
+      </h3>
     ),
     normal: ({ children }) => (
       <p className="my-4 leading-relaxed">{children}</p>

@@ -528,6 +528,60 @@ export type AllFeeSchedulesQueryResult = Array<{
   storageModel: 'flat' | 'scaling'
   typicalPurchaseSpreadPercent: number
 }>
+// Variable: articlesByPillarQuery
+// Query: *[_type == "article" && pillar->slug.current == $pillar] | order(publishedAt desc){    _id,    title,    "slug": slug.current,    summary,    publishedAt,    updatedAt,    "pillar": pillar->{ "slug": slug.current }  }
+export type ArticlesByPillarQueryResult = Array<{
+  _id: string
+  title: string
+  slug: string
+  summary: string | null
+  publishedAt: string
+  updatedAt: string
+  pillar: {
+    slug: string
+  }
+}>
+// Variable: articleSlugsByPillarQuery
+// Query: *[_type == "article" && pillar->slug.current == $pillar && defined(slug.current)]{ "slug": slug.current }
+export type ArticleSlugsByPillarQueryResult = Array<{
+  slug: string
+}>
+// Variable: authorBySlugQuery
+// Query: *[_type == "author" && slug.current == $slug][0]{    _id,    name,    "slug": slug.current,    jobTitle,    bio,    "portrait": portrait.asset->url,    "credentials": credentials[]->{ _id, name, credentialCategory, recognizedBy, dateEarned, verificationUrl },    "socialProfiles": socialProfiles[]{ platform, url }  }
+export type AuthorBySlugQueryResult = {
+  _id: string
+  name: string
+  slug: string
+  jobTitle: string | null
+  bio: string | null
+  portrait: string | null
+  credentials: Array<{
+    _id: string
+    name: string
+    credentialCategory: 'certification' | 'degree' | 'license'
+    recognizedBy: string | null
+    dateEarned: string | null
+    verificationUrl: string | null
+  }> | null
+  socialProfiles: Array<{
+    platform:
+      | 'finra-brokercheck'
+      | 'linkedin'
+      | 'other'
+      | 'sec-iapd'
+      | 'twitter'
+    url: string
+  }> | null
+} | null
+// Variable: allAuthorsQuery
+// Query: *[_type == "author"] | order(name asc){    _id, name, "slug": slug.current, jobTitle, "portrait": portrait.asset->url  }
+export type AllAuthorsQueryResult = Array<{
+  _id: string
+  name: string
+  slug: string
+  jobTitle: string | null
+  portrait: string | null
+}>
 
 // Query TypeMap
 import '@sanity/client'
@@ -538,5 +592,9 @@ declare module '@sanity/client' {
     '\n  *[_type == "pillar"] | order(order asc){\n    _id, title, "slug": slug.current, summary, order\n  }\n': PillarsQueryResult
     '\n  *[_type == "feeSchedule" && slug.current == $slug][0]{\n    _id,\n    dealerName,\n    "slug": slug.current,\n    setupFeeUsd,\n    annualAdminFeeUsd,\n    storageModel,\n    storageFlatFeeUsd,\n    storageScalingPercent,\n    typicalPurchaseSpreadPercent,\n    typicalLiquidationSpreadPercent,\n    minimumInvestmentUsd,\n    mandatorySalesCall,\n    sourceUrl,\n    dataVerifiedAt\n  }\n': FeeScheduleBySlugQueryResult
     '\n  *[_type == "feeSchedule"] | order(dealerName asc){\n    _id, dealerName, "slug": slug.current, storageModel, typicalPurchaseSpreadPercent\n  }\n': AllFeeSchedulesQueryResult
+    '\n  *[_type == "article" && pillar->slug.current == $pillar] | order(publishedAt desc){\n    _id,\n    title,\n    "slug": slug.current,\n    summary,\n    publishedAt,\n    updatedAt,\n    "pillar": pillar->{ "slug": slug.current }\n  }\n': ArticlesByPillarQueryResult
+    '\n  *[_type == "article" && pillar->slug.current == $pillar && defined(slug.current)]{ "slug": slug.current }\n': ArticleSlugsByPillarQueryResult
+    '\n  *[_type == "author" && slug.current == $slug][0]{\n    _id,\n    name,\n    "slug": slug.current,\n    jobTitle,\n    bio,\n    "portrait": portrait.asset->url,\n    "credentials": credentials[]->{ _id, name, credentialCategory, recognizedBy, dateEarned, verificationUrl },\n    "socialProfiles": socialProfiles[]{ platform, url }\n  }\n': AuthorBySlugQueryResult
+    '\n  *[_type == "author"] | order(name asc){\n    _id, name, "slug": slug.current, jobTitle, "portrait": portrait.asset->url\n  }\n': AllAuthorsQueryResult
   }
 }

@@ -8,7 +8,10 @@ vi.mock('./client', () => ({
 import { sanityClient } from './client'
 import {
   getArticleBySlug,
+  getAuthorBySlug,
   listArticleSlugs,
+  listArticlesByPillar,
+  listAuthors,
   listFeeSchedules,
 } from './fetchers'
 
@@ -55,6 +58,56 @@ describe('listFeeSchedules', () => {
       {},
       expect.objectContaining({
         next: expect.objectContaining({ tags: ['feeSchedule'] }),
+      }),
+    )
+  })
+})
+
+describe('listArticlesByPillar', () => {
+  it('passes the pillar slug as a GROQ parameter and tags the result', async () => {
+    mockedFetch.mockResolvedValue([])
+    await listArticlesByPillar('accountability')
+    expect(mockedFetch).toHaveBeenCalledWith(
+      expect.stringContaining('pillar->slug.current == $pillar'),
+      { pillar: 'accountability' },
+      expect.objectContaining({
+        next: expect.objectContaining({
+          tags: expect.arrayContaining(['pillar:accountability', 'article']),
+        }),
+      }),
+    )
+  })
+})
+
+describe('getAuthorBySlug', () => {
+  it('returns null when the author is missing', async () => {
+    mockedFetch.mockResolvedValue(null)
+    expect(await getAuthorBySlug('missing')).toBeNull()
+  })
+  it('tags with author:<slug>', async () => {
+    mockedFetch.mockResolvedValue({ _id: '1', name: 'Jane' })
+    await getAuthorBySlug('jane')
+    expect(mockedFetch).toHaveBeenCalledWith(
+      expect.any(String),
+      { slug: 'jane' },
+      expect.objectContaining({
+        next: expect.objectContaining({
+          tags: expect.arrayContaining(['author:jane']),
+        }),
+      }),
+    )
+  })
+})
+
+describe('listAuthors', () => {
+  it('tags the result with author', async () => {
+    mockedFetch.mockResolvedValue([])
+    await listAuthors()
+    expect(mockedFetch).toHaveBeenCalledWith(
+      expect.any(String),
+      {},
+      expect.objectContaining({
+        next: expect.objectContaining({ tags: ['author'] }),
       }),
     )
   })

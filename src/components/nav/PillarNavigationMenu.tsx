@@ -1,0 +1,21 @@
+import Link from 'next/link'
+import { PILLARS, pillarHref } from '@/lib/site-map'
+
+export function PillarNavigationMenu() {
+  return (
+    <nav aria-label="Primary" className="hidden md:block">
+      <ul className="flex gap-6 text-sm font-medium">
+        {PILLARS.map((p) => (
+          <li key={p.slug}>
+            <Link
+              href={pillarHref(p.slug)}
+              className="inline-flex min-h-[44px] items-center px-2 py-2 hover:text-old-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-old-gold"
+            >
+              {p.shortLabel}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}
