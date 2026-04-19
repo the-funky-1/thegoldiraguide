@@ -25,4 +25,10 @@ pnpm dev
 | `pnpm check:disclosure` | Static guard: FTC banner is hard-coded in root layout |
 | `pnpm check:all` | Run every gate the CI pipeline runs |
 
-See `docs/superpowers/plans/` for the full implementation roadmap.
+## Deployment
+
+See [`docs/DEPLOYMENT.md`](./docs/DEPLOYMENT.md) for Vercel configuration and rollback procedure.
+
+## Roadmap
+
+See [`docs/superpowers/plans/`](./docs/superpowers/plans/) for the full implementation roadmap. Plan 1 (this plan) ships the foundation. Plans 2–8 add CMS, content pillars, GSEO surface, calculators, live pricing, charts, and the finalized design system.
