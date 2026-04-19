@@ -63,7 +63,20 @@ export const feeScheduleBySlugQuery = groq`
 
 export const allFeeSchedulesQuery = groq`
   *[_type == "feeSchedule"] | order(dealerName asc){
-    _id, dealerName, "slug": slug.current, storageModel, typicalPurchaseSpreadPercent
+    _id,
+    dealerName,
+    "slug": slug.current,
+    setupFeeUsd,
+    annualAdminFeeUsd,
+    storageModel,
+    storageFlatFeeUsd,
+    storageScalingPercent,
+    typicalPurchaseSpreadPercent,
+    typicalLiquidationSpreadPercent,
+    minimumInvestmentUsd,
+    mandatorySalesCall,
+    sourceUrl,
+    dataVerifiedAt
   }
 `
 
