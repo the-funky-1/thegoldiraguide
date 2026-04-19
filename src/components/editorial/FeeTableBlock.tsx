@@ -36,7 +36,9 @@ export function FeeTableBlock({ rows }: { rows: Row[] }) {
           {rows.map((r) => (
             <tr key={r._id} className="border-b">
               <td className="p-2">{r.dealerName}</td>
-              <td className="p-2 text-right">{formatUsd(r.setupFeeUsd ?? 0)}</td>
+              <td className="p-2 text-right">
+                {formatUsd(r.setupFeeUsd ?? 0)}
+              </td>
               <td className="p-2 text-right">
                 {formatUsd(r.annualAdminFeeUsd ?? 0)}
               </td>

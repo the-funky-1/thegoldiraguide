@@ -8,7 +8,11 @@ describe('ReadAndConfirm', () => {
     const user = userEvent.setup()
     const onConfirm = vi.fn()
     render(
-      <ReadAndConfirm title="Important" body="Read me." onConfirm={onConfirm} />,
+      <ReadAndConfirm
+        title="Important"
+        body="Read me."
+        onConfirm={onConfirm}
+      />,
     )
     const confirm = screen.getByRole('button', { name: /confirm/i })
     expect(confirm).toBeDisabled()

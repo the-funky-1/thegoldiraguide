@@ -63,8 +63,8 @@ export default function RoiCalculatorPage() {
       <p className="mt-4 max-w-2xl text-lg text-slate-charcoal">
         Model net return after purchase spread, liquidation spread, and annual
         fees. Every figure uses exact-decimal arithmetic. If your projected fee
-        burden exceeds 20% of principal, you will be asked to type the figure
-        to continue — a deliberate friction we apply to high-cost projections.
+        burden exceeds 20% of principal, you will be asked to type the figure to
+        continue — a deliberate friction we apply to high-cost projections.
       </p>
 
       <section className="mt-10">

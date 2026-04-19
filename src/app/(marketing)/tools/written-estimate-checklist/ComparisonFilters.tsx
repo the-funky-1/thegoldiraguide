@@ -17,9 +17,7 @@ export function ComparisonFilters() {
           min={0}
           step={1000}
           value={filters.minBudgetUsd}
-          onChange={(e) =>
-            setFilters({ minBudgetUsd: Number(e.target.value) })
-          }
+          onChange={(e) => setFilters({ minBudgetUsd: Number(e.target.value) })}
           className="mt-1 block min-h-[44px] w-full rounded border border-slate-charcoal/40 p-2"
         />
       </label>

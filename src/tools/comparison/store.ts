@@ -17,7 +17,6 @@ type Store = {
 
 export const useComparisonStore = create<Store>((set) => ({
   filters: DEFAULTS,
-  setFilters: (patch) =>
-    set((s) => ({ filters: { ...s.filters, ...patch } })),
+  setFilters: (patch) => set((s) => ({ filters: { ...s.filters, ...patch } })),
   reset: () => set({ filters: DEFAULTS }),
 }))

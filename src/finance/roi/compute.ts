@@ -43,10 +43,7 @@ export function computeRoi(input: RoiInput): RoiResult {
   let netCagr = D(0)
   if (input.horizonYears > 0 && netTerminal.greaterThan(0)) {
     const ratio = netTerminal.dividedBy(P)
-    netCagr = ratio
-      .pow(D(1).dividedBy(input.horizonYears))
-      .minus(1)
-      .times(100)
+    netCagr = ratio.pow(D(1).dividedBy(input.horizonYears)).minus(1).times(100)
   }
 
   return {

@@ -68,12 +68,8 @@ export function FeeDragResult() {
             {result.years.map((row) => (
               <tr key={row.year} className="border-b">
                 <td className="p-2">{row.year}</td>
-                <td className="p-2 text-right">
-                  {formatUsd(row.flatBalance)}
-                </td>
-                <td className="p-2 text-right">
-                  {formatUsd(row.flatFeePaid)}
-                </td>
+                <td className="p-2 text-right">{formatUsd(row.flatBalance)}</td>
+                <td className="p-2 text-right">{formatUsd(row.flatFeePaid)}</td>
                 <td className="p-2 text-right">
                   {formatUsd(row.scalingBalance)}
                 </td>
