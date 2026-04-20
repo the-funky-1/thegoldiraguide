@@ -18,6 +18,7 @@ const siteUrl =
 
 type Article = Parameters<typeof ArticleTemplate>[0]['article'] & {
   pillar?: { slug: string }
+  citations?: Array<{ label: string; url: string; accessed?: string }>
 }
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -56,6 +57,7 @@ export default async function SpreadMarkupCalculatorPage() {
           slug: article.reviewedBy.reviewer.slug,
         }
       : null,
+    ...(article.citations ? { citations: article.citations } : {}),
   })
   const breadcrumbsLd = buildBreadcrumbList({
     siteUrl,

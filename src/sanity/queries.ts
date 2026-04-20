@@ -39,6 +39,7 @@ export const articleBySlugQuery = groq`
         }
       }
     },
+    citations[]{ _type, label, url, accessed },
     seo
   }
 `

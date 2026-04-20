@@ -49,3 +49,43 @@ describe('buildArticle', () => {
     expect(a.reviewedBy).toBeUndefined()
   })
 })
+
+describe('buildArticle citations', () => {
+  it('omits citation field when input.citations is absent', () => {
+    const a = buildArticle(input)
+    expect((a as unknown as Record<string, unknown>).citation).toBeUndefined()
+  })
+
+  it('emits citation array when input.citations provided', () => {
+    const a = buildArticle({
+      ...input,
+      citations: [
+        {
+          label: 'IRS Publication 590-A',
+          url: 'https://www.irs.gov/pub/irs-pdf/p590a.pdf',
+        },
+        {
+          label: 'IRC § 408(m)',
+          url: 'https://www.law.cornell.edu/uscode/text/26/408',
+        },
+      ],
+    })
+    expect(Array.isArray(a.citation)).toBe(true)
+    const citations = a.citation as Array<{
+      '@type': string
+      name: string
+      url: string
+    }>
+    expect(citations).toHaveLength(2)
+    expect(citations[0]).toEqual({
+      '@type': 'CreativeWork',
+      name: 'IRS Publication 590-A',
+      url: 'https://www.irs.gov/pub/irs-pdf/p590a.pdf',
+    })
+  })
+
+  it('omits citation field when array is empty', () => {
+    const a = buildArticle({ ...input, citations: [] })
+    expect((a as unknown as Record<string, unknown>).citation).toBeUndefined()
+  })
+})
