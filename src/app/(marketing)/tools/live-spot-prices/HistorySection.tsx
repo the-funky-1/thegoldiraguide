@@ -28,8 +28,11 @@ export function HistorySection() {
   const palladium = useMetalHistory('palladium')
 
   const queries = { gold, silver, platinum, palladium } as const
-  const loaded = METAL_KEYS.every((metal) => queries[metal].data)
-  if (!loaded) {
+  const settled = METAL_KEYS.every(
+    (metal) => queries[metal].data || queries[metal].error,
+  )
+
+  if (!settled) {
     return (
       <p
         role="status"
@@ -42,10 +45,30 @@ export function HistorySection() {
   }
 
   const series = METAL_KEYS.map((metal) => ({
-    id: metal,
-    label: metal.charAt(0).toUpperCase() + metal.slice(1),
-    points: queries[metal].data!.points,
+    metal,
+    data: queries[metal].data,
   }))
+    .filter(
+      (s): s is { metal: MetalKey; data: HistoryResponse } =>
+        s.data !== undefined,
+    )
+    .map(({ metal, data }) => ({
+      id: metal,
+      label: metal.charAt(0).toUpperCase() + metal.slice(1),
+      points: data.points,
+    }))
+
+  if (series.length === 0) {
+    return (
+      <p
+        role="status"
+        data-testid="history-unavailable"
+        className="rounded border border-slate-charcoal/20 bg-white p-4 text-sm text-slate-charcoal"
+      >
+        30-day history is temporarily unavailable. Please try again shortly.
+      </p>
+    )
+  }
 
   return (
     <TimeSeriesLineChart
