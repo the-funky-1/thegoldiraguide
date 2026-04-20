@@ -62,8 +62,8 @@ jobs:
       - name: Compliance-as-code (FTC disclosure guard)
         run: pnpm check:disclosure
 
-      - name: Build
-        run: pnpm build
+      - name: Build + bundle size budget
+        run: pnpm check:bundle
 
       - name: Install Playwright browsers
         run: pnpm exec playwright install --with-deps chromium

@@ -3,6 +3,7 @@ import { Breadcrumbs } from '@/components/nav/Breadcrumbs'
 import { JsonLd } from '@/seo/json-ld'
 import { buildBreadcrumbList } from '@/seo/schemas/breadcrumb-list'
 import { buildFaqPage } from '@/seo/schemas/faq-page'
+import { HistorySection } from './HistorySection'
 import { LiveSpotGrid } from './LiveSpotGrid'
 
 export const dynamic = 'force-dynamic'
@@ -60,6 +61,9 @@ export default function LiveSpotPricesPage() {
       </p>
       <section className="mt-10">
         <LiveSpotGrid />
+      </section>
+      <section className="mt-12">
+        <HistorySection />
       </section>
       <section className="mt-12">
         <h2 className="font-serif text-2xl">FAQ</h2>
