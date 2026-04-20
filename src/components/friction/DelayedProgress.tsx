@@ -23,7 +23,7 @@ export function DelayedProgress({
       <p
         role="status"
         aria-live="polite"
-        className="text-sm text-slate-charcoal"
+        className="text-sm text-brand-slate"
       >
         {placeholder}
       </p>

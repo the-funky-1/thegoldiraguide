@@ -6,18 +6,18 @@ export function Footer() {
   return (
     <footer
       role="contentinfo"
-      className="mt-16 border-t border-slate-charcoal/20 bg-ledger-navy text-platinum"
+      className="mt-16 border-t border-brand-slate/20 bg-brand-navy text-brand-platinum"
     >
       <div className="mx-auto grid max-w-screen-xl gap-8 px-6 py-12 md:grid-cols-4">
         <div>
           <p className="font-serif text-lg">The Gold IRA Guide</p>
-          <p className="mt-2 text-sm text-platinum/80">
+          <p className="mt-2 text-sm text-brand-platinum/80">
             Owned and operated by Liberty Gold Silver. Educational content only;
             not financial advice.
           </p>
         </div>
         <nav aria-label="Footer pillars">
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-old-gold">
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-brand-gold">
             Pillars
           </h2>
           <ul className="mt-3 space-y-2 text-sm">
@@ -25,7 +25,7 @@ export function Footer() {
               <li key={p.slug}>
                 <Link
                   href={pillarHref(p.slug)}
-                  className="underline underline-offset-2 hover:text-old-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-old-gold"
+                  className="underline underline-offset-2 hover:text-brand-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-gold"
                 >
                   {p.shortLabel}
                 </Link>
@@ -34,7 +34,7 @@ export function Footer() {
           </ul>
         </nav>
         <nav aria-label="Accountability">
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-old-gold">
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-brand-gold">
             Accountability
           </h2>
           <ul className="mt-3 space-y-2 text-sm">
@@ -73,16 +73,16 @@ export function Footer() {
           </ul>
         </nav>
         <div>
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-old-gold">
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-brand-gold">
             Data sources
           </h2>
-          <p className="mt-3 text-sm text-platinum/80">
+          <p className="mt-3 text-sm text-brand-platinum/80">
             Spot prices and fee schedules are sourced from institutional feeds;
             see each page&apos;s last-verified timestamp.
           </p>
         </div>
       </div>
-      <div className="border-t border-platinum/20 py-4 text-center text-xs text-platinum/70">
+      <div className="border-t border-brand-platinum/20 py-4 text-center text-xs text-brand-platinum/70">
         © {year} Liberty Gold Silver. All rights reserved.
       </div>
     </footer>

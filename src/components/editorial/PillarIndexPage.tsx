@@ -28,31 +28,31 @@ export function PillarIndexPage({
         items={[{ href: '/', label: 'Home' }, { label: pillar.label }]}
       />
       <h1 className="mt-6 font-serif text-4xl font-bold">{pillar.label}</h1>
-      <p className="mt-4 max-w-2xl text-lg text-slate-charcoal">
+      <p className="mt-4 max-w-2xl text-lg text-brand-slate">
         {pillar.summary}
       </p>
 
       {articles.length === 0 ? (
-        <p className="mt-10 text-slate-charcoal">No articles published yet.</p>
+        <p className="mt-10 text-brand-slate">No articles published yet.</p>
       ) : (
         <ul className="mt-10 grid gap-6 md:grid-cols-2">
           {articles.map((a) => (
             <li
               key={a._id}
-              className="rounded-lg border border-slate-charcoal/20 bg-white p-6"
+              className="rounded-lg border border-brand-slate/20 bg-white p-6"
             >
               <h2 className="font-serif text-xl">
                 <Link
                   href={articleHref(pillarSlug, a.slug)}
-                  className="underline-offset-2 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-old-gold"
+                  className="underline-offset-2 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-gold"
                 >
                   {a.title}
                 </Link>
               </h2>
               {a.summary && (
-                <p className="mt-2 text-sm text-slate-charcoal">{a.summary}</p>
+                <p className="mt-2 text-sm text-brand-slate">{a.summary}</p>
               )}
-              <p className="mt-3 text-xs text-slate-charcoal">
+              <p className="mt-3 text-xs text-brand-slate">
                 Updated {formatLongDate(a.updatedAt)}
               </p>
             </li>

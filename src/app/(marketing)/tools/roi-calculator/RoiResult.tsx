@@ -28,44 +28,44 @@ export function RoiResult() {
 
       {(!highFeeRatio || acknowledged) && (
         <dl className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <div className="rounded border border-slate-charcoal/20 bg-white p-4">
-            <dt className="text-sm text-slate-charcoal">
+          <div className="rounded border border-brand-slate/20 bg-white p-4">
+            <dt className="text-sm text-brand-slate">
               Net starting position
             </dt>
             <dd className="font-serif text-2xl">
               {formatUsd(result.netStartingPositionUsd)}
             </dd>
           </div>
-          <div className="rounded border border-slate-charcoal/20 bg-white p-4">
-            <dt className="text-sm text-slate-charcoal">
+          <div className="rounded border border-brand-slate/20 bg-white p-4">
+            <dt className="text-sm text-brand-slate">
               Gross terminal (no spreads/fees)
             </dt>
             <dd className="font-serif text-2xl">
               {formatUsd(result.grossTerminalValueUsd)}
             </dd>
           </div>
-          <div className="rounded border border-slate-charcoal/20 bg-white p-4">
-            <dt className="text-sm text-slate-charcoal">
+          <div className="rounded border border-brand-slate/20 bg-white p-4">
+            <dt className="text-sm text-brand-slate">
               Net terminal (after all fees)
             </dt>
             <dd className="font-serif text-2xl">
               {formatUsd(result.netTerminalValueUsd)}
             </dd>
           </div>
-          <div className="rounded border border-slate-charcoal/20 bg-white p-4">
-            <dt className="text-sm text-slate-charcoal">Net gain</dt>
+          <div className="rounded border border-brand-slate/20 bg-white p-4">
+            <dt className="text-sm text-brand-slate">Net gain</dt>
             <dd className="font-serif text-2xl">
               {formatUsd(result.netGainUsd)}
             </dd>
           </div>
-          <div className="rounded border border-slate-charcoal/20 bg-white p-4">
-            <dt className="text-sm text-slate-charcoal">Net CAGR</dt>
+          <div className="rounded border border-brand-slate/20 bg-white p-4">
+            <dt className="text-sm text-brand-slate">Net CAGR</dt>
             <dd className="font-serif text-2xl">
               {formatPercent(result.netCagrPercent.dividedBy(100))}
             </dd>
           </div>
-          <div className="rounded border border-slate-charcoal/20 bg-white p-4">
-            <dt className="text-sm text-slate-charcoal">Total fees paid</dt>
+          <div className="rounded border border-brand-slate/20 bg-white p-4">
+            <dt className="text-sm text-brand-slate">Total fees paid</dt>
             <dd className="font-serif text-2xl">
               {formatUsd(result.totalFeesUsd)}
             </dd>

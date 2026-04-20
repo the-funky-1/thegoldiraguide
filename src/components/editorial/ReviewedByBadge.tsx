@@ -22,7 +22,7 @@ export function ReviewedByBadge({ reviewer, reviewedAt }: Props) {
 
   return (
     <div
-      className="rounded border border-slate-charcoal/20 bg-white p-4 text-sm"
+      className="rounded border border-brand-slate/20 bg-white p-4 text-sm"
       role="note"
       aria-label="Editorial review"
     >
@@ -41,7 +41,7 @@ export function ReviewedByBadge({ reviewer, reviewedAt }: Props) {
           {reviewer.credentials.map((c) => (
             <li
               key={c.name}
-              className="rounded bg-platinum px-2 py-1 text-xs text-ledger-navy"
+              className="rounded bg-brand-platinum px-2 py-1 text-xs text-brand-navy"
             >
               {c.name}
               {c.recognizedBy ? ` · ${c.recognizedBy}` : ''}

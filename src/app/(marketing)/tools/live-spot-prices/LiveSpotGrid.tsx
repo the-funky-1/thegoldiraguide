@@ -7,7 +7,7 @@ import { METAL_KEYS, type MetalKey } from '@/market/schema'
 function Card({ metal }: { metal: MetalKey }) {
   const { data, error, isLoading, stale } = useSpotPrice(metal)
   return (
-    <article className="rounded border border-slate-charcoal/20 bg-white p-6">
+    <article className="rounded border border-brand-slate/20 bg-white p-6">
       <h2 className="font-serif text-xl capitalize">{metal}</h2>
       <p className="mt-4 font-serif text-3xl font-bold">
         {isLoading
@@ -17,7 +17,7 @@ function Card({ metal }: { metal: MetalKey }) {
             : formatUsd(data.pricePerOunceUsd)}
       </p>
       {data && (
-        <p className="mt-2 text-sm text-slate-charcoal">
+        <p className="mt-2 text-sm text-brand-slate">
           24h change:{' '}
           <span
             className={
@@ -30,7 +30,7 @@ function Card({ metal }: { metal: MetalKey }) {
         </p>
       )}
       {data && (
-        <p className="mt-1 text-xs text-slate-charcoal">
+        <p className="mt-1 text-xs text-brand-slate">
           As of {new Date(data.asOf).toLocaleString()}
           {stale && ' (cached)'}
         </p>

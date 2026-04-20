@@ -37,12 +37,6 @@ const config: Config = {
           warning: BRAND_COLORS.warning,
           danger: BRAND_COLORS.danger,
         },
-
-        // Back-compat aliases so the codemod can be applied in stages.
-        'ledger-navy': BRAND_COLORS.brandNavy,
-        'slate-charcoal': BRAND_COLORS.brandSlate,
-        platinum: BRAND_COLORS.brandPlatinum,
-        'old-gold': BRAND_COLORS.brandGold,
       },
       fontFamily: {
         serif: ['var(--font-serif)', 'Georgia', 'serif'],

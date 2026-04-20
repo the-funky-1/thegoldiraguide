@@ -54,7 +54,7 @@ export default function LiveSpotPricesPage() {
         ]}
       />
       <h1 className="mt-6 font-serif text-4xl font-bold">Live Spot Prices</h1>
-      <p className="mt-4 max-w-2xl text-lg text-slate-charcoal">
+      <p className="mt-4 max-w-2xl text-lg text-brand-slate">
         Institutional-grade spot prices for the four IRA-eligible precious
         metals, updated every 10 seconds. Use these figures as an independent
         reference when you evaluate your written estimate.

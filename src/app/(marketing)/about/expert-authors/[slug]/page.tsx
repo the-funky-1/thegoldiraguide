@@ -106,7 +106,7 @@ export default async function AuthorProfile({
         />
         <h1 className="mt-6 font-serif text-4xl font-bold">{author.name}</h1>
         {author.jobTitle && (
-          <p className="text-lg text-slate-charcoal">{author.jobTitle}</p>
+          <p className="text-lg text-brand-slate">{author.jobTitle}</p>
         )}
         {author.bio && <p className="mt-6 leading-relaxed">{author.bio}</p>}
 

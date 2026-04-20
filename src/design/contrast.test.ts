@@ -27,7 +27,7 @@ describe('passesAa and passesAaa', () => {
     expect(passesAa(r, 'normal')).toBe(true)
     expect(passesAaa(r, 'normal')).toBe(true)
   })
-  it('old-gold on platinum fails AA for normal text', () => {
+  it('brand-gold on platinum fails AA for normal text', () => {
     const r = contrastRatio('#D4AF37', '#F8FAFC')
     expect(passesAa(r, 'normal')).toBe(false)
   })

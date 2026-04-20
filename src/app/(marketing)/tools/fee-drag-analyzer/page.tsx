@@ -57,7 +57,7 @@ export default function FeeDragAnalyzerPage() {
         ]}
       />
       <h1 className="mt-6 font-serif text-4xl font-bold">Fee Drag Analyzer</h1>
-      <p className="mt-4 max-w-2xl text-lg text-slate-charcoal">
+      <p className="mt-4 max-w-2xl text-lg text-brand-slate">
         Project how a flat-rate versus percentage-based storage fee structure
         erodes a precious metals IRA over time. All calculations use
         exact-decimal arithmetic.

@@ -60,7 +60,7 @@ export default function RoiCalculatorPage() {
         ]}
       />
       <h1 className="mt-6 font-serif text-4xl font-bold">ROI Calculator</h1>
-      <p className="mt-4 max-w-2xl text-lg text-slate-charcoal">
+      <p className="mt-4 max-w-2xl text-lg text-brand-slate">
         Model net return after purchase spread, liquidation spread, and annual
         fees. Every figure uses exact-decimal arithmetic. If your projected fee
         burden exceeds 20% of principal, you will be asked to type the figure to

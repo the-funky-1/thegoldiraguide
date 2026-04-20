@@ -38,7 +38,7 @@ export function ArticleTemplate({
         {article.title}
       </h1>
       {article.summary && (
-        <p className="mt-4 text-lg text-slate-charcoal">{article.summary}</p>
+        <p className="mt-4 text-lg text-brand-slate">{article.summary}</p>
       )}
       <div className="mt-6">
         <ArticleByline

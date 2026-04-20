@@ -24,11 +24,11 @@ export function Chart({
       <h3 id={titleId} className="font-serif text-lg font-semibold">
         {title}
       </h3>
-      <p id={descId} className="mt-1 text-sm text-slate-charcoal">
+      <p id={descId} className="mt-1 text-sm text-brand-slate">
         {description}
       </p>
       <div
-        className="mt-4 rounded border border-slate-charcoal/20 bg-white p-4"
+        className="mt-4 rounded border border-brand-slate/20 bg-white p-4"
         role="presentation"
       >
         {children}

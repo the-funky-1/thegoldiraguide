@@ -36,7 +36,7 @@ export default async function ExpertAuthorsIndex() {
       />
       <h1 className="mt-6 font-serif text-4xl font-bold">Expert authors</h1>
       {authors.length === 0 ? (
-        <p className="mt-10 text-slate-charcoal">
+        <p className="mt-10 text-brand-slate">
           No expert author profiles published yet.
         </p>
       ) : (
@@ -44,7 +44,7 @@ export default async function ExpertAuthorsIndex() {
           {authors.map((a) => (
             <li
               key={a._id}
-              className="rounded-lg border border-slate-charcoal/20 bg-white p-6"
+              className="rounded-lg border border-brand-slate/20 bg-white p-6"
             >
               <h2 className="font-serif text-xl">
                 <Link
@@ -55,7 +55,7 @@ export default async function ExpertAuthorsIndex() {
                 </Link>
               </h2>
               {a.jobTitle && (
-                <p className="text-sm text-slate-charcoal">{a.jobTitle}</p>
+                <p className="text-sm text-brand-slate">{a.jobTitle}</p>
               )}
             </li>
           ))}

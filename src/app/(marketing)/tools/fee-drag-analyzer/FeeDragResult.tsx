@@ -64,29 +64,29 @@ export function FeeDragResult() {
       placeholder="Recalculating with your inputs…"
     >
       <div className="mt-8 grid gap-6 md:grid-cols-2">
-        <div className="rounded border border-slate-charcoal/20 bg-white p-6">
+        <div className="rounded border border-brand-slate/20 bg-white p-6">
           <h3 className="font-serif text-lg">Flat-rate ending balance</h3>
-          <p className="mt-2 font-serif text-3xl font-bold text-ledger-navy">
+          <p className="mt-2 font-serif text-3xl font-bold text-brand-navy">
             {formatUsd(result.totals.flatEndBalance)}
           </p>
-          <p className="mt-2 text-sm text-slate-charcoal">
+          <p className="mt-2 text-sm text-brand-slate">
             Total fees paid: {formatUsd(result.totals.flatTotalFeesPaid)}
           </p>
         </div>
-        <div className="rounded border border-slate-charcoal/20 bg-white p-6">
+        <div className="rounded border border-brand-slate/20 bg-white p-6">
           <h3 className="font-serif text-lg">Scaling % ending balance</h3>
-          <p className="mt-2 font-serif text-3xl font-bold text-ledger-navy">
+          <p className="mt-2 font-serif text-3xl font-bold text-brand-navy">
             {formatUsd(result.totals.scalingEndBalance)}
           </p>
-          <p className="mt-2 text-sm text-slate-charcoal">
+          <p className="mt-2 text-sm text-brand-slate">
             Total fees paid: {formatUsd(result.totals.scalingTotalFeesPaid)}
           </p>
         </div>
-        <div className="col-span-full rounded bg-old-gold/10 p-6 text-center">
+        <div className="col-span-full rounded bg-brand-gold/10 p-6 text-center">
           <p className="text-sm uppercase tracking-wide">
             Flat-rate advantage over {input.horizonYears} years
           </p>
-          <p className="mt-2 font-serif text-4xl font-bold text-ledger-navy">
+          <p className="mt-2 font-serif text-4xl font-bold text-brand-navy">
             {formatUsd(result.totals.flatAdvantageUsd)}
           </p>
         </div>
