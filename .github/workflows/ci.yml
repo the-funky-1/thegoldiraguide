@@ -75,7 +75,7 @@ jobs:
         run: pnpm test:e2e
 
       - name: Regenerate style hashes
-        run: tsx scripts/generate-style-hashes.ts
+        run: pnpm exec tsx scripts/generate-style-hashes.ts
       - name: Ensure style hashes are committed
         run: |
           if ! git diff --quiet src/design/style-hashes.generated.ts; then
