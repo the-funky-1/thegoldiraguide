@@ -2,7 +2,13 @@ import type { Metadata } from 'next'
 import { Breadcrumbs } from '@/components/nav/Breadcrumbs'
 import { LinkButton } from '@/components/ui/link-button'
 import { contrastRatio, passesAaa } from '@/design/contrast'
-import { BRAND_COLORS, RADIUS, SHADOW, SPACING, TYPOGRAPHY } from '@/design/tokens'
+import {
+  BRAND_COLORS,
+  RADIUS,
+  SHADOW,
+  SPACING,
+  TYPOGRAPHY,
+} from '@/design/tokens'
 
 export const metadata: Metadata = {
   title: 'Design system',
