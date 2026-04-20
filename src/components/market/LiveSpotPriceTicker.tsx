@@ -26,11 +26,7 @@ function ChangeIndicator({ change }: { change: number }) {
 function Row({ metal }: { metal: MetalKey }) {
   const { data, error, isLoading, stale } = useSpotPrice(metal)
   if (isLoading) {
-    return (
-      <span className="text-sm text-slate-charcoal">
-        Loading {metal}…
-      </span>
-    )
+    return <span className="text-sm text-slate-charcoal">Loading {metal}…</span>
   }
   if (error || !data) {
     return <span className="text-sm text-red-700">{metal} unavailable</span>

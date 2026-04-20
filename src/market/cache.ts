@@ -8,7 +8,9 @@ type Entry = { value: SpotPrice; storedAt: number }
 
 const cache = new LRUCache<MetalKey, Entry>({ max: 8 })
 
-export async function getCachedSpot(metal: MetalKey): Promise<SpotPrice | null> {
+export async function getCachedSpot(
+  metal: MetalKey,
+): Promise<SpotPrice | null> {
   const entry = cache.get(metal)
   if (!entry) return null
   if (Date.now() - entry.storedAt > FRESH_TTL_MS) return null

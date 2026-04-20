@@ -28,7 +28,8 @@ export function normalizeMetalpriceResponse(
   }
 
   const change = u['change-24h']?.[code] ?? 0
-  const asOfMs = typeof u.timestamp === 'number' ? u.timestamp * 1000 : Date.now()
+  const asOfMs =
+    typeof u.timestamp === 'number' ? u.timestamp * 1000 : Date.now()
 
   return {
     metal,

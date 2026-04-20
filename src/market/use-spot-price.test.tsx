@@ -28,10 +28,7 @@ describe('useSpotPrice', () => {
   it('fetches, returns data, and exposes loading flag', async () => {
     vi.stubGlobal(
       'fetch',
-      vi.fn(
-        async () =>
-          new Response(JSON.stringify(payload), { status: 200 }),
-      ),
+      vi.fn(async () => new Response(JSON.stringify(payload), { status: 200 })),
     )
 
     const { result } = renderHook(() => useSpotPrice('gold'), { wrapper })

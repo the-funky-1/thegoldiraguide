@@ -1,14 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server'
-import {
-  getCachedSpot,
-  getStaleSpot,
-  setCachedSpot,
-} from '@/market/cache'
+import { getCachedSpot, getStaleSpot, setCachedSpot } from '@/market/cache'
 import { fetchSpotFromMetalprice } from '@/market/providers/metalprice'
-import {
-  checkInProcessLimit,
-  checkUpstashLimit,
-} from '@/market/rate-limit'
+import { checkInProcessLimit, checkUpstashLimit } from '@/market/rate-limit'
 import { isMetalKey, type MetalKey } from '@/market/schema'
 
 export const runtime = 'nodejs'
@@ -55,7 +48,8 @@ export async function GET(req: NextRequest) {
   if (cached) {
     return NextResponse.json(cached, {
       headers: {
-        'cache-control': 'public, max-age=5, s-maxage=5, stale-while-revalidate=60',
+        'cache-control':
+          'public, max-age=5, s-maxage=5, stale-while-revalidate=60',
       },
     })
   }
@@ -64,7 +58,8 @@ export async function GET(req: NextRequest) {
     const fresh = await fetchFresh(metal)
     return NextResponse.json(fresh, {
       headers: {
-        'cache-control': 'public, max-age=5, s-maxage=5, stale-while-revalidate=60',
+        'cache-control':
+          'public, max-age=5, s-maxage=5, stale-while-revalidate=60',
       },
     })
   } catch (err) {
@@ -77,9 +72,6 @@ export async function GET(req: NextRequest) {
         },
       })
     }
-    return NextResponse.json(
-      { error: 'upstream unavailable' },
-      { status: 502 },
-    )
+    return NextResponse.json({ error: 'upstream unavailable' }, { status: 502 })
   }
 }

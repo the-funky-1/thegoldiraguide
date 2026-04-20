@@ -37,9 +37,17 @@ describe('normalizeMetalpriceResponse', () => {
       rates: { USDXAU: 100, USDXAG: 10, USDXPT: 1000, USDXPD: 500 },
       'change-24h': { XAU: 0.01, XAG: 0.02, XPT: 0.03, XPD: 0.04 },
     }
-    expect(normalizeMetalpriceResponse('gold', withAllKeys).pricePerOunceUsd).toBe(100)
-    expect(normalizeMetalpriceResponse('silver', withAllKeys).pricePerOunceUsd).toBe(10)
-    expect(normalizeMetalpriceResponse('platinum', withAllKeys).pricePerOunceUsd).toBe(1000)
-    expect(normalizeMetalpriceResponse('palladium', withAllKeys).pricePerOunceUsd).toBe(500)
+    expect(
+      normalizeMetalpriceResponse('gold', withAllKeys).pricePerOunceUsd,
+    ).toBe(100)
+    expect(
+      normalizeMetalpriceResponse('silver', withAllKeys).pricePerOunceUsd,
+    ).toBe(10)
+    expect(
+      normalizeMetalpriceResponse('platinum', withAllKeys).pricePerOunceUsd,
+    ).toBe(1000)
+    expect(
+      normalizeMetalpriceResponse('palladium', withAllKeys).pricePerOunceUsd,
+    ).toBe(500)
   })
 })
