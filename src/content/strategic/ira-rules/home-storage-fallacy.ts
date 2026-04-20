@@ -45,7 +45,7 @@ export const seed: ArticleSeed = {
     block(
       'math-1',
       p(
-        'The non-bank trustee rule requires a minimum net worth of 250,000 dollars for an applicant, and a minimum of 100,000 dollars in continuous net worth after approval. That threshold is a starting point, not a ceiling. The standard rises with the dollar value of assets under trust.',
+        'The non-bank trustee rule requires a minimum net worth of 250,000 dollars at the time of the application. That figure appears in Treasury Regulation 1.408-2(e)(5)(ii). It is a starting point, not a ceiling. After approval, the trustee must maintain adequate net worth on an ongoing basis, and the required amount scales with the dollar value of assets held under trust. A household trustee holding a single IRA does not face this math once. The test is continuous, and the standard climbs as the account grows.',
       ),
     ),
     block(

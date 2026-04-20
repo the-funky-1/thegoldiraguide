@@ -106,7 +106,7 @@ export const seed: ArticleSeed = {
     block(
       'plan-1',
       p(
-        'A 401(k) or 403(b) rollover adds a wrinkle. The plan administrator applies the 20 percent federal withholding rule the moment a check leaves the plan, even when the check is made out to the new IRA custodian. The workaround is a direct rollover. Ask the plan to send the funds directly to the new custodian, not to you.',
+        'A 401(k) or 403(b) rollover adds a wrinkle. The 20 percent federal withholding rule applies when the distribution is paid to the participant. A check made out to you, or a wire sent to your personal account, triggers the withholding the moment funds leave the plan. A direct rollover is treated differently. If the check is payable to the new custodian for the benefit of the account owner, no 20 percent is withheld. If you do take receipt, you have 60 days to redeposit the full amount, and you must replace the 20 percent from other funds to avoid taxing that portion as a distribution.',
       ),
     ),
     block(
