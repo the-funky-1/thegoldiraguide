@@ -53,12 +53,14 @@
     "styled-components": "^6.4.0",
     "swr": "^2.4.1",
     "tailwind-merge": "^3.5.0",
+    "tailwind-variants": "^3.2.2",
     "zod": "^4.3.6",
     "zustand": "^5.0.12"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.2",
     "@eslint/eslintrc": "^3.3.5",
+    "@lhci/cli": "^0.15.1",
     "@playwright/test": "^1.59.1",
     "@sanity/cli": "^6.3.2",
     "@sanity/types": "^3.99.0",
@@ -80,6 +82,7 @@
     "eslint-config-prettier": "^10.1.8",
     "jsdom": "^29.0.2",
     "postcss": "^8.5.10",
+    "postcss-import": "^16.1.1",
     "prettier": "^3.8.3",
     "remark-parse": "^11.0.0",
     "remark-stringify": "^11.0.0",
