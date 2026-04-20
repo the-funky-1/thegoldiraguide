@@ -53,7 +53,7 @@ describe('ArticleSeedSchema', () => {
   it('rejects pillar values outside the five known pillars', () => {
     expect(() =>
       ArticleSeedSchema.parse({ ...valid, pillar: 'something-else' }),
-    ).toThrow()
+    ).toThrow(/pillar/i)
   })
 
   it('rejects cross-links that do not match the <pillar>/<slug> shape', () => {
@@ -66,5 +66,14 @@ describe('ArticleSeedSchema', () => {
     expect(() =>
       ArticleSeedSchema.parse({ ...valid, citations: [] }),
     ).toThrow(/citations/)
+  })
+
+  it('rejects _id that does not match <pillar>.<slug>', () => {
+    expect(() =>
+      ArticleSeedSchema.parse({
+        ...valid,
+        _id: 'article.ira-rules.wrong-slug',
+      }),
+    ).toThrow(/_id must be article\.<pillar>\.<slug>/)
   })
 })
