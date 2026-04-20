@@ -25,7 +25,7 @@ export function Footer() {
               <li key={p.slug}>
                 <Link
                   href={pillarHref(p.slug)}
-                  className="underline underline-offset-2 hover:text-brand-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-gold"
+                  className="underline underline-offset-2 hover:text-brand-gold"
                 >
                   {p.shortLabel}
                 </Link>

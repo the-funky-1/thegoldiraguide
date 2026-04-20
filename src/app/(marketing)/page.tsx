@@ -18,7 +18,7 @@ export default function HomePage() {
           <Link
             key={p.slug}
             href={pillarHref(p.slug)}
-            className="block rounded-lg border border-brand-slate/20 bg-white p-6 hover:border-brand-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-gold"
+            className="block rounded-lg border border-brand-slate/20 bg-white p-6 hover:border-brand-gold"
           >
             <h2 className="font-serif text-xl font-semibold">{p.label}</h2>
             <p className="mt-2 text-sm text-brand-slate">{p.summary}</p>

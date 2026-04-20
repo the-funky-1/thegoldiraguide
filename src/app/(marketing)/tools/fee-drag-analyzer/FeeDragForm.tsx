@@ -25,7 +25,7 @@ export function FeeDragForm() {
         onChange={(e) =>
           setInput({ [key]: Number(e.target.value) } as Partial<FeeDragInput>)
         }
-        className="mt-1 block min-h-[44px] w-full rounded border border-brand-slate/40 p-2"
+        className="mt-1 block min-h-touch w-full rounded border border-brand-slate/40 p-2"
         aria-label={label}
       />
     </label>
@@ -78,7 +78,7 @@ export function FeeDragForm() {
       <button
         type="button"
         onClick={reset}
-        className="inline-flex min-h-[44px] items-center self-start rounded border border-brand-slate/40 px-4 py-2 text-sm"
+        className="inline-flex min-h-touch items-center self-start rounded border border-brand-slate/40 px-4 py-2 text-sm"
       >
         Reset to defaults
       </button>

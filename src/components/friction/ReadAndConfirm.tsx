@@ -33,7 +33,7 @@ export function ReadAndConfirm({
         type="button"
         disabled={!acknowledged}
         onClick={onConfirm}
-        className="mt-4 inline-flex min-h-[44px] items-center rounded bg-brand-navy px-4 py-2 text-sm font-semibold text-brand-platinum disabled:cursor-not-allowed disabled:opacity-50"
+        className="mt-4 inline-flex min-h-touch items-center rounded bg-brand-navy px-4 py-2 text-sm font-semibold text-brand-platinum disabled:cursor-not-allowed disabled:opacity-50"
       >
         Confirm
       </button>

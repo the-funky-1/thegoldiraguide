@@ -9,7 +9,7 @@ export function PillarNavigationMenu() {
           <li key={p.slug}>
             <Link
               href={pillarHref(p.slug)}
-              className="inline-flex min-h-[44px] items-center px-2 py-2 hover:text-brand-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-gold"
+              className="inline-flex min-h-touch items-center px-2 py-2 hover:text-brand-gold"
             >
               {p.shortLabel}
             </Link>

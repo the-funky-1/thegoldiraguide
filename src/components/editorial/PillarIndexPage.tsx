@@ -44,7 +44,7 @@ export function PillarIndexPage({
               <h2 className="font-serif text-xl">
                 <Link
                   href={articleHref(pillarSlug, a.slug)}
-                  className="underline-offset-2 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-gold"
+                  className="underline-offset-2 hover:underline"
                 >
                   {a.title}
                 </Link>

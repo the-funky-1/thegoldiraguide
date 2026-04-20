@@ -22,7 +22,7 @@ function PrefillFromGold({
       onClick={() =>
         onPrefill(Math.round(data.pricePerOunceUsd * OUNCES_DEFAULT))
       }
-      className="inline-flex min-h-[44px] items-center gap-1 rounded border border-brand-slate/40 px-4 py-2 text-sm"
+      className="inline-flex min-h-touch items-center gap-1 rounded border border-brand-slate/40 px-4 py-2 text-sm"
     >
       <span>Prefill for {OUNCES_DEFAULT} oz of gold at </span>
       <SpotPriceInline metal="gold" />
@@ -50,7 +50,7 @@ export function RoiForm() {
         onChange={(e) =>
           setInput({ [key]: Number(e.target.value) } as Partial<RoiInput>)
         }
-        className="mt-1 block min-h-[44px] w-full rounded border border-brand-slate/40 p-2"
+        className="mt-1 block min-h-touch w-full rounded border border-brand-slate/40 p-2"
         aria-label={label}
       />
     </label>
@@ -85,7 +85,7 @@ export function RoiForm() {
         <button
           type="button"
           onClick={reset}
-          className="inline-flex min-h-[44px] items-center self-start rounded border border-brand-slate/40 px-4 py-2 text-sm"
+          className="inline-flex min-h-touch items-center self-start rounded border border-brand-slate/40 px-4 py-2 text-sm"
         >
           Reset to defaults
         </button>
