@@ -14,7 +14,7 @@ const valid = {
   publishedAt: '2026-04-19',
   updatedAt: '2026-04-19',
   authorSlug: 'jane-doe',
-  body: [{ _type: 'block', children: [{ _type: 'span', text: 'Body.' }] }],
+  body: [{ _key: 'intro', _type: 'block', children: [{ _type: 'span', text: 'Body.' }] }],
   faqs: [
     {
       question: 'What is the gold purity requirement for an IRA?',
@@ -75,5 +75,14 @@ describe('ArticleSeedSchema', () => {
         _id: 'article.ira-rules.wrong-slug',
       }),
     ).toThrow(/_id must be article\.<pillar>\.<slug>/)
+  })
+
+  it('rejects body items missing _key', () => {
+    expect(() =>
+      ArticleSeedSchema.parse({
+        ...valid,
+        body: [{ _type: 'block', children: [{ _type: 'span', text: 'No key.' }] }],
+      }),
+    ).toThrow(/_key/)
   })
 })

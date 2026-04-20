@@ -1,6 +1,6 @@
 type Span = { _type: 'span'; text: string; marks?: string[] }
 
-type Block = {
+export type Block = {
   _type: 'block'
   _key?: string
   style: 'normal' | 'h2' | 'h3' | 'blockquote'
@@ -16,7 +16,7 @@ type Callout = {
 
 type Faq = { _type: 'faq'; question: string; answer: string }
 
-type LlmsOnly = { _type: 'llmsOnly'; children: unknown[] }
+type LlmsOnly = { _type: 'llmsOnly'; children: Block[] }
 
 export function p(text: string): Block {
   return {
@@ -42,10 +42,11 @@ export function callout(tone: Callout['tone'], body: string): Callout {
   return { _type: 'callout', tone, body }
 }
 
-export function llmsOnly(children: unknown[]): LlmsOnly {
+export function llmsOnly(children: Block[]): LlmsOnly {
   return { _type: 'llmsOnly', children }
 }
 
+// Stamps or replaces the _key on the wrapped value. If `b` already has a _key, it is overwritten.
 export function block<T extends Record<string, unknown>>(
   key: string,
   b: T,

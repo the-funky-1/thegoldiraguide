@@ -13,13 +13,13 @@ describe('p', () => {
 
 describe('h2', () => {
   it('creates an h2 block', () => {
-    expect(h2('Heading')).toMatchObject({ style: 'h2' })
+    expect(h2('Heading')).toMatchObject({ _type: 'block', style: 'h2' })
   })
 })
 
 describe('h3', () => {
   it('creates an h3 block', () => {
-    expect(h3('Sub-heading')).toMatchObject({ style: 'h3' })
+    expect(h3('Sub-heading')).toMatchObject({ _type: 'block', style: 'h3' })
   })
 })
 
@@ -54,10 +54,19 @@ describe('llmsOnly', () => {
 })
 
 describe('block', () => {
-  it('produces stable _key values per position', () => {
+  it('produces stable _key values per position and preserves wrapped properties', () => {
     const b1 = block('b1', p('one'))
-    const b2 = block('b2', p('two'))
-    expect(b1._key).toBe('b1')
-    expect(b2._key).toBe('b2')
+    expect(b1).toEqual({
+      _type: 'block',
+      _key: 'b1',
+      style: 'normal',
+      children: [{ _type: 'span', text: 'one' }],
+    })
+  })
+
+  it('overwrites an existing _key when re-stamping', () => {
+    const first = block('original', p('x'))
+    const second = block('new-key', first)
+    expect(second._key).toBe('new-key')
   })
 })

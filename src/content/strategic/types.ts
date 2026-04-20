@@ -50,7 +50,13 @@ export const ArticleSeedSchema = z
     publishedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
     updatedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
     authorSlug: z.string().regex(/^[a-z0-9-]+$/),
-    body: z.array(z.record(z.string(), z.unknown())).min(1),
+    body: z
+      .array(
+        z
+          .object({ _key: z.string().min(1), _type: z.string().min(1) })
+          .passthrough(),
+      )
+      .min(1),
     faqs: z.array(FaqSchema),
     crossLinks: z.array(CrossLinkSchema).min(1),
     citations: z
