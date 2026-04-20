@@ -12,7 +12,7 @@ export function SpotPriceInline({ metal }: { metal: MetalKey }) {
     <span className="font-mono">
       {formatUsd(data.pricePerOunceUsd)}
       {stale && (
-        <span className="ml-1 text-xs text-slate-charcoal">(cached)</span>
+        <span className="ml-1 text-xs text-brand-slate">(cached)</span>
       )}
     </span>
   )

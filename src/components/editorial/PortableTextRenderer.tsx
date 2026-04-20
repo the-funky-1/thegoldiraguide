@@ -25,8 +25,8 @@ const components: PortableTextComponents = {
           value.tone === 'danger'
             ? 'border-red-600 bg-red-50'
             : value.tone === 'warning'
-              ? 'border-old-gold bg-yellow-50'
-              : 'border-ledger-navy bg-platinum'
+              ? 'border-brand-gold bg-yellow-50'
+              : 'border-brand-navy bg-brand-platinum'
         }`}
       >
         {value.body}

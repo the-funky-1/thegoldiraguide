@@ -35,7 +35,7 @@ export function TableOfContents({ blocks }: { blocks: Block[] }) {
   return (
     <nav
       aria-label="On this page"
-      className="rounded border border-slate-charcoal/20 p-4 text-sm"
+      className="rounded border border-brand-slate/20 p-4 text-sm"
     >
       <h2 className="mb-2 font-semibold">On this page</h2>
       <ol className="space-y-1">

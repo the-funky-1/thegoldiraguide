@@ -18,7 +18,7 @@ export function ComparisonFilters() {
           step={1000}
           value={filters.minBudgetUsd}
           onChange={(e) => setFilters({ minBudgetUsd: Number(e.target.value) })}
-          className="mt-1 block min-h-[44px] w-full rounded border border-slate-charcoal/40 p-2"
+          className="mt-1 block min-h-touch w-full rounded border border-brand-slate/40 p-2"
         />
       </label>
       <label className="block text-sm">
@@ -30,7 +30,7 @@ export function ComparisonFilters() {
               storageModel: e.target.value as Filters['storageModel'],
             })
           }
-          className="mt-1 block min-h-[44px] w-full rounded border border-slate-charcoal/40 p-2"
+          className="mt-1 block min-h-touch w-full rounded border border-brand-slate/40 p-2"
         >
           <option value="any">Any</option>
           <option value="flat">Flat-rate</option>
@@ -40,7 +40,7 @@ export function ComparisonFilters() {
       <button
         type="button"
         onClick={reset}
-        className="inline-flex min-h-[44px] items-center self-end rounded border border-slate-charcoal/40 px-4 py-2 text-sm"
+        className="inline-flex min-h-touch items-center self-end rounded border border-brand-slate/40 px-4 py-2 text-sm"
       >
         Reset filters
       </button>

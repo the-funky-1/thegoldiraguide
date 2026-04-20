@@ -14,7 +14,7 @@ function ChangeIndicator({ change }: { change: number }) {
           ? 'text-green-700'
           : change < 0
             ? 'text-red-700'
-            : 'text-slate-charcoal'
+            : 'text-brand-slate'
       }
       aria-label={`24 hour change ${sign}${Math.abs(change).toFixed(1)} percent`}
     >
@@ -26,7 +26,7 @@ function ChangeIndicator({ change }: { change: number }) {
 function Row({ metal }: { metal: MetalKey }) {
   const { data, error, isLoading, stale } = useSpotPrice(metal)
   if (isLoading) {
-    return <span className="text-sm text-slate-charcoal">Loading {metal}…</span>
+    return <span className="text-sm text-brand-slate">Loading {metal}…</span>
   }
   if (error || !data) {
     return <span className="text-sm text-red-700">{metal} unavailable</span>
@@ -36,7 +36,7 @@ function Row({ metal }: { metal: MetalKey }) {
       <span className="font-semibold capitalize">{metal}</span>
       <span className="font-mono">{formatUsd(data.pricePerOunceUsd)}</span>
       <ChangeIndicator change={data.change24hPercent} />
-      {stale && <span className="text-xs text-slate-charcoal">(cached)</span>}
+      {stale && <span className="text-xs text-brand-slate">(cached)</span>}
     </span>
   )
 }

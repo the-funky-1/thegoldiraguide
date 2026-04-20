@@ -19,10 +19,10 @@ export function ArticleByline({ author, publishedAt, updatedAt }: Props) {
         </a>
       </span>
       {author.jobTitle && (
-        <span className="text-slate-charcoal">· {author.jobTitle}</span>
+        <span className="text-brand-slate">· {author.jobTitle}</span>
       )}
       <span aria-hidden>·</span>
-      <time dateTime={publishedAt} className="text-slate-charcoal">
+      <time dateTime={publishedAt} className="text-brand-slate">
         Published {publishedAt.slice(0, 10)}
       </time>
       <span aria-hidden>·</span>

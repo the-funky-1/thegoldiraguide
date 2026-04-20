@@ -25,7 +25,7 @@ export function FeeDragForm() {
         onChange={(e) =>
           setInput({ [key]: Number(e.target.value) } as Partial<FeeDragInput>)
         }
-        className="mt-1 block min-h-[44px] w-full rounded border border-slate-charcoal/40 p-2"
+        className="mt-1 block min-h-touch w-full rounded border border-brand-slate/40 p-2"
         aria-label={label}
       />
     </label>
@@ -51,7 +51,7 @@ export function FeeDragForm() {
         '0',
         '10000',
       )}
-      <fieldset className="col-span-full rounded border border-slate-charcoal/20 p-4">
+      <fieldset className="col-span-full rounded border border-brand-slate/20 p-4">
         <legend className="px-1 text-sm font-semibold">
           Flat-rate scenario
         </legend>
@@ -60,7 +60,7 @@ export function FeeDragForm() {
           {field('Flat annual storage fee (USD)', 'flatAnnualStorageFeeUsd')}
         </div>
       </fieldset>
-      <fieldset className="col-span-full rounded border border-slate-charcoal/20 p-4">
+      <fieldset className="col-span-full rounded border border-brand-slate/20 p-4">
         <legend className="px-1 text-sm font-semibold">
           Scaling percentage scenario
         </legend>
@@ -78,7 +78,7 @@ export function FeeDragForm() {
       <button
         type="button"
         onClick={reset}
-        className="inline-flex min-h-[44px] items-center self-start rounded border border-slate-charcoal/40 px-4 py-2 text-sm"
+        className="inline-flex min-h-touch items-center self-start rounded border border-brand-slate/40 px-4 py-2 text-sm"
       >
         Reset to defaults
       </button>

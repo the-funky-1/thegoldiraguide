@@ -50,18 +50,18 @@ export default function ToolsLanding() {
         items={[{ href: '/', label: 'Home' }, { label: pillar.label }]}
       />
       <h1 className="mt-6 font-serif text-4xl font-bold">{pillar.label}</h1>
-      <p className="mt-4 max-w-2xl text-lg text-slate-charcoal">
+      <p className="mt-4 max-w-2xl text-lg text-brand-slate">
         {pillar.summary}
       </p>
       <ul className="mt-10 grid gap-6 md:grid-cols-2">
         {tools.map((t) => (
           <li
             key={t.slug}
-            className="rounded-lg border border-slate-charcoal/20 bg-white p-6"
+            className="rounded-lg border border-brand-slate/20 bg-white p-6"
           >
             <h2 className="font-serif text-xl">
               {t.disabled ? (
-                <span className="text-slate-charcoal">{t.title}</span>
+                <span className="text-brand-slate">{t.title}</span>
               ) : (
                 <Link
                   href={`/tools/${t.slug}`}
@@ -71,9 +71,9 @@ export default function ToolsLanding() {
                 </Link>
               )}
             </h2>
-            <p className="mt-2 text-sm text-slate-charcoal">{t.description}</p>
+            <p className="mt-2 text-sm text-brand-slate">{t.description}</p>
             {t.disabled && (
-              <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-slate-charcoal">
+              <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-brand-slate">
                 Unavailable
               </p>
             )}

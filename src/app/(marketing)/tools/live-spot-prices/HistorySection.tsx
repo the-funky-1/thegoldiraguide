@@ -37,7 +37,7 @@ export function HistorySection() {
       <p
         role="status"
         aria-live="polite"
-        className="text-sm text-slate-charcoal"
+        className="text-sm text-brand-slate"
       >
         Loading 30-day history…
       </p>
@@ -63,7 +63,7 @@ export function HistorySection() {
       <p
         role="status"
         data-testid="history-unavailable"
-        className="rounded border border-slate-charcoal/20 bg-white p-4 text-sm text-slate-charcoal"
+        className="rounded border border-brand-slate/20 bg-white p-4 text-sm text-brand-slate"
       >
         30-day history is temporarily unavailable. Please try again shortly.
       </p>

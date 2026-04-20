@@ -8,7 +8,7 @@ export function DisclosureBanner() {
     <aside
       role="region"
       aria-label="FTC disclosure"
-      className="w-full bg-ledger-navy text-platinum"
+      className="w-full bg-brand-navy text-brand-platinum"
     >
       <div className="mx-auto max-w-screen-xl px-6 py-4 text-sm leading-relaxed">
         <strong className="block font-semibold uppercase tracking-wide">

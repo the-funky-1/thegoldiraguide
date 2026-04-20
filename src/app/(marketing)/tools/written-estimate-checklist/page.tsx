@@ -69,7 +69,7 @@ export default async function WrittenEstimateChecklistPage() {
       <h1 className="mt-6 font-serif text-4xl font-bold">
         Written Estimate Checklist
       </h1>
-      <p className="mt-4 max-w-2xl text-lg text-slate-charcoal">
+      <p className="mt-4 max-w-2xl text-lg text-brand-slate">
         Every line item our institution documents in writing before a client
         commits capital. Review it at your own pace. Each value is verified
         against a source document and is binding upon issuance of your written

@@ -16,7 +16,7 @@ export function ReadAndConfirm({
     <div
       role="group"
       aria-label={title}
-      className="rounded border border-slate-charcoal/20 bg-white p-6"
+      className="rounded border border-brand-slate/20 bg-white p-6"
     >
       <h3 className="font-serif text-lg font-semibold">{title}</h3>
       <p className="mt-2 text-sm leading-relaxed">{body}</p>
@@ -33,7 +33,7 @@ export function ReadAndConfirm({
         type="button"
         disabled={!acknowledged}
         onClick={onConfirm}
-        className="mt-4 inline-flex min-h-[44px] items-center rounded bg-ledger-navy px-4 py-2 text-sm font-semibold text-platinum disabled:cursor-not-allowed disabled:opacity-50"
+        className="mt-4 inline-flex min-h-touch items-center rounded bg-brand-navy px-4 py-2 text-sm font-semibold text-brand-platinum disabled:cursor-not-allowed disabled:opacity-50"
       >
         Confirm
       </button>
