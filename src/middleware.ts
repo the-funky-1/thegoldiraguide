@@ -1,14 +1,20 @@
 import { type NextRequest, NextResponse } from 'next/server'
+import { STYLE_SRC_HASHES } from './design/style-hashes.generated'
 
 function buildCsp(nonce: string): string {
   // `'strict-dynamic'` lets nonce-approved scripts load their own dependencies
   // without needing to whitelist each origin. See Google CSP evaluator guidance.
-  // Styles accept 'self' + 'unsafe-inline' as a documented compromise; tightened
-  // in Plan 8 once the design system is frozen.
+  // Production styles use SHA-256 hashes generated at build time so we can drop
+  // `'unsafe-inline'`. Dev keeps `'unsafe-inline'` because hot-reload injects
+  // unhashed inline styles.
+  const styleSrc =
+    process.env.NODE_ENV === 'production'
+      ? [`'self'`, ...STYLE_SRC_HASHES]
+      : [`'self'`, `'unsafe-inline'`]
   const directives: Record<string, string[]> = {
     'default-src': ["'self'"],
     'script-src': [`'self'`, `'nonce-${nonce}'`, `'strict-dynamic'`],
-    'style-src': [`'self'`, `'unsafe-inline'`],
+    'style-src': styleSrc,
     'img-src': [`'self'`, 'blob:', 'data:'],
     'font-src': [`'self'`],
     'connect-src': [`'self'`],

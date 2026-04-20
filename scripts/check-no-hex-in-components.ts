@@ -15,11 +15,12 @@ export function findHexViolations(path: string, source: string): Violation[] {
   const lines = source.split('\n')
   let allowNext = false
   for (let i = 0; i < lines.length; i++) {
-    if (/allow-hex/i.test(lines[i])) {
+    const line = lines[i] ?? ''
+    if (/allow-hex/i.test(line)) {
       allowNext = true
       continue
     }
-    const match = lines[i].match(/#(?:[0-9a-f]{3}|[0-9a-f]{6})\b/i)
+    const match = line.match(/#(?:[0-9a-f]{3}|[0-9a-f]{6})\b/i)
     if (match && !allowNext) {
       violations.push({ file: path, line: i + 1, hex: match[0] })
     }

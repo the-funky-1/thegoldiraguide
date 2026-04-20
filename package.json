@@ -20,6 +20,7 @@
     "check:jsonld": "tsx scripts/validate-json-ld.ts",
     "check:bundle": "tsx scripts/check-bundle-budget.ts",
     "check:no-hex": "tsx scripts/check-no-hex-in-components.ts",
+    "generate:style-hashes": "pnpm build && tsx scripts/generate-style-hashes.ts",
     "check:all": "pnpm lint && pnpm typecheck && pnpm test && pnpm check:disclosure && pnpm check:no-hex && pnpm build"
   },
   "dependencies": {
