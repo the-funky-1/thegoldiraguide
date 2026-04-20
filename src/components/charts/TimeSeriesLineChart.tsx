@@ -13,7 +13,12 @@ type Props = {
   formatValue: (n: number) => string
 }
 
-export function TimeSeriesLineChart({ title, description, series, formatValue }: Props) {
+export function TimeSeriesLineChart({
+  title,
+  description,
+  series,
+  formatValue,
+}: Props) {
   const xAxisCategories = Array.from(
     new Set(series.flatMap((s) => s.points.map((p) => String(p.x)))),
   ).sort()
@@ -72,14 +77,21 @@ export function TimeSeriesLineChart({ title, description, series, formatValue }:
           collapsible
           columns={[
             { key: 'x', label: 'Date' },
-            ...series.map((s) => ({ key: s.id, label: s.label, align: 'right' as const })),
+            ...series.map((s) => ({
+              key: s.id,
+              label: s.label,
+              align: 'right' as const,
+            })),
           ]}
           rows={rows}
         />
       }
     >
       <div aria-hidden className="h-80">
-        <ReactECharts option={option} style={{ height: '100%', width: '100%' }} />
+        <ReactECharts
+          option={option}
+          style={{ height: '100%', width: '100%' }}
+        />
       </div>
     </Chart>
   )

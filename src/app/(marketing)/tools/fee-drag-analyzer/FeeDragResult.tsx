@@ -59,7 +59,10 @@ export function FeeDragResult() {
   ]
 
   return (
-    <DelayedProgress delayMs={300} placeholder="Recalculating with your inputs…">
+    <DelayedProgress
+      delayMs={300}
+      placeholder="Recalculating with your inputs…"
+    >
       <div className="mt-8 grid gap-6 md:grid-cols-2">
         <div className="rounded border border-slate-charcoal/20 bg-white p-6">
           <h3 className="font-serif text-lg">Flat-rate ending balance</h3>

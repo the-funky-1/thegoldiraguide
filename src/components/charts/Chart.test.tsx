@@ -14,7 +14,11 @@ describe('Chart', () => {
     const descId = figure.getAttribute('aria-describedby')
     expect(titleId).toBeTruthy()
     expect(descId).toBeTruthy()
-    expect(document.getElementById(titleId!)).toHaveTextContent('30-year fee drag')
-    expect(document.getElementById(descId!)).toHaveTextContent('Flat vs scaling storage.')
+    expect(document.getElementById(titleId!)).toHaveTextContent(
+      '30-year fee drag',
+    )
+    expect(document.getElementById(descId!)).toHaveTextContent(
+      'Flat vs scaling storage.',
+    )
   })
 })

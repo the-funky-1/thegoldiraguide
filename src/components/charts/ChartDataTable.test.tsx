@@ -19,8 +19,12 @@ describe('ChartDataTable', () => {
     )
     const table = screen.getByRole('table', { name: /year-by-year balance/i })
     expect(table).toBeInTheDocument()
-    expect(screen.getByRole('columnheader', { name: 'Year' })).toBeInTheDocument()
-    expect(screen.getByRole('columnheader', { name: 'Flat' })).toBeInTheDocument()
+    expect(
+      screen.getByRole('columnheader', { name: 'Year' }),
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole('columnheader', { name: 'Flat' }),
+    ).toBeInTheDocument()
     expect(screen.getByText('$100,000')).toBeInTheDocument()
   })
 

@@ -7,7 +7,10 @@ test('fee drag analyzer renders the balance figure + companion table', async ({
   const figure = page.getByRole('figure', { name: /balance trajectory/i })
   await expect(figure).toBeVisible()
 
-  await page.getByRole('button', { name: /show the data/i }).first().click()
+  await page
+    .getByRole('button', { name: /show the data/i })
+    .first()
+    .click()
   await expect(
     page.getByRole('table', { name: /balance trajectory/i }),
   ).toBeVisible()

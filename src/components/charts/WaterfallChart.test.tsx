@@ -20,10 +20,14 @@ describe('WaterfallChart', () => {
         formatValue={(n) => `$${n.toLocaleString()}`}
       />,
     )
-    const figure = screen.getByRole('figure', { name: /30-yr cost attribution/i })
+    const figure = screen.getByRole('figure', {
+      name: /30-yr cost attribution/i,
+    })
     expect(figure).toBeInTheDocument()
     expect(screen.getByText('Principal')).toBeInTheDocument()
     expect(screen.getByText('Purchase spread')).toBeInTheDocument()
-    expect(screen.getByRole('columnheader', { name: 'Running total' })).toBeInTheDocument()
+    expect(
+      screen.getByRole('columnheader', { name: 'Running total' }),
+    ).toBeInTheDocument()
   })
 })

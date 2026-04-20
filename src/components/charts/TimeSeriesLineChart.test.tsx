@@ -30,8 +30,12 @@ describe('TimeSeriesLineChart', () => {
         formatValue={(n) => `$${n.toFixed(2)}`}
       />,
     )
-    expect(screen.getByRole('figure', { name: /30-day gold/i })).toBeInTheDocument()
-    expect(screen.getByRole('table', { name: /30-day gold/i })).toBeInTheDocument()
+    expect(
+      screen.getByRole('figure', { name: /30-day gold/i }),
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole('table', { name: /30-day gold/i }),
+    ).toBeInTheDocument()
     expect(screen.getByText('$2495.00')).toBeInTheDocument()
   })
 })

@@ -53,7 +53,12 @@ const TONE_FILL: Record<WaterfallBar['tone'], string> = {
   neutral: '#4B5563',
 }
 
-export function WaterfallChart({ title, description, steps, formatValue }: Props) {
+export function WaterfallChart({
+  title,
+  description,
+  steps,
+  formatValue,
+}: Props) {
   const bars = toBars(steps)
   return (
     <Chart

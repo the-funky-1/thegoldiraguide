@@ -31,7 +31,10 @@ describe('fetchHistory', () => {
   it('throws on non-200 upstream', async () => {
     const fetcher = vi.fn(async () => new Response('', { status: 500 }))
     await expect(
-      fetchHistory('gold', '2026-03-20', '2026-03-22', { apiKey: 'abc', fetcher }),
+      fetchHistory('gold', '2026-03-20', '2026-03-22', {
+        apiKey: 'abc',
+        fetcher,
+      }),
     ).rejects.toThrow(/500/)
   })
 })

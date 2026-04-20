@@ -29,7 +29,8 @@ export async function fetchHistory(
     success?: boolean
     rates?: Record<string, Record<string, number | undefined>>
   }
-  if (!body.success || !body.rates) throw new Error('metalprice history failure')
+  if (!body.success || !body.rates)
+    throw new Error('metalprice history failure')
 
   const points = Object.entries(body.rates)
     .map(([date, values]) => {
