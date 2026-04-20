@@ -12,11 +12,11 @@ export const CHART_PALETTE = [
 export const PATTERN_IDS = CHART_PALETTE.map((_, i) => `chart-pattern-${i}`)
 
 export function chartSeriesColor(index: number): string {
-  return CHART_PALETTE[Math.abs(index) % CHART_PALETTE.length]
+  return CHART_PALETTE[Math.abs(index) % CHART_PALETTE.length]!
 }
 
 export function chartSeriesPatternId(index: number): string {
-  return PATTERN_IDS[Math.abs(index) % PATTERN_IDS.length]
+  return PATTERN_IDS[Math.abs(index) % PATTERN_IDS.length]!
 }
 
 // Deterministic SVG pattern definitions consumed by chart components.

@@ -1,5 +1,7 @@
 'use client'
 
+import { StackedAreaChart } from '@/components/charts/StackedAreaChart'
+import { WaterfallChart } from '@/components/charts/WaterfallChart'
 import { DelayedProgress } from '@/components/friction/DelayedProgress'
 import { formatUsd } from '@/finance/decimal'
 import { computeFeeDrag } from '@/finance/fee-drag/compute'
@@ -9,11 +11,55 @@ export function FeeDragResult() {
   const input = useFeeDragStore((s) => s.input)
   const result = computeFeeDrag(input)
 
+  const series = [
+    {
+      id: 'flat',
+      label: 'Flat-rate balance',
+      points: result.years.map((row) => ({
+        x: row.year,
+        y: Number(row.flatBalance.toFixed(2)),
+      })),
+    },
+    {
+      id: 'scaling',
+      label: 'Scaling % balance',
+      points: result.years.map((row) => ({
+        x: row.year,
+        y: Number(row.scalingBalance.toFixed(2)),
+      })),
+    },
+  ]
+
+  const waterfallSteps = [
+    { label: 'Principal', delta: input.startingBalanceUsd },
+    {
+      label: 'Setup fee',
+      delta: -input.oneTimeSetupFeeUsd,
+      tone: 'negative' as const,
+    },
+    {
+      label: 'Scaling fees paid',
+      delta: -Number(
+        result.totals.scalingTotalFeesPaid
+          .minus(input.oneTimeSetupFeeUsd)
+          .toFixed(2),
+      ),
+      tone: 'negative' as const,
+    },
+    {
+      label: 'Appreciation + compounding',
+      delta: Number(
+        result.totals.scalingEndBalance
+          .minus(input.startingBalanceUsd)
+          .plus(result.totals.scalingTotalFeesPaid)
+          .toFixed(2),
+      ),
+      tone: 'positive' as const,
+    },
+  ]
+
   return (
-    <DelayedProgress
-      delayMs={300}
-      placeholder="Recalculating with your inputs…"
-    >
+    <DelayedProgress delayMs={300} placeholder="Recalculating with your inputs…">
       <div className="mt-8 grid gap-6 md:grid-cols-2">
         <div className="rounded border border-slate-charcoal/20 bg-white p-6">
           <h3 className="font-serif text-lg">Flat-rate ending balance</h3>
@@ -41,46 +87,23 @@ export function FeeDragResult() {
             {formatUsd(result.totals.flatAdvantageUsd)}
           </p>
         </div>
-        <table className="col-span-full w-full text-sm">
-          <caption className="mb-2 text-left font-semibold">
-            Year-by-year trajectory
-          </caption>
-          <thead>
-            <tr className="border-b">
-              <th scope="col" className="p-2 text-left">
-                Year
-              </th>
-              <th scope="col" className="p-2 text-right">
-                Flat balance
-              </th>
-              <th scope="col" className="p-2 text-right">
-                Flat fee paid
-              </th>
-              <th scope="col" className="p-2 text-right">
-                Scaling balance
-              </th>
-              <th scope="col" className="p-2 text-right">
-                Scaling fee paid
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {result.years.map((row) => (
-              <tr key={row.year} className="border-b">
-                <td className="p-2">{row.year}</td>
-                <td className="p-2 text-right">{formatUsd(row.flatBalance)}</td>
-                <td className="p-2 text-right">{formatUsd(row.flatFeePaid)}</td>
-                <td className="p-2 text-right">
-                  {formatUsd(row.scalingBalance)}
-                </td>
-                <td className="p-2 text-right">
-                  {formatUsd(row.scalingFeePaid)}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
       </div>
+
+      <StackedAreaChart
+        title="Balance trajectory (flat vs scaling)"
+        description="Projected year-end balance under each fee structure."
+        xLabel="Year"
+        yLabel="Balance (USD)"
+        series={series}
+        formatValue={(n) => formatUsd(n)}
+      />
+
+      <WaterfallChart
+        title="Scaling-scenario cost attribution"
+        description="Principal, one-time setup, cumulative fees, and net appreciation."
+        steps={waterfallSteps}
+        formatValue={(n) => formatUsd(n)}
+      />
     </DelayedProgress>
   )
 }
