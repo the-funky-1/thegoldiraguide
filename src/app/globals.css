@@ -2,15 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Fiduciary base — placeholder until Plan 8. */
-:root {
-  color-scheme: light;
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  html {
+    scroll-padding-top: 80px;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-bg-canvas text-fg-primary antialiased;
+    font-family: var(--font-sans), system-ui, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif), Georgia, serif;
+  }
+  ::selection {
+    @apply bg-brand-gold/30 text-brand-navy;
+  }
 }
 
-html {
-  scroll-padding-top: 4rem; /* WCAG 2.4.11 Focus Not Obscured */
+@layer components {
+  /* Global focus ring — applied to every focusable element. */
+  :where(a, button, input, select, textarea, [tabindex]:not([tabindex='-1'])):focus-visible {
+    outline: 3px solid theme('colors.brand.gold');
+    outline-offset: 2px;
+    border-radius: theme('borderRadius.sm');
+  }
+
+  /* Enforce minimum touch targets everywhere an interactive element exists. */
+  :where(a, button, input[type='button'], input[type='submit']) {
+    min-height: theme('spacing.touch-min');
+  }
 }
 
-body {
-  @apply bg-platinum text-ledger-navy antialiased;
+@layer utilities {
+  .prose {
+    max-width: 65ch;
+  }
+  .prose p + p {
+    margin-top: 1em;
+  }
+  .prose h2 {
+    @apply mt-12 text-heading-lg;
+  }
+  .prose h3 {
+    @apply mt-8 text-heading-md;
+  }
 }

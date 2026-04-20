@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { DisclosureBanner } from '@/components/compliance/DisclosureBanner'
+import { fontMono, fontSans, fontSerif } from '@/design/typography'
 import { JsonLd } from '@/seo/json-ld'
 import { buildOrganization } from '@/seo/schemas/organization'
 import { buildWebSite } from '@/seo/schemas/website'
@@ -21,7 +22,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${fontSerif.variable} ${fontSans.variable} ${fontMono.variable}`}
+    >
       <body>
         <JsonLd data={buildOrganization({ siteUrl })} />
         <JsonLd data={buildWebSite({ siteUrl })} />
