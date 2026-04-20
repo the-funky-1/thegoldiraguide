@@ -22,6 +22,9 @@ jobs:
       SANITY_API_READ_TOKEN: ${{ secrets.SANITY_API_READ_TOKEN }}
       SANITY_REVALIDATE_SECRET: ${{ secrets.SANITY_REVALIDATE_SECRET }}
       NEXT_PUBLIC_SITE_URL: http://localhost:3000
+      METALPRICE_API_KEY: ${{ secrets.METALPRICE_API_KEY }}
+      UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
+      UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
     steps:
       - uses: actions/checkout@v4
 

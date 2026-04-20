@@ -13,7 +13,8 @@ export function checkInProcessLimit(key: string): LimitResult {
   const existing = hits.get(key) ?? []
   const fresh = existing.filter((t) => t > windowStart)
   if (fresh.length >= MAX_REQUESTS) {
-    const retryInMs = fresh[0] + WINDOW_MS - now
+    const first = fresh[0] ?? now
+    const retryInMs = first + WINDOW_MS - now
     return { ok: false, retryInMs }
   }
   fresh.push(now)
