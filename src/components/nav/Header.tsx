@@ -1,8 +1,10 @@
 import Link from 'next/link'
+import { LiveSpotPriceTicker } from '@/components/market/LiveSpotPriceTicker'
 import { PillarNavigationMenu } from './PillarNavigationMenu'
 import { SkipToContentLink } from './SkipToContentLink'
 
 export function Header() {
+  const showTicker = process.env.NEXT_PUBLIC_HEADER_TICKER === 'true'
   return (
     <>
       <SkipToContentLink />
@@ -19,6 +21,15 @@ export function Header() {
           </Link>
           <PillarNavigationMenu />
         </div>
+        {showTicker && (
+          <div className="border-t border-slate-charcoal/10 bg-ledger-navy text-platinum">
+            <div className="mx-auto max-w-screen-xl px-6 py-2">
+              <LiveSpotPriceTicker
+                metals={['gold', 'silver', 'platinum', 'palladium']}
+              />
+            </div>
+          </div>
+        )}
       </header>
     </>
   )
