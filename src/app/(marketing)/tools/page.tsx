@@ -38,8 +38,8 @@ const tools: Tool[] = [
   {
     slug: 'live-spot-prices',
     title: 'Live Spot Prices',
-    description: 'Coming in Plan 6 (WebSocket-backed live ticker).',
-    disabled: true,
+    description:
+      'Real-time gold, silver, platinum, and palladium spot prices with 10s refresh.',
   },
 ]
 

@@ -1,9 +1,34 @@
 'use client'
 
+import { SpotPriceInline } from '@/components/market/SpotPriceInline'
 import type { RoiInput } from '@/finance/roi/schema'
+import { useSpotPrice } from '@/market/use-spot-price'
 import { useRoiStore } from '@/tools/roi/store'
 
 type FieldKey = keyof RoiInput
+
+const OUNCES_DEFAULT = 10
+
+function PrefillFromGold({
+  onPrefill,
+}: {
+  onPrefill: (principal: number) => void
+}) {
+  const { data } = useSpotPrice('gold')
+  if (!data) return null
+  return (
+    <button
+      type="button"
+      onClick={() =>
+        onPrefill(Math.round(data.pricePerOunceUsd * OUNCES_DEFAULT))
+      }
+      className="inline-flex min-h-[44px] items-center gap-1 rounded border border-slate-charcoal/40 px-4 py-2 text-sm"
+    >
+      <span>Prefill for {OUNCES_DEFAULT} oz of gold at </span>
+      <SpotPriceInline metal="gold" />
+    </button>
+  )
+}
 
 export function RoiForm() {
   const { input, setInput, reset } = useRoiStore()
@@ -31,35 +56,40 @@ export function RoiForm() {
     </label>
   )
   return (
-    <form
-      onSubmit={(e) => e.preventDefault()}
-      className="grid gap-4 md:grid-cols-2"
-    >
-      {field('Principal (USD)', 'principalUsd', '100', '1000', '10000000')}
-      {field('Horizon (years)', 'horizonYears', '1', '1', '50')}
-      {field(
-        'Annual appreciation %',
-        'annualAppreciationPercent',
-        '0.1',
-        '-10',
-        '20',
-      )}
-      {field('Purchase spread %', 'purchaseSpreadPercent', '0.1', '0', '50')}
-      {field(
-        'Liquidation spread %',
-        'liquidationSpreadPercent',
-        '0.1',
-        '0',
-        '50',
-      )}
-      {field('Annual fees (USD)', 'annualFeesUsd', '1', '0', '10000')}
-      <button
-        type="button"
-        onClick={reset}
-        className="inline-flex min-h-[44px] items-center self-start rounded border border-slate-charcoal/40 px-4 py-2 text-sm"
+    <div className="space-y-4">
+      <PrefillFromGold
+        onPrefill={(principal) => setInput({ principalUsd: principal })}
+      />
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="grid gap-4 md:grid-cols-2"
       >
-        Reset to defaults
-      </button>
-    </form>
+        {field('Principal (USD)', 'principalUsd', '100', '1000', '10000000')}
+        {field('Horizon (years)', 'horizonYears', '1', '1', '50')}
+        {field(
+          'Annual appreciation %',
+          'annualAppreciationPercent',
+          '0.1',
+          '-10',
+          '20',
+        )}
+        {field('Purchase spread %', 'purchaseSpreadPercent', '0.1', '0', '50')}
+        {field(
+          'Liquidation spread %',
+          'liquidationSpreadPercent',
+          '0.1',
+          '0',
+          '50',
+        )}
+        {field('Annual fees (USD)', 'annualFeesUsd', '1', '0', '10000')}
+        <button
+          type="button"
+          onClick={reset}
+          className="inline-flex min-h-[44px] items-center self-start rounded border border-slate-charcoal/40 px-4 py-2 text-sm"
+        >
+          Reset to defaults
+        </button>
+      </form>
+    </div>
   )
 }

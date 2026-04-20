@@ -427,7 +427,7 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol
 // Source: ./src/sanity/queries.ts
 // Variable: articleBySlugQuery
-// Query: *[_type == "article" && slug.current == $slug][0]{    _id,    title,    "slug": slug.current,    summary,    publishedAt,    updatedAt,    "pillar": pillar->{ _id, title, "slug": slug.current, order },    "author": author->{   _id,  name,  "slug": slug.current,  jobTitle,  bio,  "portrait": portrait.asset->url,  "credentials": credentials[]->{ _id, name, credentialCategory, recognizedBy, dateEarned, verificationUrl },  "socialProfiles": socialProfiles[]{ platform, url } },    "reviewedBy": reviewedBy{      reviewedAt,      "reviewer": reviewer->{   _id,  name,  "slug": slug.current,  jobTitle,  bio,  "portrait": portrait.asset->url,  "credentials": credentials[]->{ _id, name, credentialCategory, recognizedBy, dateEarned, verificationUrl },  "socialProfiles": socialProfiles[]{ platform, url } }    },    body,    seo  }
+// Query: *[_type == "article" && slug.current == $slug][0]{    _id,    title,    "slug": slug.current,    summary,    publishedAt,    updatedAt,    "pillar": pillar->{ _id, title, "slug": slug.current, order },    "author": author->{   _id,  name,  "slug": slug.current,  jobTitle,  bio,  "portrait": portrait.asset->url,  "credentials": credentials[]->{ _id, name, credentialCategory, recognizedBy, dateEarned, verificationUrl },  "socialProfiles": socialProfiles[]{ platform, url } },    "reviewedBy": reviewedBy{      reviewedAt,      "reviewer": reviewer->{   _id,  name,  "slug": slug.current,  jobTitle,  bio,  "portrait": portrait.asset->url,  "credentials": credentials[]->{ _id, name, credentialCategory, recognizedBy, dateEarned, verificationUrl },  "socialProfiles": socialProfiles[]{ platform, url } }    },    body[]{      ...,      _type == "feeTable" => {        ...,        "rows": rows[]->{          _id, dealerName, setupFeeUsd, annualAdminFeeUsd, storageModel,          storageFlatFeeUsd, storageScalingPercent,          typicalPurchaseSpreadPercent, typicalLiquidationSpreadPercent,          mandatorySalesCall        }      }    },    seo  }
 export type ArticleBySlugQueryResult = {
   _id: string
   title: string
@@ -534,13 +534,18 @@ export type ArticleBySlugQueryResult = {
         _key: string
       }
     | {
-        rows?: Array<{
-          _ref: string
-          _type: 'reference'
-          _weak?: boolean
-          _key: string
-          [internalGroqTypeReferenceTo]?: 'feeSchedule'
-        }>
+        rows: Array<{
+          _id: string
+          dealerName: string
+          setupFeeUsd: number | null
+          annualAdminFeeUsd: number | null
+          storageModel: 'flat' | 'scaling'
+          storageFlatFeeUsd: number | null
+          storageScalingPercent: number | null
+          typicalPurchaseSpreadPercent: number
+          typicalLiquidationSpreadPercent: number
+          mandatorySalesCall: boolean | null
+        }> | null
         _type: 'feeTable'
         _key: string
       }
@@ -640,13 +645,22 @@ export type FeeScheduleBySlugQueryResult = {
   dataVerifiedAt: string
 } | null
 // Variable: allFeeSchedulesQuery
-// Query: *[_type == "feeSchedule"] | order(dealerName asc){    _id, dealerName, "slug": slug.current, storageModel, typicalPurchaseSpreadPercent  }
+// Query: *[_type == "feeSchedule"] | order(dealerName asc){    _id,    dealerName,    "slug": slug.current,    setupFeeUsd,    annualAdminFeeUsd,    storageModel,    storageFlatFeeUsd,    storageScalingPercent,    typicalPurchaseSpreadPercent,    typicalLiquidationSpreadPercent,    minimumInvestmentUsd,    mandatorySalesCall,    sourceUrl,    dataVerifiedAt  }
 export type AllFeeSchedulesQueryResult = Array<{
   _id: string
   dealerName: string
   slug: string
+  setupFeeUsd: number | null
+  annualAdminFeeUsd: number | null
   storageModel: 'flat' | 'scaling'
+  storageFlatFeeUsd: number | null
+  storageScalingPercent: number | null
   typicalPurchaseSpreadPercent: number
+  typicalLiquidationSpreadPercent: number
+  minimumInvestmentUsd: number | null
+  mandatorySalesCall: boolean | null
+  sourceUrl: string | null
+  dataVerifiedAt: string
 }>
 // Variable: articlesByPillarQuery
 // Query: *[_type == "article" && pillar->slug.current == $pillar] | order(publishedAt desc){    _id,    title,    "slug": slug.current,    summary,    publishedAt,    updatedAt,    "pillar": pillar->{ "slug": slug.current }  }
@@ -707,11 +721,11 @@ export type AllAuthorsQueryResult = Array<{
 import '@sanity/client'
 declare module '@sanity/client' {
   interface SanityQueries {
-    '\n  *[_type == "article" && slug.current == $slug][0]{\n    _id,\n    title,\n    "slug": slug.current,\n    summary,\n    publishedAt,\n    updatedAt,\n    "pillar": pillar->{ _id, title, "slug": slug.current, order },\n    "author": author->{ \n  _id,\n  name,\n  "slug": slug.current,\n  jobTitle,\n  bio,\n  "portrait": portrait.asset->url,\n  "credentials": credentials[]->{ _id, name, credentialCategory, recognizedBy, dateEarned, verificationUrl },\n  "socialProfiles": socialProfiles[]{ platform, url }\n },\n    "reviewedBy": reviewedBy{\n      reviewedAt,\n      "reviewer": reviewer->{ \n  _id,\n  name,\n  "slug": slug.current,\n  jobTitle,\n  bio,\n  "portrait": portrait.asset->url,\n  "credentials": credentials[]->{ _id, name, credentialCategory, recognizedBy, dateEarned, verificationUrl },\n  "socialProfiles": socialProfiles[]{ platform, url }\n }\n    },\n    body,\n    seo\n  }\n': ArticleBySlugQueryResult
+    '\n  *[_type == "article" && slug.current == $slug][0]{\n    _id,\n    title,\n    "slug": slug.current,\n    summary,\n    publishedAt,\n    updatedAt,\n    "pillar": pillar->{ _id, title, "slug": slug.current, order },\n    "author": author->{ \n  _id,\n  name,\n  "slug": slug.current,\n  jobTitle,\n  bio,\n  "portrait": portrait.asset->url,\n  "credentials": credentials[]->{ _id, name, credentialCategory, recognizedBy, dateEarned, verificationUrl },\n  "socialProfiles": socialProfiles[]{ platform, url }\n },\n    "reviewedBy": reviewedBy{\n      reviewedAt,\n      "reviewer": reviewer->{ \n  _id,\n  name,\n  "slug": slug.current,\n  jobTitle,\n  bio,\n  "portrait": portrait.asset->url,\n  "credentials": credentials[]->{ _id, name, credentialCategory, recognizedBy, dateEarned, verificationUrl },\n  "socialProfiles": socialProfiles[]{ platform, url }\n }\n    },\n    body[]{\n      ...,\n      _type == "feeTable" => {\n        ...,\n        "rows": rows[]->{\n          _id, dealerName, setupFeeUsd, annualAdminFeeUsd, storageModel,\n          storageFlatFeeUsd, storageScalingPercent,\n          typicalPurchaseSpreadPercent, typicalLiquidationSpreadPercent,\n          mandatorySalesCall\n        }\n      }\n    },\n    seo\n  }\n': ArticleBySlugQueryResult
     '\n  *[_type == "article" && defined(slug.current)]{ "slug": slug.current }\n': AllArticleSlugsQueryResult
     '\n  *[_type == "pillar"] | order(order asc){\n    _id, title, "slug": slug.current, summary, order\n  }\n': PillarsQueryResult
     '\n  *[_type == "feeSchedule" && slug.current == $slug][0]{\n    _id,\n    dealerName,\n    "slug": slug.current,\n    setupFeeUsd,\n    annualAdminFeeUsd,\n    storageModel,\n    storageFlatFeeUsd,\n    storageScalingPercent,\n    typicalPurchaseSpreadPercent,\n    typicalLiquidationSpreadPercent,\n    minimumInvestmentUsd,\n    mandatorySalesCall,\n    sourceUrl,\n    dataVerifiedAt\n  }\n': FeeScheduleBySlugQueryResult
-    '\n  *[_type == "feeSchedule"] | order(dealerName asc){\n    _id, dealerName, "slug": slug.current, storageModel, typicalPurchaseSpreadPercent\n  }\n': AllFeeSchedulesQueryResult
+    '\n  *[_type == "feeSchedule"] | order(dealerName asc){\n    _id,\n    dealerName,\n    "slug": slug.current,\n    setupFeeUsd,\n    annualAdminFeeUsd,\n    storageModel,\n    storageFlatFeeUsd,\n    storageScalingPercent,\n    typicalPurchaseSpreadPercent,\n    typicalLiquidationSpreadPercent,\n    minimumInvestmentUsd,\n    mandatorySalesCall,\n    sourceUrl,\n    dataVerifiedAt\n  }\n': AllFeeSchedulesQueryResult
     '\n  *[_type == "article" && pillar->slug.current == $pillar] | order(publishedAt desc){\n    _id,\n    title,\n    "slug": slug.current,\n    summary,\n    publishedAt,\n    updatedAt,\n    "pillar": pillar->{ "slug": slug.current }\n  }\n': ArticlesByPillarQueryResult
     '\n  *[_type == "article" && pillar->slug.current == $pillar && defined(slug.current)]{ "slug": slug.current }\n': ArticleSlugsByPillarQueryResult
     '\n  *[_type == "author" && slug.current == $slug][0]{\n    _id,\n    name,\n    "slug": slug.current,\n    jobTitle,\n    bio,\n    "portrait": portrait.asset->url,\n    "credentials": credentials[]->{ _id, name, credentialCategory, recognizedBy, dateEarned, verificationUrl },\n    "socialProfiles": socialProfiles[]{ platform, url }\n  }\n': AuthorBySlugQueryResult

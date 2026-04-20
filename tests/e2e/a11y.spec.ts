@@ -12,6 +12,7 @@ const ROUTES = [
   '/tools/fee-drag-analyzer',
   '/tools/roi-calculator',
   '/tools/written-estimate-checklist',
+  '/tools/live-spot-prices',
   '/this-route-does-not-exist',
 ]
 
