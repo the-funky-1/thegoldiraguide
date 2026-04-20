@@ -62,6 +62,9 @@ jobs:
       - name: Compliance-as-code (FTC disclosure guard)
         run: pnpm check:disclosure
 
+      - name: No hard-coded hex colors outside design tokens
+        run: pnpm check:no-hex
+
       - name: Build + bundle size budget
         run: pnpm check:bundle
 
