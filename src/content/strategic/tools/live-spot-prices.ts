@@ -3,9 +3,9 @@ import { citation } from '../citations'
 import { block, callout, faq, h2, h3, p } from '../pt'
 
 export const seed: ArticleSeed = {
-  _id: 'article.tools.spot-price-dashboard',
+  _id: 'article.tools.live-spot-prices',
   pillar: 'tools',
-  slug: 'spot-price-dashboard',
+  slug: 'live-spot-prices',
   title: 'Live Precious Metals Spot Prices and Historical Charts',
   summary:
     'A plain-language explanation of what the wholesale spot price really represents, how it differs from the retail price a consumer actually pays, and why the historical chart view matters for analysis.',

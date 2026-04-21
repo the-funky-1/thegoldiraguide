@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import { ArticleSeedSchema } from '../types'
 import { extractPlainText, fleschKincaidGrade } from '../reading-level'
-import { seed } from './spot-price-dashboard'
+import { seed } from './live-spot-prices'
 
-describe('tools/spot-price-dashboard', () => {
+describe('tools/live-spot-prices', () => {
   it('parses under ArticleSeedSchema', () => {
     expect(() => ArticleSeedSchema.parse(seed)).not.toThrow()
   })

@@ -20,7 +20,7 @@ import { seed as economics4 } from './economics/portfolio-volatility'
 import { seed as economics5 } from './economics/capital-gains-non-ira'
 
 import { seed as tools1 } from './tools/fee-drag-analyzer'
-import { seed as tools2 } from './tools/spot-price-dashboard'
+import { seed as tools2 } from './tools/live-spot-prices'
 import { seed as tools3 } from './tools/spread-markup-calculator'
 import { seed as tools4 } from './tools/rmd-estimator'
 import { seed as tools5 } from './tools/correlation-matrix'
