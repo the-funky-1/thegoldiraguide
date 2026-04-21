@@ -1,6 +1,6 @@
 import type { ArticleSeed } from '../types'
 import { citation } from '../citations'
-import { block, callout, faq, h2, h3, p } from '../pt'
+import { block, callout, faq, h2, p } from '../pt'
 
 export const seed: ArticleSeed = {
   _id: 'article.economics.supply-demand-industrial',
