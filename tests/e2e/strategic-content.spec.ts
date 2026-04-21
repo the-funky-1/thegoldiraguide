@@ -24,11 +24,15 @@ test('every FAQPage route emits FAQPage JSON-LD', async ({ page }) => {
   for (const seed of faqPages) {
     const path = `/${seed.pillar}/${seed.slug}`
     await page.goto(path)
-    const scripts = await page.locator('script[type="application/ld+json"]').allTextContents()
+    const scripts = await page
+      .locator('script[type="application/ld+json"]')
+      .allTextContents()
     const types = scripts.flatMap((raw) => {
       try {
         const parsed = JSON.parse(raw)
-        return Array.isArray(parsed) ? parsed.map((p) => p['@type']) : [parsed['@type']]
+        return Array.isArray(parsed)
+          ? parsed.map((p) => p['@type'])
+          : [parsed['@type']]
       } catch {
         return []
       }

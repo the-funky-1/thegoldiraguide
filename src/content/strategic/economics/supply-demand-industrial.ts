@@ -16,10 +16,7 @@ export const seed: ArticleSeed = {
   publishedAt: '2026-04-19',
   updatedAt: '2026-04-19',
   authorSlug: 'jane',
-  crossLinks: [
-    'economics/fiat-devaluation',
-    'economics/portfolio-volatility',
-  ],
+  crossLinks: ['economics/fiat-devaluation', 'economics/portfolio-volatility'],
   citations: [citation('finra-metals')],
   body: [
     block(

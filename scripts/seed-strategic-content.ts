@@ -15,15 +15,22 @@ type Mutation = {
   }
 }
 
-export function planUpserts(seeds: ArticleSeed[], refs: References): Mutation[] {
+export function planUpserts(
+  seeds: ArticleSeed[],
+  refs: References,
+): Mutation[] {
   return seeds.map((seed) => {
     const authorId = refs.authorIdBySlug[seed.authorSlug]
     if (!authorId) {
-      throw new Error(`seed-strategic: missing author "${seed.authorSlug}" (seed ${seed._id})`)
+      throw new Error(
+        `seed-strategic: missing author "${seed.authorSlug}" (seed ${seed._id})`,
+      )
     }
     const pillarId = refs.pillarIdBySlug[seed.pillar]
     if (!pillarId) {
-      throw new Error(`seed-strategic: missing pillar "${seed.pillar}" (seed ${seed._id})`)
+      throw new Error(
+        `seed-strategic: missing pillar "${seed.pillar}" (seed ${seed._id})`,
+      )
     }
     return {
       createOrReplace: {
@@ -56,15 +63,19 @@ export function planUpserts(seeds: ArticleSeed[], refs: References): Mutation[] 
 }
 
 async function loadReferences(client: SanityClient): Promise<References> {
-  const authors = await client.fetch<{ _id: string; slug: { current: string } }[]>(
-    `*[_type=="author"]{ _id, slug }`,
-  )
-  const pillars = await client.fetch<{ _id: string; slug: { current: string } }[]>(
-    `*[_type=="pillar"]{ _id, slug }`,
-  )
+  const authors = await client.fetch<
+    { _id: string; slug: { current: string } }[]
+  >(`*[_type=="author"]{ _id, slug }`)
+  const pillars = await client.fetch<
+    { _id: string; slug: { current: string } }[]
+  >(`*[_type=="pillar"]{ _id, slug }`)
   return {
-    authorIdBySlug: Object.fromEntries(authors.map((a) => [a.slug.current, a._id])),
-    pillarIdBySlug: Object.fromEntries(pillars.map((p) => [p.slug.current, p._id])),
+    authorIdBySlug: Object.fromEntries(
+      authors.map((a) => [a.slug.current, a._id]),
+    ),
+    pillarIdBySlug: Object.fromEntries(
+      pillars.map((p) => [p.slug.current, p._id]),
+    ),
   }
 }
 

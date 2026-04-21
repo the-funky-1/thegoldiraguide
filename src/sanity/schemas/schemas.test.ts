@@ -63,7 +63,8 @@ describe('article.schemaJsonLdType', () => {
     const field = article.fields.find((f) => f.name === 'schemaJsonLdType')
     expect(field).toBeDefined()
     expect(field?.type).toBe('string')
-    const options = (field as { options?: { list?: unknown } } | undefined)?.options
+    const options = (field as { options?: { list?: unknown } } | undefined)
+      ?.options
     expect(options?.list).toEqual([
       { title: 'Article (default)', value: 'Article' },
       { title: 'FAQPage', value: 'FAQPage' },

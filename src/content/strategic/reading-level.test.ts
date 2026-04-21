@@ -32,7 +32,9 @@ describe('extractPlainText', () => {
       { _type: 'block', children: [{ _type: 'span', text: 'Reader text.' }] },
       {
         _type: 'llmsOnly',
-        children: [{ _type: 'block', children: [{ _type: 'span', text: 'Hidden.' }] }],
+        children: [
+          { _type: 'block', children: [{ _type: 'span', text: 'Hidden.' }] },
+        ],
       },
     ]
     expect(extractPlainText(body)).toBe('Reader text.')

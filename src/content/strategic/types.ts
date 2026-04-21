@@ -41,7 +41,10 @@ export const ArticleSeedSchema = z
     slug: z.string().regex(/^[a-z0-9-]+$/),
     title: z.string().min(10).max(120),
     summary: z.string().min(40).max(320),
-    metaTitle: z.string().min(10).max(60, 'metaTitle must be 60 chars or fewer'),
+    metaTitle: z
+      .string()
+      .min(10)
+      .max(60, 'metaTitle must be 60 chars or fewer'),
     metaDescription: z
       .string()
       .min(50)

@@ -153,7 +153,8 @@ export const seed: ArticleSeed = {
         'Over long horizons on larger balances, a flat fee usually costs less. On smaller or shorter-lived accounts, the difference is narrower and can tilt either way.',
     },
     {
-      question: 'What fee structure do most precious metals IRA custodians use?',
+      question:
+        'What fee structure do most precious metals IRA custodians use?',
       answer:
         'Both structures are common. Some custodians use flat fees for storage and administration. Others use a scaling fee on assets under custody. A written estimate is the only reliable way to confirm which applies to your account.',
     },

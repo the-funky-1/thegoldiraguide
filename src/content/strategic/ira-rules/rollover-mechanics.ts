@@ -16,10 +16,7 @@ export const seed: ArticleSeed = {
   publishedAt: '2026-04-19',
   updatedAt: '2026-04-19',
   authorSlug: 'jane',
-  crossLinks: [
-    'ira-rules/eligible-metals',
-    'ira-rules/home-storage-fallacy',
-  ],
+  crossLinks: ['ira-rules/eligible-metals', 'ira-rules/home-storage-fallacy'],
   citations: [citation('irs-590a')],
   body: [
     block(

@@ -3,7 +3,9 @@ const VOWEL_GROUPS = /[aeiouy]+/g
 function countSyllables(word: string): number {
   const w = word.toLowerCase().replace(/[^a-z]/g, '')
   if (w.length <= 3) return 1
-  const stripped = w.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '').replace(/^y/, '')
+  const stripped = w
+    .replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '')
+    .replace(/^y/, '')
   const matches = stripped.match(VOWEL_GROUPS)
   return Math.max(1, matches ? matches.length : 1)
 }

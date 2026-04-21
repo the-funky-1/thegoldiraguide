@@ -34,7 +34,10 @@ export const seed: ArticleSeed = {
         'None of what follows is a substitute for advice from a tax professional. The rates and brackets discussed here reflect the general framework, not a custom plan for any one household. What the piece offers is the baseline a saver needs to compare a taxable holding with a holding inside an IRA.',
       ),
     ),
-    block('h2-collectibles', h2('Why physical metal is taxed as a collectible')),
+    block(
+      'h2-collectibles',
+      h2('Why physical metal is taxed as a collectible'),
+    ),
     block(
       'collect-1',
       p(

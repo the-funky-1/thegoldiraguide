@@ -6,7 +6,8 @@ const valid = {
   pillar: 'ira-rules' as const,
   slug: 'eligible-metals',
   title: 'IRS Purity Standards for Precious Metals IRAs',
-  summary: 'The exact fineness the IRS requires for gold, silver, platinum, and palladium in a retirement account.',
+  summary:
+    'The exact fineness the IRS requires for gold, silver, platinum, and palladium in a retirement account.',
   metaTitle: 'IRS Purity Standards for Precious Metals IRAs (2026)',
   metaDescription:
     'Review the exact IRS fineness requirements for holding gold, silver, platinum, and palladium in a self-directed retirement account. Eligible bullion list.',
@@ -14,16 +15,27 @@ const valid = {
   publishedAt: '2026-04-19',
   updatedAt: '2026-04-19',
   authorSlug: 'jane-doe',
-  body: [{ _key: 'intro', _type: 'block', children: [{ _type: 'span', text: 'Body.' }] }],
+  body: [
+    {
+      _key: 'intro',
+      _type: 'block',
+      children: [{ _type: 'span', text: 'Body.' }],
+    },
+  ],
   faqs: [
     {
       question: 'What is the gold purity requirement for an IRA?',
-      answer: 'The IRS requires 99.5% fineness for gold held in a precious metals IRA.',
+      answer:
+        'The IRS requires 99.5% fineness for gold held in a precious metals IRA.',
     },
   ],
   crossLinks: ['ira-rules/collectible-prohibition'],
   citations: [
-    { label: 'IRS Publication 590-A', url: 'https://www.irs.gov/pub/irs-pdf/p590a.pdf', accessed: '2026-04-19' },
+    {
+      label: 'IRS Publication 590-A',
+      url: 'https://www.irs.gov/pub/irs-pdf/p590a.pdf',
+      accessed: '2026-04-19',
+    },
   ],
 }
 
@@ -45,9 +57,9 @@ describe('ArticleSeedSchema', () => {
   })
 
   it('rejects FAQPage schema with zero FAQs', () => {
-    expect(() =>
-      ArticleSeedSchema.parse({ ...valid, faqs: [] }),
-    ).toThrow(/FAQPage requires at least one faq/)
+    expect(() => ArticleSeedSchema.parse({ ...valid, faqs: [] })).toThrow(
+      /FAQPage requires at least one faq/,
+    )
   })
 
   it('rejects pillar values outside the five known pillars', () => {
@@ -63,9 +75,9 @@ describe('ArticleSeedSchema', () => {
   })
 
   it('requires at least one citation', () => {
-    expect(() =>
-      ArticleSeedSchema.parse({ ...valid, citations: [] }),
-    ).toThrow(/citations/)
+    expect(() => ArticleSeedSchema.parse({ ...valid, citations: [] })).toThrow(
+      /citations/,
+    )
   })
 
   it('rejects _id that does not match <pillar>.<slug>', () => {
@@ -81,7 +93,9 @@ describe('ArticleSeedSchema', () => {
     expect(() =>
       ArticleSeedSchema.parse({
         ...valid,
-        body: [{ _type: 'block', children: [{ _type: 'span', text: 'No key.' }] }],
+        body: [
+          { _type: 'block', children: [{ _type: 'span', text: 'No key.' }] },
+        ],
       }),
     ).toThrow(/_key/)
   })

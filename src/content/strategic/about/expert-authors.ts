@@ -16,10 +16,7 @@ export const seed: ArticleSeed = {
   publishedAt: '2026-04-19',
   updatedAt: '2026-04-19',
   authorSlug: 'jane',
-  crossLinks: [
-    'about/editorial-guidelines',
-    'about/accountability-standard',
-  ],
+  crossLinks: ['about/editorial-guidelines', 'about/accountability-standard'],
   citations: [citation('ftc-endorsement-guides')],
   body: [
     block(

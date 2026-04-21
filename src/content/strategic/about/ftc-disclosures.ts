@@ -120,7 +120,8 @@ export const seed: ArticleSeed = {
   ],
   faqs: [
     {
-      question: 'Does The Gold IRA Guide get paid for sending me to Liberty Gold Silver?',
+      question:
+        'Does The Gold IRA Guide get paid for sending me to Liberty Gold Silver?',
       answer:
         'No. The hub does not run outbound referral links to the parent company on its editorial pages. It does not receive a per-lead or per-transaction fee. The funding relationship is direct corporate ownership.',
     },

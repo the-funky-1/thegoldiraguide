@@ -27,8 +27,14 @@ describe('ALL_SEEDS', () => {
     for (const seed of ALL_SEEDS) {
       const text = extractPlainText(seed.body)
       const grade = fleschKincaidGrade(text)
-      expect(grade, `${seed._id} grade=${grade.toFixed(2)}`).toBeGreaterThanOrEqual(6.5)
-      expect(grade, `${seed._id} grade=${grade.toFixed(2)}`).toBeLessThanOrEqual(8.5)
+      expect(
+        grade,
+        `${seed._id} grade=${grade.toFixed(2)}`,
+      ).toBeGreaterThanOrEqual(6.5)
+      expect(
+        grade,
+        `${seed._id} grade=${grade.toFixed(2)}`,
+      ).toBeLessThanOrEqual(8.5)
     }
   })
 

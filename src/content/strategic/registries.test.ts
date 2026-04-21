@@ -22,7 +22,9 @@ describe('buildCrossLinks', () => {
 
   it('rejects self-reference', () => {
     expect(() =>
-      buildCrossLinks('ira-rules/eligible-metals', ['ira-rules/eligible-metals']),
+      buildCrossLinks('ira-rules/eligible-metals', [
+        'ira-rules/eligible-metals',
+      ]),
     ).toThrow(/self-reference/)
   })
 

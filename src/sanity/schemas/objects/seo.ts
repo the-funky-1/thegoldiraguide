@@ -18,7 +18,10 @@ export const seo = defineType({
       type: 'text',
       rows: 3,
       validation: (r) =>
-        r.required().max(160).error('Meta description must be 160 characters or fewer'),
+        r
+          .required()
+          .max(160)
+          .error('Meta description must be 160 characters or fewer'),
     }),
     defineField({
       name: 'noIndex',

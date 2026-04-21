@@ -36,7 +36,10 @@ export const seed: ArticleSeed = {
         'The Gold IRA Guide works from a different standard. The standard is accountability. Accountability is active. It is a written commitment made before the money moves. The firm states, on paper, what it will charge, how it will charge, and what it will deliver. The client keeps the document. If the final invoice drifts from the stated terms, the document is the record of the drift. That is a standard a client can hold a firm to. The softer version is not.',
       ),
     ),
-    block('h2-definition', h2('Transparency is passive, accountability is active')),
+    block(
+      'h2-definition',
+      h2('Transparency is passive, accountability is active'),
+    ),
     block(
       'def-1',
       p(

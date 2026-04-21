@@ -147,7 +147,8 @@ export const seed: ArticleSeed = {
   ],
   faqs: [
     {
-      question: 'At what age must I start taking RMDs from my precious metals IRA?',
+      question:
+        'At what age must I start taking RMDs from my precious metals IRA?',
       answer:
         'Under SECURE 2.0, the threshold is age seventy three for savers born between nineteen fifty one and nineteen fifty nine. For savers born in nineteen sixty or later, the threshold rises to age seventy five starting in two thousand thirty three. Roth IRAs are not subject to RMDs during the original owner lifetime.',
     },

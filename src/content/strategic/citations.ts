@@ -17,7 +17,8 @@ export const CITATIONS: Record<string, CitationEntry> = {
     accessed: '2026-04-19',
   },
   'usc-31-5112': {
-    label: '31 U.S.C. § 5112 (Denominations, specifications, and design of coins)',
+    label:
+      '31 U.S.C. § 5112 (Denominations, specifications, and design of coins)',
     url: 'https://www.law.cornell.edu/uscode/text/31/5112',
     accessed: '2026-04-19',
   },

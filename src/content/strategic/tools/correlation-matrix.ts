@@ -16,10 +16,7 @@ export const seed: ArticleSeed = {
   publishedAt: '2026-04-19',
   updatedAt: '2026-04-19',
   authorSlug: 'jane',
-  crossLinks: [
-    'economics/portfolio-volatility',
-    'economics/physical-vs-etfs',
-  ],
+  crossLinks: ['economics/portfolio-volatility', 'economics/physical-vs-etfs'],
   citations: [citation('finra-metals')],
   body: [
     block(

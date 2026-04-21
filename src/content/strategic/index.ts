@@ -32,11 +32,31 @@ import { seed as about4 } from './about/accountability-standard'
 import { seed as about5 } from './about/expert-authors'
 
 export const ALL_SEEDS: ArticleSeed[] = [
-  iraRules1, iraRules2, iraRules3, iraRules4, iraRules5,
-  accountability1, accountability2, accountability3, accountability4, accountability5,
-  economics1, economics2, economics3, economics4, economics5,
-  tools1, tools2, tools3, tools4, tools5,
-  about1, about2, about3, about4, about5,
+  iraRules1,
+  iraRules2,
+  iraRules3,
+  iraRules4,
+  iraRules5,
+  accountability1,
+  accountability2,
+  accountability3,
+  accountability4,
+  accountability5,
+  economics1,
+  economics2,
+  economics3,
+  economics4,
+  economics5,
+  tools1,
+  tools2,
+  tools3,
+  tools4,
+  tools5,
+  about1,
+  about2,
+  about3,
+  about4,
+  about5,
 ]
 
 for (const seed of ALL_SEEDS) {
@@ -45,7 +65,11 @@ for (const seed of ALL_SEEDS) {
 
 export function seedsByPillar(): Record<PillarSlug, ArticleSeed[]> {
   const by: Record<PillarSlug, ArticleSeed[]> = {
-    'ira-rules': [], accountability: [], economics: [], tools: [], about: [],
+    'ira-rules': [],
+    accountability: [],
+    economics: [],
+    tools: [],
+    about: [],
   }
   for (const s of ALL_SEEDS) by[s.pillar].push(s)
   return by

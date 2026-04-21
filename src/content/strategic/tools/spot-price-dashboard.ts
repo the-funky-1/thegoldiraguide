@@ -144,7 +144,8 @@ export const seed: ArticleSeed = {
         'The dashboard refreshes the spot quote on a frequent interval during global trading hours, which run nearly continuously on weekdays. Exact refresh cadence depends on the upstream data feed. The historical chart is updated on a daily cadence once the trading session closes.',
     },
     {
-      question: 'Why does one dealer show a higher price than another at the same spot?',
+      question:
+        'Why does one dealer show a higher price than another at the same spot?',
       answer:
         'Different dealers apply different markup structures on different product categories. A bullion coin from one dealer might carry a five percent spread while the same coin from another carries an eight percent spread. The spot dashboard is the common reference and the individual dealer quote is where the variation appears.',
     },

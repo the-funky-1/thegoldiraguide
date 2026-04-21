@@ -43,14 +43,20 @@ export const seed: ArticleSeed = {
         'Multiply the spot price by the weight of metal in the product. A one ounce coin uses a multiplier of one. A ten ounce bar uses a multiplier of ten. A fractional coin such as a quarter ounce uses a multiplier of zero point two five. The result is the intrinsic dollar value of the metal content in the product at the moment of the spot quote.',
       ),
     ),
-    block('h3-step-3', h3('Step three: subtract intrinsic value from the dealer quote')),
+    block(
+      'h3-step-3',
+      h3('Step three: subtract intrinsic value from the dealer quote'),
+    ),
     block(
       'step-3',
       p(
         'Take the dealer quoted price for the product. Subtract the intrinsic metal value calculated in step two. The resulting number is the dollar markup that the dealer is charging above the wholesale metal content. The dollar markup is useful on its own as an absolute figure. It becomes more useful when converted into a percentage.',
       ),
     ),
-    block('h3-step-4', h3('Step four: convert the dollar markup into a percentage')),
+    block(
+      'h3-step-4',
+      h3('Step four: convert the dollar markup into a percentage'),
+    ),
     block(
       'step-4',
       p(
