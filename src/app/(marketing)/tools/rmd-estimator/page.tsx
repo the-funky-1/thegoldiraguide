@@ -25,10 +25,12 @@ export async function generateMetadata(): Promise<Metadata> {
   const article = await getArticleBySlug<{
     title: string
     summary?: string
+    seo?: { metaTitle?: string; metaDescription?: string }
   }>(slug)
   return {
-    title: article?.title ?? 'Gold IRA Required Minimum Distribution Estimator',
+    title: article?.seo?.metaTitle ?? article?.title ?? 'Gold IRA Required Minimum Distribution Estimator',
     description:
+      article?.seo?.metaDescription ??
       article?.summary ??
       'Estimate your required minimum distribution from a precious metals IRA under SECURE 2.0 age thresholds.',
     alternates: { canonical: articleHref(pillarSlug, slug) },

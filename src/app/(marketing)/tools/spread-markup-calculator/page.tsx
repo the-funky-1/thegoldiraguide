@@ -25,10 +25,12 @@ export async function generateMetadata(): Promise<Metadata> {
   const article = await getArticleBySlug<{
     title: string
     summary?: string
+    seo?: { metaTitle?: string; metaDescription?: string }
   }>(slug)
   return {
-    title: article?.title ?? 'Dealer Spread and Markup Calculator',
+    title: article?.seo?.metaTitle ?? article?.title ?? 'Dealer Spread and Markup Calculator',
     description:
+      article?.seo?.metaDescription ??
       article?.summary ??
       'Calculate the markup above spot price a dealer charges on a quoted physical precious metals product.',
     alternates: { canonical: articleHref(pillarSlug, slug) },

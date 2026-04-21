@@ -25,10 +25,12 @@ export async function generateMetadata(): Promise<Metadata> {
   const article = await getArticleBySlug<{
     title: string
     summary?: string
+    seo?: { metaTitle?: string; metaDescription?: string }
   }>(slug)
   return {
-    title: article?.title ?? 'Asset Class Correlation Matrix',
+    title: article?.seo?.metaTitle ?? article?.title ?? 'Asset Class Correlation Matrix',
     description:
+      article?.seo?.metaDescription ??
       article?.summary ??
       'Historical correlation between stocks, bonds, and precious metals, with a plain-language explainer on what the numbers mean.',
     alternates: { canonical: articleHref(pillarSlug, slug) },

@@ -38,11 +38,12 @@ export async function generateMetadata({
   const article = await getArticleBySlug<{
     title: string
     summary?: string
+    seo?: { metaTitle?: string; metaDescription?: string }
   }>(slug)
   if (!article) return {}
   return {
     title: article.title,
-    description: article.summary,
+    description: article.seo?.metaDescription ?? article.summary,
     alternates: { canonical: articleHref(pillarSlug, slug) },
   }
 }
