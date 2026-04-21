@@ -7,15 +7,14 @@ function routeFor(seed: (typeof ALL_SEEDS)[number]): string {
 
 // Seeds whose slugs collide with pre-existing routes that aren't Sanity-driven:
 // - tools/fee-drag-analyzer: Plan 5 tool page with its own hardcoded metadata.
-// - tools/spot-price-dashboard: the live tool ships at /tools/live-spot-prices,
-//   not this slug — the seed is for llms.txt discoverability only.
+// - tools/live-spot-prices: Plan 5 tool page with its own hardcoded metadata.
 // - about/expert-authors: Plan 3 owns /about/expert-authors as the authors
 //   index; the seeded article is not meant to replace that index page.
 // These seeds exist in Sanity for generative-SEO coverage (llms.txt / .md mirror
 // endpoints), but the rendered /pillar/slug route is not driven by the seed.
 const NON_SANITY_DRIVEN_ROUTES = new Set<string>([
   '/tools/fee-drag-analyzer',
-  '/tools/spot-price-dashboard',
+  '/tools/live-spot-prices',
   '/about/expert-authors',
 ])
 
