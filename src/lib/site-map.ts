@@ -1,9 +1,6 @@
-export type PillarSlug =
-  | 'ira-rules'
-  | 'accountability'
-  | 'economics'
-  | 'tools'
-  | 'about'
+import type { PillarSlug } from '@/content/strategic/types'
+
+export type { PillarSlug }
 
 export type Pillar = {
   slug: PillarSlug

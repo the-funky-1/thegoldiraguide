@@ -11,6 +11,7 @@ type Input = {
   updatedAt: string
   author: { name: string; slug: string }
   reviewer: { name: string; slug: string } | null
+  citations?: ReadonlyArray<{ label: string; url: string }>
 }
 
 type ConcretePerson = Exclude<Person, string>
@@ -19,6 +20,7 @@ type ConcretePerson = Exclude<Person, string>
 // on Article as well. Extend the Article contract with the property we emit.
 type ArticleWithReview = Exclude<Article, string> & {
   reviewedBy?: ConcretePerson
+  citation?: Array<{ '@type': 'CreativeWork'; name: string; url: string }>
 }
 
 function personRef(
@@ -56,6 +58,13 @@ export function buildArticle(input: Input): WithContext<ArticleWithReview> {
   }
   if (input.reviewer) {
     out.reviewedBy = personRef(input.siteUrl, input.reviewer)
+  }
+  if (input.citations && input.citations.length > 0) {
+    out.citation = input.citations.map((c) => ({
+      '@type': 'CreativeWork' as const,
+      name: c.label,
+      url: c.url,
+    }))
   }
   return out
 }

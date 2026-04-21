@@ -17,6 +17,7 @@ const siteUrl =
 
 type Article = Parameters<typeof ArticleTemplate>[0]['article'] & {
   pillar?: { slug: string }
+  citations?: Array<{ label: string; url: string; accessed?: string }>
 }
 
 export async function generateStaticParams() {
@@ -37,11 +38,12 @@ export async function generateMetadata({
   const article = await getArticleBySlug<{
     title: string
     summary?: string
+    seo?: { metaTitle?: string; metaDescription?: string }
   }>(slug)
   if (!article) return {}
   return {
     title: article.title,
-    description: article.summary,
+    description: article.seo?.metaDescription ?? article.summary,
     alternates: { canonical: articleHref(pillarSlug, slug) },
   }
 }
@@ -73,6 +75,7 @@ export default async function AccountabilityArticle({
           slug: article.reviewedBy.reviewer.slug,
         }
       : null,
+    ...(article.citations ? { citations: article.citations } : {}),
   })
   const breadcrumbsLd = buildBreadcrumbList({
     siteUrl,

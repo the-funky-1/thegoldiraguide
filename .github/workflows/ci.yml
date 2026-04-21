@@ -59,6 +59,9 @@ jobs:
       - name: Unit tests
         run: pnpm test
 
+      - name: Validate strategic content seeds
+        run: pnpm exec tsx scripts/validate-strategic-content.ts
+
       - name: Compliance-as-code (FTC disclosure guard)
         run: pnpm check:disclosure
 

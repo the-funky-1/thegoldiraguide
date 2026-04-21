@@ -1,6 +1,6 @@
 # Implementation Plan Index
 
-Full build of `thegoldiraguide.com` — a branded educational hub for Liberty Gold Silver. Decomposed into eight independently shippable plans. Each plan produces working, tested software on its own and leaves the codebase in a deployable state.
+Full build of `thegoldiraguide.com` — a branded educational hub for Liberty Gold Silver. Decomposed into independently shippable plans. Each plan produces working, tested software on its own and leaves the codebase in a deployable state.
 
 ## Execution order
 
@@ -16,6 +16,7 @@ Plans must be shipped in order. Later plans assume earlier ones are merged.
 | 6 | Real-Time Market Data | [`2026-04-19-real-time-market-data.md`](./2026-04-19-real-time-market-data.md) | `v0.6.0-market-data` |
 | 7 | Data Visualization | [`2026-04-19-data-visualization.md`](./2026-04-19-data-visualization.md) | `v0.7.0-visualization` |
 | 8 | Design System & A11y Polish | [`2026-04-19-design-system-a11y-polish.md`](./2026-04-19-design-system-a11y-polish.md) | `v1.0.0` |
+| 9 | Strategic Content Authoring | [`2026-04-19-strategic-content-authoring.md`](./2026-04-19-strategic-content-authoring.md) | `v1.1.0-strategic-content` |
 
 ## Dependency graph
 
