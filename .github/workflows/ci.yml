@@ -74,6 +74,9 @@ jobs:
       - name: LLM corpus guard
         run: pnpm check:llms-corpus
 
+      - name: Environment example guard
+        run: pnpm check:env-example
+
       - name: Build + bundle size budget
         run: pnpm check:bundle
 

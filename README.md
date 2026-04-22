@@ -23,7 +23,16 @@ pnpm dev
 | `pnpm test` | Vitest unit tests |
 | `pnpm test:e2e` | Playwright E2E |
 | `pnpm check:disclosure` | Static guard: FTC banner is hard-coded in root layout |
+| `pnpm check:env-example` | Static guard: `.env.example` documents all app/script env vars |
 | `pnpm check:all` | Run every gate the CI pipeline runs |
+
+## Environment
+
+Copy `.env.example` to `.env.local` for local development and fill only the
+values needed for the workflows you run. Public `NEXT_PUBLIC_*` analytics keys
+are safe for the browser by design; Sanity, MetalpriceAPI, Upstash, and write
+tokens must remain server-side secrets. `SANITY_WRITE_TOKEN` is only needed for
+seeding scripts.
 
 ## Deployment
 

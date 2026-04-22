@@ -22,10 +22,11 @@
     "check:no-hex": "tsx scripts/check-no-hex-in-components.ts",
     "check:brand-voice": "tsx scripts/check-brand-voice.ts",
     "check:llms-corpus": "tsx scripts/check-llms-corpus.ts",
+    "check:env-example": "tsx scripts/check-env-example.ts",
     "seed:strategic": "tsx scripts/seed-strategic-content.ts",
     "seed:strategic:prerequisites": "tsx scripts/seed-strategic-prerequisites.ts",
     "generate:style-hashes": "pnpm build && tsx scripts/generate-style-hashes.ts",
-    "check:all": "pnpm lint && pnpm typecheck && pnpm test && pnpm check:disclosure && pnpm check:no-hex && pnpm check:brand-voice && pnpm check:llms-corpus && pnpm build"
+    "check:all": "pnpm lint && pnpm typecheck && pnpm test && pnpm check:disclosure && pnpm check:no-hex && pnpm check:brand-voice && pnpm check:llms-corpus && pnpm check:env-example && pnpm build"
   },
   "dependencies": {
     "@amplitude/analytics-browser": "^2.41.0",
