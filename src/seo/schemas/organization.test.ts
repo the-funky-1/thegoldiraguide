@@ -9,6 +9,12 @@ describe('buildOrganization', () => {
     expect(org['@context']).toBe('https://schema.org')
     expect(org['@type']).toBe('Organization')
     expect(org.name).toBe('The Gold IRA Guide')
+    expect(org.publishingPrinciples).toBe(
+      'https://www.thegoldiraguide.com/about/editorial-guidelines',
+    )
+    expect(org.ethicsPolicy).toBe(
+      'https://www.thegoldiraguide.com/about/ftc-disclosure',
+    )
     expect(org.parentOrganization).toMatchObject({
       '@type': 'Organization',
       name: 'Liberty Gold Silver',

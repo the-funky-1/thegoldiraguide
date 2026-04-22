@@ -18,6 +18,17 @@ test('/llms.txt is text/plain, starts with H1, and lists every pillar', async ({
   ]) {
     expect(body).toContain(pillar)
   }
+  for (const tool of [
+    'Fee Drag Analyzer',
+    'ROI Calculator',
+    'Live Spot Prices',
+    'Written Estimate Checklist',
+    'Dealer Spread and Markup Calculator',
+    'Gold IRA Required Minimum Distribution Estimator',
+    'Asset Class Correlation Matrix',
+  ]) {
+    expect(body).toContain(tool)
+  }
 })
 
 test('/llms-full.txt is text/plain', async ({ request }) => {

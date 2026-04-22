@@ -1,94 +1,88 @@
 import type { Metadata } from 'next'
-import { notFound } from 'next/navigation'
-import { ArticleTemplate } from '@/components/editorial/ArticleTemplate'
-import { articleHref } from '@/lib/site-map'
-import { extractFaqs } from '@/seo/extract-faqs'
+import { Breadcrumbs } from '@/components/nav/Breadcrumbs'
 import { JsonLd } from '@/seo/json-ld'
-import { buildArticle } from '@/seo/schemas/article'
 import { buildBreadcrumbList } from '@/seo/schemas/breadcrumb-list'
 import { buildFaqPage } from '@/seo/schemas/faq-page'
-import { getArticleBySlug } from '@/sanity/fetchers'
+import { SpreadMarkupForm } from './SpreadMarkupForm'
+import { SpreadMarkupResult } from './SpreadMarkupResult'
 
-export const revalidate = 3600
+export const metadata: Metadata = {
+  title: 'Dealer Spread and Markup Calculator',
+  description:
+    'Calculate the markup above spot on a dealer quote for a physical metal product. Follow the step-by-step procedure and worked example.',
+  alternates: { canonical: '/tools/spread-markup-calculator' },
+}
 
-const pillarSlug = 'tools' as const
-const slug = 'spread-markup-calculator'
+export const dynamic = 'force-dynamic'
+
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.thegoldiraguide.com'
+const url = `${siteUrl}/tools/spread-markup-calculator`
 
-type Article = Parameters<typeof ArticleTemplate>[0]['article'] & {
-  pillar?: { slug: string }
-  citations?: Array<{ label: string; url: string; accessed?: string }>
-}
+const faqs = [
+  {
+    question: 'What does markup above spot mean?',
+    answer:
+      'Markup above spot is the quoted transaction value minus the intrinsic metal value calculated from spot price, product ounces, and quantity.',
+  },
+  {
+    question: 'Why does the written estimate matter?',
+    answer:
+      'A written estimate ties the quoted product, quantity, spread, fixed fees, storage model, and expiration terms to one documented transaction before capital moves.',
+  },
+]
 
-export async function generateMetadata(): Promise<Metadata> {
-  const article = await getArticleBySlug<{
-    title: string
-    summary?: string
-    seo?: { metaTitle?: string; metaDescription?: string }
-  }>(slug)
-  return {
-    title: article?.seo?.metaTitle ?? article?.title ?? 'Dealer Spread and Markup Calculator',
-    description:
-      article?.seo?.metaDescription ??
-      article?.summary ??
-      'Calculate the markup above spot price a dealer charges on a quoted physical precious metals product.',
-    alternates: { canonical: articleHref(pillarSlug, slug) },
-  }
-}
-
-export default async function SpreadMarkupCalculatorPage() {
-  const article = await getArticleBySlug<Article>(slug)
-  if (!article || article.pillar?.slug !== pillarSlug) notFound()
-
-  const articleLd = buildArticle({
-    siteUrl,
-    pillarSlug,
-    slug,
-    title: article.title,
-    ...(article.summary ? { summary: article.summary } : {}),
-    publishedAt: article.publishedAt,
-    updatedAt: article.updatedAt,
-    author: {
-      name: article.author.name,
-      slug: article.author.slug,
-    },
-    reviewer: article.reviewedBy?.reviewer
-      ? {
-          name: article.reviewedBy.reviewer.name,
-          slug: article.reviewedBy.reviewer.slug,
-        }
-      : null,
-    ...(article.citations ? { citations: article.citations } : {}),
-  })
-  const breadcrumbsLd = buildBreadcrumbList({
-    siteUrl,
-    items: [
-      { label: 'Home', path: '/' },
-      { label: 'Tools', path: '/tools' },
-      { label: article.title, path: articleHref(pillarSlug, slug) },
-    ],
-  })
-  const faqLd = buildFaqPage({
-    url: `${siteUrl}${articleHref(pillarSlug, slug)}`,
-    qas: extractFaqs(article.body as never),
-  })
-
+export default function SpreadMarkupCalculatorPage() {
   return (
-    <>
-      <JsonLd data={articleLd} />
-      <JsonLd data={breadcrumbsLd} />
-      <JsonLd data={faqLd} />
-      <div className="mx-auto max-w-3xl px-6 pt-10">
-        <div
-          role="status"
-          className="mb-6 rounded-md border border-amber-300 bg-amber-50 p-4 text-amber-900"
-        >
-          The interactive calculator is launching soon. Until then, the steps
-          below show you how to compute a dealer spread by hand.
-        </div>
-      </div>
-      <ArticleTemplate pillarSlug={pillarSlug} article={article} />
-    </>
+    <div className="px-6 py-10">
+      <JsonLd
+        data={buildBreadcrumbList({
+          siteUrl,
+          items: [
+            { label: 'Home', path: '/' },
+            { label: 'Tools', path: '/tools' },
+            {
+              label: 'Dealer Spread and Markup Calculator',
+              path: '/tools/spread-markup-calculator',
+            },
+          ],
+        })}
+      />
+      <JsonLd data={buildFaqPage({ url, qas: faqs })} />
+      <Breadcrumbs
+        items={[
+          { href: '/', label: 'Home' },
+          { href: '/tools', label: 'Tools' },
+          { label: 'Dealer Spread and Markup Calculator' },
+        ]}
+      />
+      <h1 className="mt-6 font-serif text-4xl font-bold">
+        Dealer Spread and Markup Calculator
+      </h1>
+      <p className="mt-4 max-w-2xl text-lg text-brand-slate">
+        Compare a quoted product price against spot value. The calculation shows
+        the dollar markup, markup percentage, and markup per ounce so the figure
+        can be documented in writing.
+      </p>
+
+      <section className="mt-10">
+        <SpreadMarkupForm />
+      </section>
+      <section className="mt-10" aria-live="polite">
+        <SpreadMarkupResult />
+      </section>
+
+      <section className="mt-12">
+        <h2 className="font-serif text-2xl">FAQ</h2>
+        <dl className="mt-4 space-y-4">
+          {faqs.map((qa) => (
+            <div key={qa.question}>
+              <dt className="font-semibold">{qa.question}</dt>
+              <dd className="mt-1 text-sm">{qa.answer}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    </div>
   )
 }

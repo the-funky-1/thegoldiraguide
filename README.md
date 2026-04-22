@@ -29,6 +29,13 @@ pnpm dev
 
 See [`docs/DEPLOYMENT.md`](./docs/DEPLOYMENT.md) for Vercel configuration and rollback procedure.
 
+## Analytics
+
+Public marketing routes initialize Google Analytics 4, Vercel Web Analytics,
+and Amplitude when their public environment variables are configured. Custom
+calculator and comparison events use buckets for financial values instead of
+logging exact user-entered amounts.
+
 ## Roadmap
 
 See [`docs/superpowers/plans/`](./docs/superpowers/plans/) for the full implementation roadmap. Plan 1 (this plan) ships the foundation. Plans 2–8 add CMS, content pillars, GSEO surface, calculators, live pricing, charts, and the finalized design system.

@@ -25,6 +25,9 @@ describe('Footer', () => {
     expect(
       screen.getByRole('link', { name: /ftc disclosure/i }),
     ).toHaveAttribute('href', '/about/ftc-disclosure')
+    expect(
+      screen.getByRole('link', { name: /privacy and analytics/i }),
+    ).toHaveAttribute('href', '/privacy')
   })
 
   it('shows the copyright with the current year', () => {

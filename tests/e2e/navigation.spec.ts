@@ -46,3 +46,21 @@ test('skip to content link shifts focus to <main>', async ({ page }) => {
   const mainHasId = await page.locator('#main-content').count()
   expect(mainHasId).toBe(1)
 })
+
+test('tools landing links every implemented tool', async ({ page }) => {
+  await page.goto('/tools')
+  for (const [label, path] of [
+    ['Fee Drag Analyzer', '/tools/fee-drag-analyzer'],
+    ['ROI Calculator', '/tools/roi-calculator'],
+    ['Written Estimate Checklist', '/tools/written-estimate-checklist'],
+    ['Live Spot Prices', '/tools/live-spot-prices'],
+    ['Dealer Spread and Markup Calculator', '/tools/spread-markup-calculator'],
+    ['RMD Estimator', '/tools/rmd-estimator'],
+    ['Correlation Matrix', '/tools/correlation-matrix'],
+  ] as const) {
+    await expect(page.getByRole('link', { name: label })).toHaveAttribute(
+      'href',
+      path,
+    )
+  }
+})

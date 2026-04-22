@@ -21,3 +21,12 @@ test('invalid pillar .md → 404', async ({ request }) => {
   const response = await request.get('/unknown-pillar/slug.md')
   expect(response.status()).toBe(404)
 })
+
+test('public tool .md mirror returns formula context', async ({ request }) => {
+  const response = await request.get('/tools/spread-markup-calculator.md')
+  expect(response.status()).toBe(200)
+  expect(response.headers()['content-type']).toContain('text/markdown')
+  const body = await response.text()
+  expect(body).toContain('# Dealer Spread and Markup Calculator')
+  expect(body).toContain('## Formula')
+})

@@ -1,6 +1,9 @@
 'use client'
 
 import { useState } from 'react'
+import { bucketRatio, bucketUsdAmount } from '@/analytics/buckets'
+import { analyticsEvents, analyticsToolIds } from '@/analytics/events'
+import { trackAnalyticsEvent } from '@/analytics/track'
 import { CostAcknowledgment } from '@/components/friction/CostAcknowledgment'
 import { DelayedProgress } from '@/components/friction/DelayedProgress'
 import { formatPercent, formatUsd } from '@/finance/decimal'
@@ -14,6 +17,17 @@ export function RoiResult() {
   const highFeeRatio = result.totalFeesUsd
     .dividedBy(input.principalUsd)
     .greaterThan(0.2)
+  const handleHighFeeAcknowledgment = () => {
+    trackAnalyticsEvent(analyticsEvents.frictionAcknowledged, {
+      fee_ratio_bucket: bucketRatio(
+        result.totalFeesUsd.dividedBy(input.principalUsd).toNumber(),
+      ),
+      friction_type: 'high_fee_ratio',
+      projected_fee_bucket: bucketUsdAmount(result.totalFeesUsd.toNumber()),
+      tool_id: analyticsToolIds.roiCalculator,
+    })
+    setAcknowledged(true)
+  }
 
   return (
     <DelayedProgress delayMs={300} placeholder="Recalculating…">
@@ -22,7 +36,7 @@ export function RoiResult() {
           label="Projected total fee burden"
           formattedCost={formatUsd(result.totalFeesUsd)}
           costPlainDigits={result.totalFeesUsd.toFixed(0).replace('-', '')}
-          onContinue={() => setAcknowledged(true)}
+          onContinue={handleHighFeeAcknowledgment}
         />
       )}
 

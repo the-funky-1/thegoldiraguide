@@ -1,5 +1,8 @@
 'use client'
 
+import { bucketToolInput } from '@/analytics/buckets'
+import { analyticsEvents, analyticsToolIds } from '@/analytics/events'
+import { trackAnalyticsEvent } from '@/analytics/track'
 import type { FeeDragInput } from '@/finance/fee-drag/schema'
 import { useFeeDragStore } from '@/tools/fee-drag/store'
 
@@ -7,6 +10,14 @@ type FieldKey = keyof FeeDragInput
 
 export function FeeDragForm() {
   const { input, setInput, reset } = useFeeDragStore()
+  const trackField = (key: FieldKey, value: number) => {
+    trackAnalyticsEvent(analyticsEvents.toolInputChanged, {
+      field_key: key,
+      tool_id: analyticsToolIds.feeDragAnalyzer,
+      value_bucket: bucketToolInput(key, value),
+    })
+  }
+
   const field = (
     label: string,
     key: FieldKey,
@@ -25,6 +36,7 @@ export function FeeDragForm() {
         onChange={(e) =>
           setInput({ [key]: Number(e.target.value) } as Partial<FeeDragInput>)
         }
+        onBlur={(e) => trackField(key, Number(e.currentTarget.value))}
         className="mt-1 block min-h-touch w-full rounded border border-brand-slate/40 p-2"
         aria-label={label}
       />
@@ -77,7 +89,12 @@ export function FeeDragForm() {
       </fieldset>
       <button
         type="button"
-        onClick={reset}
+        onClick={() => {
+          trackAnalyticsEvent(analyticsEvents.toolReset, {
+            tool_id: analyticsToolIds.feeDragAnalyzer,
+          })
+          reset()
+        }}
         className="inline-flex min-h-touch items-center self-start rounded border border-brand-slate/40 px-4 py-2 text-sm"
       >
         Reset to defaults

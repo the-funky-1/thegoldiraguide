@@ -14,6 +14,10 @@ const ROUTES = [
   '/tools/roi-calculator',
   '/tools/written-estimate-checklist',
   '/tools/live-spot-prices',
+  '/tools/spread-markup-calculator',
+  '/tools/rmd-estimator',
+  '/tools/correlation-matrix',
+  '/privacy',
   '/this-route-does-not-exist',
 ]
 

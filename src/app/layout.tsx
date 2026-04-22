@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: { default: 'The Gold IRA Guide', template: '%s · The Gold IRA Guide' },
   description:
-    'Objective, transparent education on self-directed precious metals IRAs. Owned and operated by Liberty Gold Silver.',
+    'Objective education on self-directed precious metals IRAs, documented costs, and written accountability. Owned and operated by Liberty Gold Silver.',
 }
 
 export default function RootLayout({

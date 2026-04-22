@@ -40,7 +40,7 @@ export const PILLARS: readonly Pillar[] = [
     label: 'Interactive Tools',
     shortLabel: 'Tools',
     summary:
-      'Fee drag analyzer, ROI calculator, live spot prices, and the dealer comparison matrix.',
+      'Fee drag, ROI, spread markup, RMD, correlation, live spot price, and written-estimate tools.',
     order: 4,
   },
   {

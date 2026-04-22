@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { PUBLIC_TOOL_PAGES } from '@/content/tools/public-tools'
 import { PILLARS, articleHref, pillarHref } from '@/lib/site-map'
 import { listArticlesByPillar } from '@/sanity/fetchers'
 
@@ -33,6 +34,11 @@ export async function GET() {
     )
 
     if (pillar.slug === 'tools') {
+      for (const tool of PUBLIC_TOOL_PAGES) {
+        lines.push(
+          `- [${tool.title}](${siteUrl}${articleHref('tools', tool.slug)}.md): ${tool.summary}`,
+        )
+      }
       lines.push('')
       continue
     }

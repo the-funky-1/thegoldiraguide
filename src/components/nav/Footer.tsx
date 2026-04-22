@@ -70,6 +70,11 @@ export function Footer() {
                 Expert authors
               </Link>
             </li>
+            <li>
+              <Link href="/privacy" className="underline underline-offset-2">
+                Privacy and analytics
+              </Link>
+            </li>
           </ul>
         </nav>
         <div>

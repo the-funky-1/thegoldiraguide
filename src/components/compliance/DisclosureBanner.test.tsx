@@ -16,14 +16,15 @@ describe('DisclosureBanner', () => {
     ).toBeInTheDocument()
   })
 
-  it('explicitly states no outbound sales calls and no on-site product sales', () => {
+  it('explicitly states no outbound analytics sales use and no on-site product sales', () => {
     render(<DisclosureBanner />)
     expect(
       screen.getByText(/do not sell products on this site/i),
     ).toBeInTheDocument()
     expect(
-      screen.getByText(/do not capture your data for outbound sales calls/i),
+      screen.getByText(/do not use analytics data for outbound sales calls/i),
     ).toBeInTheDocument()
+    expect(screen.getByText(/privacy policy/i)).toBeInTheDocument()
   })
 
   it('is not visually hidden', () => {

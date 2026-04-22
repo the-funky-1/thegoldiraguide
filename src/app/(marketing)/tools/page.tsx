@@ -41,6 +41,24 @@ const tools: Tool[] = [
     description:
       'Real-time gold, silver, platinum, and palladium spot prices with 10s refresh.',
   },
+  {
+    slug: 'spread-markup-calculator',
+    title: 'Dealer Spread and Markup Calculator',
+    description:
+      'Compare quoted product price against spot value and calculate markup.',
+  },
+  {
+    slug: 'rmd-estimator',
+    title: 'RMD Estimator',
+    description:
+      'Estimate required minimum distributions using IRS table divisors.',
+  },
+  {
+    slug: 'correlation-matrix',
+    title: 'Correlation Matrix',
+    description:
+      'Compare sample return relationships across metals, equities, bonds, and cash.',
+  },
 ]
 
 export default function ToolsLanding() {

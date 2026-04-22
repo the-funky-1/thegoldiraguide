@@ -9,8 +9,9 @@ export default function HomePage() {
           The Gold IRA Guide
         </h1>
         <p className="mt-6 text-lg text-brand-slate">
-          Objective, transparent education on self-directed precious metals
-          IRAs. Owned and operated by Liberty Gold Silver.
+          Objective education on self-directed precious metals IRAs, documented
+          costs, and written accountability. Owned and operated by Liberty Gold
+          Silver.
         </p>
       </section>
       <section className="mx-auto mt-16 grid max-w-screen-xl gap-6 md:grid-cols-2 lg:grid-cols-3">

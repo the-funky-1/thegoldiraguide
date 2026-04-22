@@ -68,6 +68,12 @@ jobs:
       - name: No hard-coded hex colors outside design tokens
         run: pnpm check:no-hex
 
+      - name: Brand voice guard
+        run: pnpm check:brand-voice
+
+      - name: LLM corpus guard
+        run: pnpm check:llms-corpus
+
       - name: Build + bundle size budget
         run: pnpm check:bundle
 

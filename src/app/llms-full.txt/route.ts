@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { PUBLIC_TOOL_PAGES, publicToolMarkdown } from '@/content/tools/public-tools'
 import { PILLARS, articleHref } from '@/lib/site-map'
 import { listArticlesByPillar } from '@/sanity/fetchers'
 import { portableTextToMarkdown } from '@/seo/markdown'
@@ -16,7 +17,12 @@ export async function GET() {
   ]
 
   for (const pillar of PILLARS) {
-    if (pillar.slug === 'tools') continue
+    if (pillar.slug === 'tools') {
+      for (const tool of PUBLIC_TOOL_PAGES) {
+        sections.push(['---', publicToolMarkdown(tool, siteUrl)].join('\n'))
+      }
+      continue
+    }
     try {
       const articles = await listArticlesByPillar<{
         title: string

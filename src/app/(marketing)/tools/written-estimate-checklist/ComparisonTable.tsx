@@ -1,5 +1,8 @@
 'use client'
 
+import { domainFromUrl } from '@/analytics/buckets'
+import { analyticsEvents, analyticsToolIds } from '@/analytics/events'
+import { trackAnalyticsEvent } from '@/analytics/track'
 import type { ComparisonFilters, DealerRow } from '@/finance/comparison/schema'
 import { applyFilters } from '@/finance/comparison/sort-filter'
 import { useComparisonStore } from '@/tools/comparison/store'
@@ -16,6 +19,19 @@ const headers: { key: SortableKey; label: string }[] = [
 function useSort(key: SortableKey) {
   const { filters, setFilters } = useComparisonStore()
   return () => {
+    const sortDir =
+      filters.sortBy === key
+        ? filters.sortDir === 'asc'
+          ? 'desc'
+          : 'asc'
+        : 'asc'
+
+    trackAnalyticsEvent(analyticsEvents.comparisonSortChanged, {
+      sort_by: key,
+      sort_dir: sortDir,
+      tool_id: analyticsToolIds.writtenEstimateChecklist,
+    })
+
     if (filters.sortBy === key) {
       setFilters({ sortDir: filters.sortDir === 'asc' ? 'desc' : 'asc' })
     } else {
@@ -54,6 +70,14 @@ export function ComparisonTable({ dealers }: { dealers: DealerRow[] }) {
                 <a
                   href={r.sourceUrl}
                   rel="noopener external"
+                  onClick={() =>
+                    trackAnalyticsEvent(analyticsEvents.dealerSourceClicked, {
+                      dealer_slug: r.slug,
+                      mandatory_sales_call: r.mandatorySalesCall,
+                      source_domain: domainFromUrl(r.sourceUrl),
+                      tool_id: analyticsToolIds.writtenEstimateChecklist,
+                    })
+                  }
                   className="underline"
                 >
                   verified

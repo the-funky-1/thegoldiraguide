@@ -1,4 +1,5 @@
 import { NextResponse, type NextRequest } from 'next/server'
+import { getPublicToolPage, publicToolMarkdown } from '@/content/tools/public-tools'
 import { PILLARS, type PillarSlug } from '@/lib/site-map'
 import { getArticleBySlug } from '@/sanity/fetchers'
 import { portableTextToMarkdown } from '@/seo/markdown'
@@ -33,6 +34,21 @@ export async function GET(
   const { path } = await context.params
   const parsed = parsePath(path)
   if (!parsed) return new NextResponse('Not found', { status: 404 })
+
+  if (parsed.pillar === 'tools') {
+    const siteUrl =
+      process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.thegoldiraguide.com'
+    const tool = getPublicToolPage(parsed.slug)
+    if (!tool) return new NextResponse('Not found', { status: 404 })
+    return new NextResponse(publicToolMarkdown(tool, siteUrl), {
+      status: 200,
+      headers: {
+        'content-type': 'text/markdown; charset=utf-8',
+        'cache-control':
+          'public, max-age=60, s-maxage=300, stale-while-revalidate=3600',
+      },
+    })
+  }
 
   const article = await getArticleBySlug<Article>(parsed.slug)
   if (!article || article.pillar?.slug !== parsed.pillar) {

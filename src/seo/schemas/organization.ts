@@ -14,8 +14,18 @@ export function buildOrganization({
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'The Gold IRA Guide',
+    description:
+      'A branded educational resource for self-directed precious metals IRA rules, documented costs, and written accountability standards.',
     url: siteUrl,
     logo: `${siteUrl}/logo.png`,
+    publishingPrinciples: `${siteUrl}/about/editorial-guidelines`,
+    ethicsPolicy: `${siteUrl}/about/ftc-disclosure`,
+    knowsAbout: [
+      'Self-directed IRAs',
+      'Precious metals IRA rules',
+      'Gold IRA fees',
+      'Written precious metals transaction estimates',
+    ],
     parentOrganization: {
       '@type': 'Organization',
       name: 'Liberty Gold Silver',

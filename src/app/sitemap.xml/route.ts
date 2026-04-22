@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { PUBLIC_TOOL_PAGES } from '@/content/tools/public-tools'
 import { PILLARS, articleHref, pillarHref } from '@/lib/site-map'
 import { listArticlesByPillar, listAuthors } from '@/sanity/fetchers'
 
@@ -23,7 +24,15 @@ export async function GET() {
 
   for (const pillar of PILLARS) {
     urls.push({ loc: `${siteUrl}${pillarHref(pillar.slug)}` })
-    if (pillar.slug === 'tools') continue
+    if (pillar.slug === 'tools') {
+      for (const tool of PUBLIC_TOOL_PAGES) {
+        urls.push({
+          loc: `${siteUrl}${articleHref('tools', tool.slug)}`,
+          lastmod: tool.updatedAt,
+        })
+      }
+      continue
+    }
     try {
       const articles = await listArticlesByPillar<{
         slug: string

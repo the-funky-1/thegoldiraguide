@@ -1,5 +1,8 @@
 'use client'
 
+import { bucketToolInput, bucketUsdAmount } from '@/analytics/buckets'
+import { analyticsEvents, analyticsToolIds } from '@/analytics/events'
+import { trackAnalyticsEvent } from '@/analytics/track'
 import { SpotPriceInline } from '@/components/market/SpotPriceInline'
 import type { RoiInput } from '@/finance/roi/schema'
 import { useSpotPrice } from '@/market/use-spot-price'
@@ -16,12 +19,25 @@ function PrefillFromGold({
 }) {
   const { data } = useSpotPrice('gold')
   if (!data) return null
+  const prefilledPrincipal = Math.round(
+    data.pricePerOunceUsd * OUNCES_DEFAULT,
+  )
+
+  const handlePrefill = () => {
+    trackAnalyticsEvent(analyticsEvents.toolPrefillUsed, {
+      amount_bucket: bucketUsdAmount(prefilledPrincipal),
+      metal: 'gold',
+      ounces: OUNCES_DEFAULT,
+      source: 'live_spot_price',
+      tool_id: analyticsToolIds.roiCalculator,
+    })
+    onPrefill(prefilledPrincipal)
+  }
+
   return (
     <button
       type="button"
-      onClick={() =>
-        onPrefill(Math.round(data.pricePerOunceUsd * OUNCES_DEFAULT))
-      }
+      onClick={handlePrefill}
       className="inline-flex min-h-touch items-center gap-1 rounded border border-brand-slate/40 px-4 py-2 text-sm"
     >
       <span>Prefill for {OUNCES_DEFAULT} oz of gold at </span>
@@ -32,6 +48,14 @@ function PrefillFromGold({
 
 export function RoiForm() {
   const { input, setInput, reset } = useRoiStore()
+  const trackField = (key: FieldKey, value: number) => {
+    trackAnalyticsEvent(analyticsEvents.toolInputChanged, {
+      field_key: key,
+      tool_id: analyticsToolIds.roiCalculator,
+      value_bucket: bucketToolInput(key, value),
+    })
+  }
+
   const field = (
     label: string,
     key: FieldKey,
@@ -50,6 +74,7 @@ export function RoiForm() {
         onChange={(e) =>
           setInput({ [key]: Number(e.target.value) } as Partial<RoiInput>)
         }
+        onBlur={(e) => trackField(key, Number(e.currentTarget.value))}
         className="mt-1 block min-h-touch w-full rounded border border-brand-slate/40 p-2"
         aria-label={label}
       />
@@ -84,7 +109,12 @@ export function RoiForm() {
         {field('Annual fees (USD)', 'annualFeesUsd', '1', '0', '10000')}
         <button
           type="button"
-          onClick={reset}
+          onClick={() => {
+            trackAnalyticsEvent(analyticsEvents.toolReset, {
+              tool_id: analyticsToolIds.roiCalculator,
+            })
+            reset()
+          }}
           className="inline-flex min-h-touch items-center self-start rounded border border-brand-slate/40 px-4 py-2 text-sm"
         >
           Reset to defaults

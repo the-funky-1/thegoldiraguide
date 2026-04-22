@@ -40,6 +40,7 @@ export const articleBySlugQuery = groq`
       }
     },
     citations[]{ _type, label, url, accessed },
+    schemaJsonLdType,
     seo
   }
 `
@@ -100,6 +101,7 @@ export const articlesByPillarQuery = groq`
     summary,
     publishedAt,
     updatedAt,
+    schemaJsonLdType,
     "pillar": pillar->{ "slug": slug.current }
   }
 `

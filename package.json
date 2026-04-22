@@ -20,13 +20,17 @@
     "check:jsonld": "tsx scripts/validate-json-ld.ts",
     "check:bundle": "tsx scripts/check-bundle-budget.ts",
     "check:no-hex": "tsx scripts/check-no-hex-in-components.ts",
+    "check:brand-voice": "tsx scripts/check-brand-voice.ts",
+    "check:llms-corpus": "tsx scripts/check-llms-corpus.ts",
     "seed:strategic": "tsx scripts/seed-strategic-content.ts",
     "seed:strategic:prerequisites": "tsx scripts/seed-strategic-prerequisites.ts",
     "generate:style-hashes": "pnpm build && tsx scripts/generate-style-hashes.ts",
-    "check:all": "pnpm lint && pnpm typecheck && pnpm test && pnpm check:disclosure && pnpm check:no-hex && pnpm build"
+    "check:all": "pnpm lint && pnpm typecheck && pnpm test && pnpm check:disclosure && pnpm check:no-hex && pnpm check:brand-voice && pnpm check:llms-corpus && pnpm build"
   },
   "dependencies": {
+    "@amplitude/analytics-browser": "^2.41.0",
     "@hookform/resolvers": "^5.2.2",
+    "@next/third-parties": "^16.2.4",
     "@portabletext/react": "^6.0.3",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-navigation-menu": "^1.2.14",
@@ -35,6 +39,7 @@
     "@sanity/client": "^7.21.0",
     "@sanity/image-url": "^1",
     "@sanity/vision": "^3.99.0",
+    "@vercel/analytics": "^2.0.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
