@@ -24,7 +24,7 @@ export const PILLARS: readonly Pillar[] = [
     label: 'Written Accountability',
     shortLabel: 'Accountability',
     summary:
-      'Our institutional standard: every fee, spread, storage model, and transaction parameter documented in a binding written estimate before a client commits capital.',
+      'Written estimates, fee disclosures, and how to verify what a dealer promises before you move money.',
     order: 2,
   },
   {
@@ -45,10 +45,10 @@ export const PILLARS: readonly Pillar[] = [
   },
   {
     slug: 'about',
-    label: 'Institutional Accountability',
+    label: 'About',
     shortLabel: 'About',
     summary:
-      'Liberty Gold Silver ownership, editorial guidelines, FTC disclosure, and expert author biographies.',
+      'Editorial guidelines, expert author biographies, FTC disclosure, and the ownership relationship with Liberty Gold Silver.',
     order: 5,
   },
 ] as const
