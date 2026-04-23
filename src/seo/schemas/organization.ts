@@ -15,7 +15,7 @@ export function buildOrganization({
     '@type': 'Organization',
     name: 'The Gold IRA Guide',
     description:
-      'A branded educational resource for self-directed precious metals IRA rules, documented costs, and written accountability standards.',
+      'An independent educational reference on self-directed precious metals IRAs — rules, costs, and documented fee structures. Owned by Liberty Gold Silver.',
     url: siteUrl,
     logo: `${siteUrl}/logo.png`,
     publishingPrinciples: `${siteUrl}/about/editorial-guidelines`,

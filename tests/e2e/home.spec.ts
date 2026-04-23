@@ -12,7 +12,7 @@ test('home page renders the canonical H1 and pillar cards', async ({
     'Written Accountability',
     'Precious Metals Economics',
     'Interactive Tools',
-    'Institutional Accountability',
+    'About',
   ]) {
     await expect(main.getByRole('link', { name: label })).toBeVisible()
   }

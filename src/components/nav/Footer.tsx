@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { OwnershipLockup } from '@/components/brand/OwnershipLockup'
 import { PILLARS, pillarHref } from '@/lib/site-map'
 
 export function Footer() {
@@ -12,9 +13,11 @@ export function Footer() {
         <div>
           <p className="font-serif text-lg">The Gold IRA Guide</p>
           <p className="mt-2 text-sm text-brand-platinum/80">
-            Owned and operated by Liberty Gold Silver. Educational content only;
-            not financial advice.
+            Educational content only; not financial advice.
           </p>
+          <div className="mt-4">
+            <OwnershipLockup tone="dark" />
+          </div>
         </div>
         <nav aria-label="Footer pillars">
           <h2 className="text-sm font-semibold uppercase tracking-wide text-brand-gold">

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { Breadcrumbs } from '@/components/nav/Breadcrumbs'
 
 export const metadata: Metadata = {
@@ -19,11 +20,16 @@ export default function PrivacyPage() {
           Privacy and Analytics
         </h1>
         <p className="mt-4 text-lg text-brand-slate">
-          The Gold IRA Guide is an educational site owned and operated by Liberty
-          Gold Silver. We use analytics to understand which educational pages,
-          calculators, and comparison tools need improvement. We do not sell
-          products on this site, and analytics activity is not used for outbound
-          sales calls.
+          This page describes how The Gold IRA Guide uses analytics. Analytics
+          data tells us which pages, calculators, and comparison tools readers
+          find useful or confusing so we can improve them. No products are sold
+          on this site, and analytics data is not used for outbound sales calls.
+          For the material-connection disclosure between this site and its owner
+          Liberty Gold Silver, see the{' '}
+          <Link href="/about/ftc-disclosure" className="underline underline-offset-2">
+            full FTC disclosure
+          </Link>
+          .
         </p>
 
         <section className="mt-10 space-y-4">
@@ -55,12 +61,11 @@ export default function PrivacyPage() {
         </section>
 
         <section className="mt-10 space-y-4">
-          <h2 className="font-serif text-2xl">Accountability standard</h2>
+          <h2 className="font-serif text-2xl">Analytics use</h2>
           <p>
-            The operational standard remains written accountability. Every cost,
-            fee, spread, storage model, and transaction parameter must be
-            documented in a binding written estimate before a client commits
-            capital.
+            Analytics data collected on this site is used to improve editorial
+            content — what readers look up, which pages need clarification,
+            which tools see use. It is not used for outbound sales outreach.
           </p>
         </section>
       </article>

@@ -10,6 +10,8 @@ const SCANNED_GLOBS = [
   'src/app/**/*.{ts,tsx}',
   'src/components/**/*.{ts,tsx}',
   'src/content/strategic/**/*.{ts,tsx}',
+  'src/content/tools/**/*.{ts,tsx}',
+  'src/seo/**/*.{ts,tsx}',
 ] as const
 
 const BANNED_PHRASES = [
@@ -23,11 +25,16 @@ const BANNED_PHRASES = [
   'predatory',
   'hidden fees',
   'scam',
+  // LGS-promotional phrases that must not appear outside /about/ content.
+  'binding written estimate',
+  'institutional standard',
+  'commits capital',
+  'owned and operated by liberty gold silver',
 ] as const
 
 const ALLOWED_PREFIXES = [
   'src/components/charts/',
-  'src/content/strategic/about/accountability-standard',
+  'src/content/strategic/about/',
 ] as const
 
 export function findBrandVoiceViolations(
@@ -35,6 +42,7 @@ export function findBrandVoiceViolations(
   source: string,
 ): BrandVoiceViolation[] {
   if (ALLOWED_PREFIXES.some((prefix) => file.startsWith(prefix))) return []
+  if (file.endsWith('.test.ts') || file.endsWith('.test.tsx')) return []
 
   const violations: BrandVoiceViolation[] = []
   const lines = source.split('\n')

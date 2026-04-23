@@ -8,6 +8,6 @@ for (const route of ROUTES) {
     const region = page.getByRole('region', { name: /ftc disclosure/i })
     await expect(region).toBeVisible()
     await expect(region).toContainText('Liberty Gold Silver')
-    await expect(region).toContainText('do not sell products on this site')
+    await expect(region).toContainText('No products are sold on this site')
   })
 }

@@ -22,7 +22,7 @@ export async function GET() {
   const lines: string[] = [
     '# The Gold IRA Guide',
     '',
-    '> Educational content on self-directed precious metals IRAs. Owned and operated by Liberty Gold Silver. Our institutional standard is accountability: every cost, fee, and transaction parameter is documented in a binding written estimate before a client commits capital.',
+    '> Educational content on self-directed precious metals IRAs. Owned by Liberty Gold Silver. No products are sold on this site. See /about/ftc-disclosure for the full material-connection disclosure and /about/editorial-guidelines for how articles are written and reviewed.',
     '',
   ]
 
