@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { BRAND_COLORS } from '@/design/tokens'
 
 interface OwnershipLockupProps {
   tone?: 'light' | 'dark'
@@ -13,7 +14,7 @@ function LgsWordmark({ className }: { className?: string }) {
       focusable="false"
       className={className}
     >
-      <rect x="0" y="10" width="4" height="4" fill="#C9A34E" />
+      <rect x="0" y="10" width="4" height="4" fill={BRAND_COLORS.brandGold} />
       <text
         x="10"
         y="17"
