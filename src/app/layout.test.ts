@@ -9,7 +9,9 @@ vi.mock('next/font/google', () => ({
 }))
 
 // next/link is not available in Vitest's Node environment.
-vi.mock('next/link', () => ({ default: ({ href, children }: { href: string; children?: unknown }) => children }))
+vi.mock('next/link', () => ({
+  default: ({ children }: { href: string; children?: unknown }) => children,
+}))
 
 import { metadata } from './layout'
 
