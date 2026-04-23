@@ -40,6 +40,7 @@ export function findBrandVoiceViolations(
   source: string,
 ): BrandVoiceViolation[] {
   if (ALLOWED_PREFIXES.some((prefix) => file.startsWith(prefix))) return []
+  if (file.endsWith('.test.ts') || file.endsWith('.test.tsx')) return []
 
   const violations: BrandVoiceViolation[] = []
   const lines = source.split('\n')

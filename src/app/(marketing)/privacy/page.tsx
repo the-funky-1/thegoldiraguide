@@ -55,12 +55,11 @@ export default function PrivacyPage() {
         </section>
 
         <section className="mt-10 space-y-4">
-          <h2 className="font-serif text-2xl">Accountability standard</h2>
+          <h2 className="font-serif text-2xl">Analytics use</h2>
           <p>
-            The operational standard remains written accountability. Every cost,
-            fee, spread, storage model, and transaction parameter must be
-            documented in a binding written estimate before a client commits
-            capital.
+            Analytics data collected on this site is used to improve editorial
+            content — what readers look up, which pages need clarification,
+            which tools see use. It is not used for outbound sales outreach.
           </p>
         </section>
       </article>

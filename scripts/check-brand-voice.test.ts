@@ -47,6 +47,21 @@ describe('findBrandVoiceViolations', () => {
     expect(violations).toEqual([])
   })
 
+  it('allows banned phrases inside *.test.ts and *.test.tsx files (negative assertions)', () => {
+    expect(
+      findBrandVoiceViolations(
+        'src/components/compliance/DisclosureBanner.test.tsx',
+        "expect(region.textContent).not.toMatch(/binding written estimate/i)",
+      ),
+    ).toEqual([])
+    expect(
+      findBrandVoiceViolations(
+        'src/lib/some.test.ts',
+        "expect(x).not.toContain('institutional standard')",
+      ),
+    ).toEqual([])
+  })
+
   it('still flags the existing hyperbole phrases (regression)', () => {
     const violations = findBrandVoiceViolations(
       'src/app/(marketing)/page.tsx',

@@ -33,7 +33,7 @@ const tools: Tool[] = [
     slug: 'written-estimate-checklist',
     title: 'Written Estimate Checklist',
     description:
-      'The itemized standard documented in every binding written estimate we issue.',
+      'The line items a complete written estimate should document before you commit to a dealer.',
   },
   {
     slug: 'live-spot-prices',
