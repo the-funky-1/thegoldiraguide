@@ -10,13 +10,15 @@ describe('OwnershipLockup', () => {
     ).toBeInTheDocument()
   })
 
-  it('renders the Liberty Gold Silver wordmark with an accessible image', () => {
-    render(<OwnershipLockup />)
-    const img = screen.getByRole('img', { name: /liberty gold silver/i })
-    expect(img).toBeInTheDocument()
+  it('renders the Liberty Gold Silver wordmark as inline SVG, hidden from AT', () => {
+    const { container } = render(<OwnershipLockup />)
+    const svg = container.querySelector('svg')
+    expect(svg).not.toBeNull()
+    expect(svg).toHaveAttribute('aria-hidden', 'true')
+    expect(svg?.textContent).toMatch(/liberty gold silver/i)
   })
 
-  it('links the lockup to the /about/liberty-gold-silver page', () => {
+  it('links the lockup to the /about/liberty-gold-silver page with an accessible name', () => {
     render(<OwnershipLockup />)
     const link = screen.getByRole('link', {
       name: /liberty gold silver/i,
