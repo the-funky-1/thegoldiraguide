@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: { default: 'The Gold IRA Guide', template: '%s · The Gold IRA Guide' },
   description:
-    'Objective education on self-directed precious metals IRAs, documented costs, and written accountability. Owned and operated by Liberty Gold Silver.',
+    'Independent reference on self-directed precious metals IRAs — rules, costs, and the numbers behind them. An educational project by Liberty Gold Silver.',
 }
 
 export default function RootLayout({
@@ -29,8 +29,8 @@ export default function RootLayout({
       <body>
         <JsonLd data={buildOrganization({ siteUrl })} />
         <JsonLd data={buildWebSite({ siteUrl })} />
-        <DisclosureBanner />
         {children}
+        <DisclosureBanner />
       </body>
     </html>
   )
