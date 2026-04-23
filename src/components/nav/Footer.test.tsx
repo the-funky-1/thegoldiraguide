@@ -35,4 +35,19 @@ describe('Footer', () => {
     const year = new Date().getFullYear().toString()
     expect(screen.getByText(new RegExp(year))).toBeInTheDocument()
   })
+
+  it('renders the OwnershipLockup in the footer (ownership as imprint, not as prose)', () => {
+    render(<Footer />)
+    expect(screen.getByTestId('ownership-lockup')).toBeInTheDocument()
+    expect(
+      screen.queryByText(/Owned and operated by Liberty Gold Silver\./i),
+    ).not.toBeInTheDocument()
+  })
+
+  it('keeps the "not financial advice" educational disclaimer', () => {
+    render(<Footer />)
+    expect(
+      screen.getByText(/Educational content only; not financial advice\./i),
+    ).toBeInTheDocument()
+  })
 })
