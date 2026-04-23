@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { OwnershipLockup } from '@/components/brand/OwnershipLockup'
 import { PILLARS, pillarHref } from '@/lib/site-map'
 
 export default function HomePage() {
@@ -8,11 +9,16 @@ export default function HomePage() {
         <h1 className="font-serif text-5xl font-bold tracking-tight">
           The Gold IRA Guide
         </h1>
-        <p className="mt-6 text-lg text-brand-slate">
-          Objective education on self-directed precious metals IRAs, documented
-          costs, and written accountability. Owned and operated by Liberty Gold
-          Silver.
+        <p
+          data-testid="home-subtitle"
+          className="mt-6 text-lg text-brand-slate"
+        >
+          An independent reference on self-directed precious metals IRAs —
+          the rules, the costs, and the numbers that move them.
         </p>
+        <div className="mt-8 flex justify-center">
+          <OwnershipLockup tone="light" />
+        </div>
       </section>
       <section className="mx-auto mt-16 grid max-w-screen-xl gap-6 md:grid-cols-2 lg:grid-cols-3">
         {PILLARS.map((p) => (
