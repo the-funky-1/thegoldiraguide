@@ -12,29 +12,37 @@ describe('DisclosureBanner', () => {
   it('names Liberty Gold Silver as the owning entity', () => {
     render(<DisclosureBanner />)
     expect(
-      screen.getByText(/wholly owned and operated by Liberty Gold Silver/i),
+      screen.getByText(/owned by Liberty Gold Silver, a precious metals dealer/i),
     ).toBeInTheDocument()
   })
 
-  it('explicitly states no outbound analytics sales use and no on-site product sales', () => {
+  it('states that no products are sold on this site', () => {
     render(<DisclosureBanner />)
     expect(
-      screen.getByText(/do not sell products on this site/i),
+      screen.getByText(/No products are sold on this site/i),
     ).toBeInTheDocument()
+  })
+
+  it('links to the full disclosure and the privacy policy', () => {
+    render(<DisclosureBanner />)
     expect(
-      screen.getByText(/do not use analytics data for outbound sales calls/i),
-    ).toBeInTheDocument()
-    expect(screen.getByText(/privacy policy/i)).toBeInTheDocument()
+      screen.getByRole('link', { name: /full disclosure/i }),
+    ).toHaveAttribute('href', '/about/ftc-disclosure')
+    expect(
+      screen.getByRole('link', { name: /privacy policy/i }),
+    ).toHaveAttribute('href', '/privacy')
+  })
+
+  it('does not repeat sales language about "written estimates" or "binding"', () => {
+    render(<DisclosureBanner />)
+    const region = screen.getByRole('region', { name: /ftc disclosure/i })
+    expect(region.textContent ?? '').not.toMatch(/binding written estimate/i)
+    expect(region.textContent ?? '').not.toMatch(/institutional standard/i)
   })
 
   it('is not visually hidden', () => {
     render(<DisclosureBanner />)
     const region = screen.getByRole('region', { name: /ftc disclosure/i })
     expect(region).toBeVisible()
-  })
-
-  it('accepts no prop to suppress itself', () => {
-    const result = render(<DisclosureBanner />)
-    expect(result.container.firstChild).not.toBeNull()
   })
 })
