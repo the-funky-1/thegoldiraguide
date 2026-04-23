@@ -17,6 +17,8 @@ Plans must be shipped in order. Later plans assume earlier ones are merged.
 | 7 | Data Visualization | [`2026-04-19-data-visualization.md`](./2026-04-19-data-visualization.md) | `v0.7.0-visualization` |
 | 8 | Design System & A11y Polish | [`2026-04-19-design-system-a11y-polish.md`](./2026-04-19-design-system-a11y-polish.md) | `v1.0.0` |
 | 9 | Strategic Content Authoring | [`2026-04-19-strategic-content-authoring.md`](./2026-04-19-strategic-content-authoring.md) | `v1.1.0-strategic-content` |
+| 10 | Interactive Calculators | [`2026-04-22-interactive-calculators.md`](./2026-04-22-interactive-calculators.md) | `v1.2.0-calculators` |
+| 11 | Ownership Disclosure & Editorial Tone | [`2026-04-22-ownership-disclosure-tone.md`](./2026-04-22-ownership-disclosure-tone.md) | `v1.3.0-ownership-tone` |
 
 ## Dependency graph
 
