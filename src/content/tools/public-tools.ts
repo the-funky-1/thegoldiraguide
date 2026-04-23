@@ -82,7 +82,7 @@ export const PUBLIC_TOOL_PAGES: readonly PublicToolPage[] = [
     updatedAt: '2026-04-22',
     markdown: [
       '## Accountability Standard',
-      'Every setup fee, annual admin fee, storage model, purchase spread, liquidation spread, minimum investment, and material condition should be documented in a written estimate before a client commits capital.',
+      'Every setup fee, annual admin fee, storage model, purchase spread, liquidation spread, minimum investment, and material condition should be documented in a written estimate before you commit to a dealer.',
       '',
       '## Comparison Method',
       'The page filters and sorts source-backed fee schedule rows so readers can compare documented terms at their own pace.',

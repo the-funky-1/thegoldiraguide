@@ -10,6 +10,8 @@ const SCANNED_GLOBS = [
   'src/app/**/*.{ts,tsx}',
   'src/components/**/*.{ts,tsx}',
   'src/content/strategic/**/*.{ts,tsx}',
+  'src/content/tools/**/*.{ts,tsx}',
+  'src/seo/**/*.{ts,tsx}',
 ] as const
 
 const BANNED_PHRASES = [
