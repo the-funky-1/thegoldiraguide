@@ -5,7 +5,7 @@ export function PillarCard({ pillar }: { pillar: Pillar }) {
   return (
     <Link
       href={pillarHref(pillar.slug)}
-      className="group block h-full rounded-lg border border-brand-slate/20 bg-bg-surface p-6 shadow-sm transition-shadow hover:border-brand-gold hover:shadow-md"
+      className="block h-full rounded-lg border border-brand-slate/20 bg-bg-surface p-6 shadow-sm transition-shadow hover:border-brand-gold hover:shadow-md"
     >
       <p
         data-testid="pillar-eyebrow"
