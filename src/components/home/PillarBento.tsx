@@ -13,8 +13,8 @@ export function PillarBento() {
       aria-label="Pillars"
       className="mx-auto max-w-screen-xl px-6 py-16"
     >
-      <div className="grid gap-6 md:grid-cols-3 md:grid-rows-2">
-        <div className="md:col-span-2 md:row-span-2">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:grid-rows-4">
+        <div className="md:col-span-2 md:row-span-4">
           <FeaturedPillarCard pillar={featured} />
         </div>
         {others.map((p) => (
