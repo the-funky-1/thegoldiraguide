@@ -72,9 +72,7 @@ function main(): void {
 
   console.error('[brand-voice] Found banned public-copy phrases:')
   for (const violation of violations) {
-    console.error(
-      `  ${violation.file}:${violation.line}: ${violation.phrase}`,
-    )
+    console.error(`  ${violation.file}:${violation.line}: ${violation.phrase}`)
   }
   process.exit(1)
 }

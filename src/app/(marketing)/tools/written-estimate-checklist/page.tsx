@@ -11,7 +11,7 @@ import { ComparisonTable } from './ComparisonTable'
 export const metadata: Metadata = {
   title: 'Written Estimate Checklist',
   description:
-    'The line items a complete written estimate should document. Use this checklist to evaluate any dealer\'s paperwork before you commit.',
+    "The line items a complete written estimate should document. Use this checklist to evaluate any dealer's paperwork before you commit.",
   alternates: { canonical: '/tools/written-estimate-checklist' },
 }
 
@@ -71,9 +71,9 @@ export default async function WrittenEstimateChecklistPage() {
       </h1>
       <p className="mt-4 max-w-2xl text-lg text-brand-slate">
         The line items a complete written estimate should document. Use this
-        checklist to evaluate any dealer&apos;s paperwork before you commit. Each
-        value should be verifiable against a source document and binding upon
-        issuance.
+        checklist to evaluate any dealer&apos;s paperwork before you commit.
+        Each value should be verifiable against a source document and binding
+        upon issuance.
       </p>
 
       <section className="mt-10">

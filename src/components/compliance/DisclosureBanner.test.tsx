@@ -12,7 +12,9 @@ describe('DisclosureBanner', () => {
   it('names Liberty Gold Silver as the owning entity', () => {
     render(<DisclosureBanner />)
     expect(
-      screen.getByText(/owned by Liberty Gold Silver, a precious metals dealer/i),
+      screen.getByText(
+        /owned by Liberty Gold Silver, a precious metals dealer/i,
+      ),
     ).toBeInTheDocument()
   })
 

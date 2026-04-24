@@ -163,7 +163,10 @@ export function getPublicToolPage(slug: string): PublicToolPage | undefined {
   return bySlug.get(slug)
 }
 
-export function publicToolMarkdown(tool: PublicToolPage, siteUrl: string): string {
+export function publicToolMarkdown(
+  tool: PublicToolPage,
+  siteUrl: string,
+): string {
   return [
     `# ${tool.title}`,
     '',
