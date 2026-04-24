@@ -5,7 +5,15 @@ import { FEATURED_PILLAR_SLUG } from './home-config'
 
 export function PillarBento() {
   const featured = pillarBySlug(FEATURED_PILLAR_SLUG)
-  if (!featured) return null
+  if (!featured) {
+    // FEATURED_PILLAR_SLUG is typed as PillarSlug, so this branch is only
+    // reachable via type widening or runtime misconfiguration. Fail loudly
+    // in the logs rather than render an empty pillars region.
+    console.error(
+      `[PillarBento] FEATURED_PILLAR_SLUG="${FEATURED_PILLAR_SLUG}" did not resolve to a real pillar`,
+    )
+    return null
+  }
   const others = PILLARS.filter((p) => p.slug !== FEATURED_PILLAR_SLUG)
 
   return (

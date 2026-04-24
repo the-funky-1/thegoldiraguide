@@ -6,7 +6,7 @@ vi.mock('@/market/use-spot-price', () => ({
   useSpotPrice: (metal: string) => ({
     data: {
       metal,
-      pricePerOunceUsd: '2402.15',
+      pricePerOunceUsd: 2402.15,
       change24hPercent: 0.6,
     },
     error: null,

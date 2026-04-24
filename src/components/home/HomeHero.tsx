@@ -11,7 +11,10 @@ export function HomeHero() {
   const featuredHref = featured ? pillarHref(featured.slug) : '/ira-rules'
 
   return (
-    <section className="relative overflow-hidden border-b border-brand-slate/20 bg-bg-canvas">
+    <section
+      aria-label="Site introduction"
+      className="relative overflow-hidden border-b border-brand-slate/20 bg-bg-canvas"
+    >
       <HeroBackdrop />
       <div className="relative mx-auto grid max-w-screen-xl gap-10 px-6 py-20 lg:grid-cols-[3fr_2fr] lg:items-center lg:py-24">
         <div>

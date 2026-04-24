@@ -4,7 +4,7 @@ import { HomeHero } from './HomeHero'
 
 vi.mock('@/market/use-spot-price', () => ({
   useSpotPrice: (metal: string) => ({
-    data: { metal, pricePerOunceUsd: '2402.15', change24hPercent: 0.6 },
+    data: { metal, pricePerOunceUsd: 2402.15, change24hPercent: 0.6 },
     error: null,
     isLoading: false,
     stale: false,
@@ -59,6 +59,13 @@ describe('HomeHero', () => {
     render(<HomeHero />)
     expect(
       screen.getByRole('complementary', { name: /market pulse/i }),
+    ).toBeInTheDocument()
+  })
+
+  it('exposes the hero as a named region landmark', () => {
+    render(<HomeHero />)
+    expect(
+      screen.getByRole('region', { name: /site introduction/i }),
     ).toBeInTheDocument()
   })
 })
