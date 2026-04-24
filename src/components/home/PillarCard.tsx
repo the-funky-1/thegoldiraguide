@@ -9,7 +9,7 @@ export function PillarCard({ pillar }: { pillar: Pillar }) {
     >
       <p
         data-testid="pillar-eyebrow"
-        className="text-xs font-semibold uppercase tracking-wider text-brand-gold"
+        className="text-xs font-semibold uppercase tracking-wider text-brand-navy"
       >
         {pillar.shortLabel}
       </p>

@@ -61,7 +61,7 @@ export function MarketPulseCard() {
       aria-label="Market pulse"
       className="rounded-lg border border-brand-slate/20 bg-bg-surface p-6 shadow-md"
     >
-      <p className="text-xs font-semibold uppercase tracking-wider text-brand-gold">
+      <p className="text-xs font-semibold uppercase tracking-wider text-brand-navy">
         Market pulse
       </p>
       <p className="mt-1 font-serif text-lg text-brand-navy">

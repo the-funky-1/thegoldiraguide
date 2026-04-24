@@ -20,7 +20,7 @@ export function HomeHero() {
         <div>
           <p
             data-testid="hero-eyebrow"
-            className="text-xs font-semibold uppercase tracking-wider text-brand-gold"
+            className="text-xs font-semibold uppercase tracking-wider text-brand-navy"
           >
             Independent reference · Updated weekly
           </p>
