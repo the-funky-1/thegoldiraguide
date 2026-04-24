@@ -5,9 +5,7 @@ import { OwnershipLockup } from './OwnershipLockup'
 describe('OwnershipLockup', () => {
   it('renders the "An educational project by" preamble', () => {
     render(<OwnershipLockup />)
-    expect(
-      screen.getByText(/an educational project by/i),
-    ).toBeInTheDocument()
+    expect(screen.getByText(/an educational project by/i)).toBeInTheDocument()
   })
 
   it('renders the Liberty Gold Silver wordmark as inline SVG, hidden from AT', () => {
