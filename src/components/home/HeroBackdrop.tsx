@@ -12,8 +12,16 @@ export function HeroBackdrop() {
     >
       <defs>
         <radialGradient id="hero-highlight" cx="25%" cy="35%" r="60%">
-          <stop offset="0%" stopColor={BRAND_COLORS.brandGold} stopOpacity="0.08" />
-          <stop offset="60%" stopColor={BRAND_COLORS.brandPlatinum} stopOpacity="0" />
+          <stop
+            offset="0%"
+            stopColor={BRAND_COLORS.brandGold}
+            stopOpacity="0.08"
+          />
+          <stop
+            offset="60%"
+            stopColor={BRAND_COLORS.brandPlatinum}
+            stopOpacity="0"
+          />
         </radialGradient>
         <pattern
           id="hero-guilloche"

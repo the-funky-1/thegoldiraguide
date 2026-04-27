@@ -27,7 +27,9 @@ describe('PillarCard', () => {
 
   it('wraps the whole card in a link to the pillar route', () => {
     render(<PillarCard pillar={pillar} />)
-    const link = screen.getByRole('link', { name: new RegExp(pillar.label, 'i') })
+    const link = screen.getByRole('link', {
+      name: new RegExp(pillar.label, 'i'),
+    })
     expect(link).toHaveAttribute('href', '/ira-rules')
   })
 })

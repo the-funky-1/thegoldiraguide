@@ -6,9 +6,7 @@ import { PillarBento } from './PillarBento'
 describe('PillarBento', () => {
   it('renders a region with an accessible name', () => {
     render(<PillarBento />)
-    expect(
-      screen.getByRole('region', { name: /pillars/i }),
-    ).toBeInTheDocument()
+    expect(screen.getByRole('region', { name: /pillars/i })).toBeInTheDocument()
   })
 
   it('renders exactly one FeaturedPillarCard', () => {

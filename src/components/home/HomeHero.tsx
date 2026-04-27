@@ -31,8 +31,8 @@ export function HomeHero() {
             data-testid="home-subtitle"
             className="mt-6 max-w-xl text-body-lg text-brand-slate"
           >
-            An independent reference on self-directed precious metals IRAs —
-            the rules, the costs, and the numbers that move them.
+            An independent reference on self-directed precious metals IRAs — the
+            rules, the costs, and the numbers that move them.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
