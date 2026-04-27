@@ -20,8 +20,8 @@ export const pillar = defineType({
     defineField({
       name: 'order',
       type: 'number',
-      description: '1..5 — controls nav order',
-      validation: (r) => r.required().integer().min(1).max(5),
+      description: '1..9 — controls nav order',
+      validation: (r) => r.required().integer().min(1).max(9),
     }),
     defineField({ name: 'seo', type: 'seo' }),
   ],

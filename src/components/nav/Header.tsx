@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { LiveSpotPriceTicker } from '@/components/market/LiveSpotPriceTicker'
 import { PillarNavigationMenu } from './PillarNavigationMenu'
 import { SkipToContentLink } from './SkipToContentLink'
@@ -15,8 +16,9 @@ export function Header() {
         <div className="mx-auto flex h-16 max-w-screen-xl items-center justify-between px-6">
           <Link
             href="/"
-            className="font-serif text-xl font-bold tracking-tight text-brand-navy"
+            className="flex items-center gap-2 font-serif text-xl font-bold tracking-tight text-brand-navy"
           >
+            <Image src="/logo.png" alt="The Gold IRA Guide Logo" width={40} height={40} className="object-contain" />
             The Gold IRA Guide
           </Link>
           <PillarNavigationMenu />

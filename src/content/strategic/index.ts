@@ -31,6 +31,11 @@ import { seed as about3 } from './about/ftc-disclosures'
 import { seed as about4 } from './about/accountability-standard'
 import { seed as about5 } from './about/expert-authors'
 
+import { seed as reviewSeed } from './reviews/top-gold-ira-companies'
+import { seed as cryptoSeed } from './crypto/bitcoin-ira-guide'
+import { seed as metalsSeed } from './metals/silver-ira-guide'
+import { seed as plansSeed } from './plans/roth-ira-gold'
+
 export const ALL_SEEDS: ArticleSeed[] = [
   iraRules1,
   iraRules2,
@@ -57,6 +62,10 @@ export const ALL_SEEDS: ArticleSeed[] = [
   about3,
   about4,
   about5,
+  reviewSeed,
+  cryptoSeed,
+  metalsSeed,
+  plansSeed,
 ]
 
 for (const seed of ALL_SEEDS) {
@@ -70,6 +79,10 @@ export function seedsByPillar(): Record<PillarSlug, ArticleSeed[]> {
     economics: [],
     tools: [],
     about: [],
+    reviews: [],
+    crypto: [],
+    metals: [],
+    plans: [],
   }
   for (const s of ALL_SEEDS) by[s.pillar].push(s)
   return by
