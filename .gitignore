@@ -19,3 +19,5 @@ playwright-report
 tsconfig.tsbuildinfo
 # Sanity typegen transient — regenerated on each run.
 schema.json
+# Local git worktrees for parallel development.
+.worktrees

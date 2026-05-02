@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U.S. Debt Trap Calculator</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .calculator-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        h2 {
+            margin-top: 0;
+            color: #1a202c;
+            text-align: center;
+            font-size: 24px;
+        }
+        p.description {
+            font-size: 14px;
+            color: #4a5568;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .input-group {
+            margin-bottom: 25px;
+        }
+        label {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2d3748;
+        }
+        input[type=range] {
+            width: 100%;
+            cursor: pointer;
+        }
+        .results {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+        .result-item {
+            margin-bottom: 15px;
+        }
+        .result-item:last-child {
+            margin-bottom: 0;
+        }
+        .result-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #718096;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .result-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #e53e3e; /* Red color to emphasize the debt */
+        }
+        .result-value.secondary {
+            font-size: 20px;
+            color: #c53030;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator-card">
+    <h2>The U.S. Debt Trap Calculator</h2>
+    <p class="description">Adjust the national debt and average interest rate to see the real-time cost of servicing the debt.</p>
+
+    <div class="input-group">
+        <label>
+            <span>Total National Debt:</span>
+            <span id="debt-val-display">$38.98 Trillion</span>
+        </label>
+        <input type="range" id="debt" min="20" max="60" step="0.1" value="38.98" oninput="calculate()">
+    </div>
+
+    <div class="input-group">
+        <label>
+            <span>Average Interest Rate:</span>
+            <span id="rate-val-display">3.365%</span>
+        </label>
+        <input type="range" id="rate" min="0.5" max="10" step="0.01" value="3.365" oninput="calculate()">
+    </div>
+
+    <div class="results">
+        <div class="result-item">
+            <span class="result-title">Annual Interest Cost</span>
+            <span class="result-value" id="annual-cost">$1.312 Trillion</span>
+        </div>
+        <div class="result-item">
+            <span class="result-title">Cost Per Day</span>
+            <span class="result-value secondary" id="daily-cost">$3.59 Billion</span>
+        </div>
+        <div class="result-item">
+            <span class="result-title">Cost Per Second</span>
+            <span class="result-value secondary" id="second-cost">$41,592.51</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function calculate() {
+        // Get values from sliders
+        const debtTrillions = parseFloat(document.getElementById('debt').value);
+        const interestRate = parseFloat(document.getElementById('rate').value);
+
+        // Update display labels
+        document.getElementById('debt-val-display').innerText = '$' + debtTrillions.toFixed(2) + ' Trillion';
+        document.getElementById('rate-val-display').innerText = interestRate.toFixed(3) + '%';
+
+        // Calculations
+        // Annual Cost = Debt * (Rate / 100) -> Output in Trillions
+        const annualCostTrillions = debtTrillions * (interestRate / 100);
+        
+        // Daily Cost = (Annual in Trillions * 1000) / 365 -> Output in Billions
+        const dailyCostBillions = (annualCostTrillions * 1000) / 365;
+        
+        // Per Second Cost = (Annual in Trillions * 1,000,000,000,000) / (365 * 24 * 60 * 60) -> Output in Dollars
+        const secondsInYear = 31536000;
+        const perSecondCostDollars = (annualCostTrillions * 1000000000000) / secondsInYear;
+
+        // Update DOM
+        document.getElementById('annual-cost').innerText = '$' + annualCostTrillions.toFixed(3) + ' Trillion';
+        document.getElementById('daily-cost').innerText = '$' + dailyCostBillions.toFixed(2) + ' Billion';
+        
+        // Format the per-second cost with commas for readability
+        document.getElementById('second-cost').innerText = '$' + perSecondCostDollars.toLocaleString('en-US', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+    }
+
+    // Initialize calculator on page load
+    window.onload = calculate;
+</script>
+
+</body>
+</html>
