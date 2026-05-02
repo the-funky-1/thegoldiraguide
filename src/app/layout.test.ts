@@ -3,9 +3,21 @@ import { describe, expect, it, vi } from 'vitest'
 // next/font/google functions are not available in Vitest's Node environment.
 // The mock returns a factory that produces font objects with the expected shape.
 vi.mock('next/font/google', () => ({
-  IBM_Plex_Serif: () => ({ className: '', variable: '--font-serif', style: { fontFamily: '' } }),
-  IBM_Plex_Mono: () => ({ className: '', variable: '--font-mono', style: { fontFamily: '' } }),
-  Inter: () => ({ className: '', variable: '--font-sans', style: { fontFamily: '' } }),
+  IBM_Plex_Serif: () => ({
+    className: '',
+    variable: '--font-serif',
+    style: { fontFamily: '' },
+  }),
+  IBM_Plex_Mono: () => ({
+    className: '',
+    variable: '--font-mono',
+    style: { fontFamily: '' },
+  }),
+  Inter: () => ({
+    className: '',
+    variable: '--font-sans',
+    style: { fontFamily: '' },
+  }),
 }))
 
 // next/link is not available in Vitest's Node environment.

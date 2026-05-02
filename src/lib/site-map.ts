@@ -51,6 +51,38 @@ export const PILLARS: readonly Pillar[] = [
       'Editorial guidelines, expert author biographies, FTC disclosure, and the ownership relationship with Liberty Gold Silver.',
     order: 5,
   },
+  {
+    slug: 'reviews',
+    label: 'Gold IRA Companies & Reviews',
+    shortLabel: 'Reviews',
+    summary:
+      'In-depth, unbiased reviews of top Gold IRA companies, focusing on fees, accountability, and customer satisfaction.',
+    order: 6,
+  },
+  {
+    slug: 'crypto',
+    label: 'Crypto IRA',
+    shortLabel: 'Crypto IRA',
+    summary:
+      'Guides and insights into holding Bitcoin, Ethereum, and other cryptocurrencies in your tax-advantaged retirement account.',
+    order: 7,
+  },
+  {
+    slug: 'metals',
+    label: 'Precious Metals',
+    shortLabel: 'Metals',
+    summary:
+      'Comprehensive information on IRS-approved Gold, Silver, Platinum, and Palladium coins and bars.',
+    order: 8,
+  },
+  {
+    slug: 'plans',
+    label: 'Retirement Plans',
+    shortLabel: 'Plans',
+    summary:
+      'Detailed explanations of Roth IRAs, SEP IRAs, Solo 401(k)s, and how they integrate with alternative assets.',
+    order: 9,
+  },
 ] as const
 
 const bySlug = new Map(PILLARS.map((p) => [p.slug, p]))

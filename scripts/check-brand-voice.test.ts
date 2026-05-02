@@ -51,7 +51,7 @@ describe('findBrandVoiceViolations', () => {
     expect(
       findBrandVoiceViolations(
         'src/components/compliance/DisclosureBanner.test.tsx',
-        "expect(region.textContent).not.toMatch(/binding written estimate/i)",
+        'expect(region.textContent).not.toMatch(/binding written estimate/i)',
       ),
     ).toEqual([])
     expect(

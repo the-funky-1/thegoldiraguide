@@ -6,6 +6,10 @@ export const PILLAR_SLUGS = [
   'economics',
   'tools',
   'about',
+  'reviews',
+  'crypto',
+  'metals',
+  'plans',
 ] as const
 
 export const SCHEMA_TYPES = [
@@ -19,7 +23,7 @@ export const SCHEMA_TYPES = [
 const CrossLinkSchema = z
   .string()
   .regex(
-    /^(ira-rules|accountability|economics|tools|about)\/[a-z0-9-]+$/,
+    /^(ira-rules|accountability|economics|tools|about|reviews|crypto|metals|plans)\/[a-z0-9-]+$/,
     'crossLinks must be <pillar>/<slug>',
   )
 

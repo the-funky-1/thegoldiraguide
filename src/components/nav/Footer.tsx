@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { OwnershipLockup } from '@/components/brand/OwnershipLockup'
 import { PILLARS, pillarHref } from '@/lib/site-map'
 
@@ -11,7 +12,10 @@ export function Footer() {
     >
       <div className="mx-auto grid max-w-screen-xl gap-8 px-6 py-12 md:grid-cols-4">
         <div>
-          <p className="font-serif text-lg">The Gold IRA Guide</p>
+          <div className="flex items-center gap-2">
+            <Image src="/logo.png" alt="The Gold IRA Guide Logo" width={32} height={32} className="object-contain" />
+            <p className="font-serif text-lg">The Gold IRA Guide</p>
+          </div>
           <p className="mt-2 text-sm text-brand-platinum/80">
             Educational content only; not financial advice.
           </p>

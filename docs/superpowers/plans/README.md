@@ -19,6 +19,7 @@ Plans must be shipped in order. Later plans assume earlier ones are merged.
 | 9 | Strategic Content Authoring | [`2026-04-19-strategic-content-authoring.md`](./2026-04-19-strategic-content-authoring.md) | `v1.1.0-strategic-content` |
 | 10 | Interactive Calculators | [`2026-04-22-interactive-calculators.md`](./2026-04-22-interactive-calculators.md) | `v1.2.0-calculators` |
 | 11 | Ownership Disclosure & Editorial Tone | [`2026-04-22-ownership-disclosure-tone.md`](./2026-04-22-ownership-disclosure-tone.md) | `v1.3.0-ownership-tone` |
+| 12 | Homepage Visual Redesign | [`2026-04-23-homepage-visual-redesign.md`](./2026-04-23-homepage-visual-redesign.md) | `v1.4.0-home-visual` |
 
 ## Dependency graph
 
